@@ -57,6 +57,16 @@ constexpr uintptr_t kChannelDirectoryApplyRva = 0x018A2440; // sub_1CA2440
 constexpr uintptr_t kChannelRuntimeLoadRva = 0x014A2780;     // sub_18A2780
 constexpr uintptr_t kChannelCategoryInsertRva = 0x014A1FF0;  // sub_18A1FF0
 constexpr uintptr_t kChannelConnectRva = 0x018A0DA0;         // sub_1CA0DA0
+// sub_1D88A10 is the current EXE's class0/op3 user-state handler. It reads a UI
+// object with sub_1D93780, a lookup that returns null for an id it has not
+// created, and then uses that result as `this` without the null check its two
+// neighbouring lookups in the same function already perform. When the object is
+// absent, sub_25B69E0 carries the null `this` for 236 instructions before
+// sub_1E44ED0 dereferences `this + 0xC` and raises 0xC0000005.
+constexpr uintptr_t kUserStateUiGuardRva = 0x01988B91;       // mov edi, eax
+constexpr uintptr_t kUserStateUiResumeRva = 0x01988B98;      // push eax
+constexpr uintptr_t kUserStateUiSkipRva = 0x01988BA4;        // native null label
+constexpr uintptr_t kUserStateUiLookupRva = 0x02294670;      // sub_2694670
 constexpr uintptr_t kSelectedChannelPointerRva = 0x04D88FA8; // dword_5188FA8
 constexpr uintptr_t kResidentChannelRva = 0x04D89178;        // unk_5189178
 constexpr uintptr_t kChannelScriptLookupRva = 0x032B1910;    // sub_36B1910
@@ -6399,6 +6409,89 @@ bool InstallKnownInlineHook(uintptr_t target, const unsigned char* expected, siz
     return true;
 }
 
+// InstallUserStateNullUiGuard restores the null check the current EXE omits in
+// sub_1D88A10 between two lookups that do check. The guard branches to the
+// handler's own native null label, sub_1D88A10+0x194, and it branches before
+// the two arguments of the crashing call are pushed, so no stack cleanup is
+// invented and the healthy path stays byte-for-byte the original sequence.
+//
+// Replaced bytes at sub_1D88A10+0x181:
+//   8B F8                 mov  edi, eax          (this <- lookup result)
+//   E8 D8 BA 90 00        call sub_2694670
+bool InstallUserStateNullUiGuard()
+{
+    static const unsigned char kGuardSite[] = {
+        0x8B, 0xF8, 0xE8, 0xD8, 0xBA, 0x90, 0x00
+    };
+    const size_t patchLength = sizeof(kGuardSite);
+    uintptr_t target = g_dnfBase + kUserStateUiGuardRva;
+    uintptr_t resume = g_dnfBase + kUserStateUiResumeRva;
+    uintptr_t skip = g_dnfBase + kUserStateUiSkipRva;
+    uintptr_t lookup = g_dnfBase + kUserStateUiLookupRva;
+
+    if (!BytesMatch(reinterpret_cast<unsigned char*>(target), kGuardSite, patchLength)) {
+        LogLine("user-state null UI guard site verification failed target=0x%08X",
+            target);
+        return false;
+    }
+
+    unsigned char* stub = static_cast<unsigned char*>(VirtualAlloc(nullptr, 32,
+        MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE));
+    if (!stub) {
+        LogLine("user-state null UI guard stub allocation failed: %u", GetLastError());
+        return false;
+    }
+
+    // 00: 8B F8        mov  edi, eax          displaced original
+    // 02: E8 rel32     call sub_2694670       displaced original, keeps eax
+    // 07: 85 FF        test edi, edi
+    // 09: 74 05        jz   +5
+    // 0B: E9 rel32     jmp  resume            healthy path
+    // 10: E9 rel32     jmp  skip              native null label
+    size_t at = 0;
+    stub[at++] = 0x8B; stub[at++] = 0xF8;
+    stub[at++] = 0xE8;
+    *reinterpret_cast<int32_t*>(stub + at) = static_cast<int32_t>(
+        static_cast<intptr_t>(lookup) - reinterpret_cast<intptr_t>(stub + at + 4));
+    at += 4;
+    stub[at++] = 0x85; stub[at++] = 0xFF;
+    stub[at++] = 0x74; stub[at++] = 0x05;
+    stub[at++] = 0xE9;
+    *reinterpret_cast<int32_t*>(stub + at) = static_cast<int32_t>(
+        static_cast<intptr_t>(resume) - reinterpret_cast<intptr_t>(stub + at + 4));
+    at += 4;
+    stub[at++] = 0xE9;
+    *reinterpret_cast<int32_t*>(stub + at) = static_cast<int32_t>(
+        static_cast<intptr_t>(skip) - reinterpret_cast<intptr_t>(stub + at + 4));
+    at += 4;
+
+    DWORD oldProtection = 0;
+    if (!VirtualProtect(reinterpret_cast<void*>(target), patchLength,
+            PAGE_EXECUTE_READWRITE, &oldProtection)) {
+        LogLine("user-state null UI guard VirtualProtect failed: %u", GetLastError());
+        VirtualFree(stub, 0, MEM_RELEASE);
+        return false;
+    }
+
+    unsigned char jump[5] = { 0xE9 };
+    *reinterpret_cast<int32_t*>(jump + 1) = static_cast<int32_t>(
+        reinterpret_cast<intptr_t>(stub) - static_cast<intptr_t>(target + 5));
+    memcpy(reinterpret_cast<void*>(target), jump, sizeof(jump));
+    for (size_t i = sizeof(jump); i < patchLength; ++i) {
+        *reinterpret_cast<unsigned char*>(target + i) = 0x90;
+    }
+
+    DWORD ignoredProtection = 0;
+    VirtualProtect(reinterpret_cast<void*>(target), patchLength, oldProtection,
+        &ignoredProtection);
+    FlushInstructionCache(GetCurrentProcess(), reinterpret_cast<void*>(target), patchLength);
+    FlushInstructionCache(GetCurrentProcess(), stub, at);
+
+    LogLine("user-state null UI guard installed target=0x%08X stub=%p resume=0x%08X skip=0x%08X lookup=0x%08X",
+        target, stub, resume, skip, lookup);
+    return true;
+}
+
 bool InstallPartyDirectoryFullPageCompatibility()
 {
     // sub_326D450 opens owner 0x17B for ordinary channels. That owner is the
@@ -9137,6 +9230,10 @@ DWORD WINAPI InstallTransportWorkerInner(void*)
     bool channelInstalled = InstallChannelDiagnostic();
     LogLine("channel transport compatibility result=%d",
         channelInstalled ? 1 : 0);
+
+    bool userStateUiGuardInstalled = InstallUserStateNullUiGuard();
+    LogLine("user-state null UI guard result=%d",
+        userStateUiGuardInstalled ? 1 : 0);
 
     bool partyDirectoryUiInstalled =
         InstallPartyDirectoryFullPageCompatibility();
