@@ -81,6 +81,16 @@ func armCurrentChannelReconnect(session *gameSession) {
 	session.townActorOwnerChannel = currentConnectionTownActorOwnerContext(session)
 }
 
+func clearUnboundChannelReconnectForRoster(session *gameSession) bool {
+	if session == nil || !session.channelReconnect || session.selectedCharacterID != 0 ||
+		currentTownSceneReady(session) || currentDungeonSceneActive(session) {
+		return false
+	}
+	session.channelReconnect = false
+	session.townActorOwnerChannel = currentConnectionTownActorOwnerContext(session)
+	return true
+}
+
 func currentTownSceneReady(session *gameSession) bool {
 	if session == nil {
 		return false

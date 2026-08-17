@@ -104,9 +104,13 @@ func TestCurrentOp2ReconnectProbeAlsoRegistersDynamicPartyPeerPort(t *testing.T)
 
 func TestLegacyGetUserInfoMarksRosterAndPreventsFalseChannelReconnect(t *testing.T) {
 	service, session, _ := newChannelReconnectTest(t)
+	if !markCurrentChannelReconnect(session, currentChannelReconnectProbeSize) || !session.channelReconnect {
+		t.Fatal("fresh empty-selector probe did not arm speculative reconnect")
+	}
 
 	// Current live op8 has a three-byte body and is classified by the shared
-	// stream splitter as legacy. It still represents an ordinary roster login.
+	// stream splitter as legacy. It is authoritative roster evidence and must
+	// cancel an unbound reconnect guess left by the empty-selector probe.
 	if err := service.handleGameCommand(
 		session,
 		byte(dnfenum.GameCmdCommand),
@@ -117,6 +121,9 @@ func TestLegacyGetUserInfoMarksRosterAndPreventsFalseChannelReconnect(t *testing
 	}
 	if !session.rosterRequested {
 		t.Fatal("legacy op8 did not mark the role roster as requested")
+	}
+	if session.channelReconnect {
+		t.Fatal("legacy op8 retained the empty-selector reconnect guess")
 	}
 
 	session.conn.(*bufferConn).write.Reset()
@@ -144,6 +151,24 @@ func TestLegacyGetUserInfoMarksRosterAndPreventsFalseChannelReconnect(t *testing
 		t,
 		splitAllCurrentGameServerUpperPackets(t, session.conn.(*bufferConn).write.Bytes()),
 	)
+}
+
+func TestGetUserInfoDoesNotClearBoundChannelReconnect(t *testing.T) {
+	service, session, _ := newChannelReconnectTest(t)
+	session.selectedCharacterID = 29
+	armCurrentChannelReconnect(session)
+
+	if err := service.handleGameCommand(
+		session,
+		byte(dnfenum.GameCmdCommand),
+		uint16(dnfenum.GameTypeGetUserInfo),
+		[]byte{0xff, 0xff, 0x02},
+	); err != nil {
+		t.Fatalf("handle bound reconnect op8: %v", err)
+	}
+	if !session.channelReconnect {
+		t.Fatal("GET_USERINFO cleared an already bound channel reconnect")
+	}
 }
 
 func TestChannelReconnectOp4RunsImmediateTargetTownRouteWithoutChangingPersistedLocation(t *testing.T) {

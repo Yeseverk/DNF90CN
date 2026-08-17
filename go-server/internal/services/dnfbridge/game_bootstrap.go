@@ -267,7 +267,12 @@ func (s *Service) sendUpperGetUserInfoBootstrap(session *gameSession) error {
 	// legacy stream decoder. Record the semantic roster transition here, where
 	// both upper and legacy op8 converge, so the following upper op4 is not
 	// mistaken for a fresh channel-reconnect selection.
+	clearedReconnect := clearUnboundChannelReconnectForRoster(session)
 	session.rosterRequested = true
+	if clearedReconnect {
+		s.logGameEvent(session, "game-getuserinfo-cleared-unbound-channel-reconnect",
+			"reason", "authoritative_roster_request_supersedes_preselection_probe")
+	}
 	session.representAccountNamePending = false
 	if err := s.prepareGetUserInfoPassiveAccountState(session); err != nil {
 		return err

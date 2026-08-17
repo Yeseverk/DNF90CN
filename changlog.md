@@ -1,5 +1,12 @@
 # DNF90 Operation Log
 
+## 2026-08-17 - clear false reconnect state before first-character selection
+
+- A fresh empty selector can arm the current `op2/31` channel-reconnect probe before the real three-byte `GET_USERINFO op8` reaches the shared roster bootstrap. The existing roster fix marked `rosterRequested` but retained an already-armed `channelReconnect`, so the following first-character `op4` could still enter the reconnect route and reproduce the obsolete endpoint/scene lifecycle around `op24`.
+- The authoritative roster bootstrap now clears only an unbound reconnect guess: no character may be selected and neither a town nor dungeon scene may exist. An already-bound channel reconnect remains unchanged. Regressions cover both the empty-selector correction and the bound-reconnect guard, then require the ordinary selection stream to contain no reconnect resident notice.
+- Replaced the release-oriented root README with the concise developer startup flow: install the five client files, start/configure/status/login, register, and enter with the first character. The old second-character workaround is no longer documented as expected behavior.
+- Validation passed `gofmt`, `git diff --check`, `go list -buildvcs=false ./...`, every `internal/modules/dnf/...` test, the focused first-character/reconnect tests, the complete `dnfbridge` suite excluding the macOS-unavailable `127.0.0.2` bind test, the control suite excluding its two Windows-path-semantics tests, and the required `go vet` set. A Windows/amd64 candidate built successfully at `46,913,536` bytes with SHA256 `732C6B25ABD2473BB8B08BCB0B4FAEB822F13D0BA23AD92BCB81D71DB8BAF020`; it was not installed. No runtime executable, database, PVF, generated configuration, or client DLL changed. Fresh Windows-client acceptance is still required.
+
 ## 2026-08-06 - merge damage-font protocol and dungeon entry-level repair
 
 - Selectively merged the supplied damage-font source without replacing newer inventory, party, scene, or repository work. The current client `op515` now validates the exact 19-byte action-162 request against the runtime PVF `[add damage font skin]` definition, consumes one source stack and persists character-scoped ownership in one character-asset transaction. It supports PVF `[period]`, `[date]`, and `[unlimit]` expiration contracts; failed validation or persistence leaves the source stack unchanged.
