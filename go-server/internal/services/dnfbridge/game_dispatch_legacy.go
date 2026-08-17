@@ -47,6 +47,9 @@ func normalizeLegacyGameBody(typ uint16, body []byte) []byte {
 	if normalized, ok := currentGameplayModules.NormalizeLegacy(typ, body); ok {
 		return normalized
 	}
+	if dnfenum.GameType(typ) == dnfenum.GameTypeLogin {
+		return stripLegacyTransportTrailer(body, currentChannelReconnectDisplayProbeSize)
+	}
 	if dnfenum.GameType(typ) == dnfenum.GameTypeSelectCharacter {
 		return stripLegacyCodecPrefix(body, 11)
 
@@ -145,8 +148,16 @@ func (s *Service) handleGameCommand(session *gameSession, cmd byte, typ uint16, 
 	}
 	switch dnfenum.GameType(typ) {
 	case dnfenum.GameTypeLogin:
-		// Current EXE evidence proves only the upper class1/op1 590/598-byte
-		// request emitted after CHANNELINFO. Keep legacy-shaped op1 silent.
+		// The current EXE's 13-byte class1/op1 frame is structurally ambiguous
+		// with the legacy header. The stream splitter can therefore deliver the
+		// observed 590-byte request plus its four-byte transport trailer here.
+		if isCurrentChannelReconnectDisplayProbeBodyLen(len(body)) {
+			return s.handleCurrentGameEndpointRequest(
+				session,
+				dnfproto.DefaultChannelClassification,
+				len(body),
+			)
+		}
 		s.logGameEvent(session, "game-legacy-endpoint-op1-ignored",
 			"body_len", len(body),
 			"reason", "legacy_endpoint_request_shape_not_proved")

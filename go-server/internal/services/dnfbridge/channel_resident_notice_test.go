@@ -636,6 +636,39 @@ func TestGameEndpointRequestRequiresNoticeAndKnownShape(t *testing.T) {
 	}
 }
 
+func TestLegacyGameEndpointTransportTrailerCompletesHandshake(t *testing.T) {
+	service := residentNoticeTestService(t)
+	channel, _ := service.currentCatalog().Channel(19)
+	conn := &bufferConn{}
+	session := &gameSession{conn: conn, channel: channel, residentChannel: channel}
+
+	if err := service.sendCurrentChannelResidentNotice(session, time.Unix(1_721_020_000, 0)); err != nil {
+		t.Fatal(err)
+	}
+	noticeLen := conn.write.Len()
+	body := make([]byte, currentChannelReconnectDisplayProbeSize+4)
+	raw := buildLegacyGamePacketForBridgeTest(
+		byte(dnfenum.GameCmdCommand),
+		uint16(dnfenum.GameTypeLogin),
+		0,
+		body,
+	)
+	if err := service.handleLegacyGamePacket(session, raw); err != nil {
+		t.Fatalf("handle legacy endpoint request: %v", err)
+	}
+	if !session.gameEndpointSuccessSent || conn.write.Len() <= noticeLen {
+		t.Fatalf("legacy endpoint handshake sent=%t bytes=%d notice=%d", session.gameEndpointSuccessSent, conn.write.Len(), noticeLen)
+	}
+
+	handshakeLen := conn.write.Len()
+	if err := service.handleLegacyGamePacket(session, raw); err != nil {
+		t.Fatalf("handle repeated legacy endpoint request: %v", err)
+	}
+	if conn.write.Len() != handshakeLen {
+		t.Fatalf("repeated legacy endpoint request added %d bytes", conn.write.Len()-handshakeLen)
+	}
+}
+
 func TestGameEndpointHandshakeAcceptsCurrentRequestSizes(t *testing.T) {
 	for _, bodyLen := range []int{
 		currentChannelReconnectDisplayProbeSize,

@@ -1,5 +1,11 @@
 # DNF90 Operation Log
 
+## 2026-08-17 - accept the current legacy-shaped endpoint login frame
+
+- Live packet logging proved that the current EXE's post-CHANNELINFO class-1 op1 request is structurally classified as a 13-byte legacy frame with a 594-byte body. The old legacy login branch ignored it, leaving the client indefinitely on the connecting-server screen even though the TCP game-port connection was established.
+- The legacy login normalizer now removes only the exact four-byte transport trailer from that 594-byte shape and routes the resulting proved 590-byte request through the existing one-shot endpoint handshake. Other legacy op1 shapes remain write-silent, and duplicate endpoint requests still cannot replay the success response.
+- Added focused regression coverage for normalization, one endpoint success, and duplicate silence. The focused endpoint tests, package listing, and all DNF domain-module tests passed. A rebuilt server was deployed and live evidence reached GET_USERINFO and the character selector; packet logging was then disabled and both DNF90Server and portable MySQL were stopped cleanly with data preserved.
+
 ## 2026-08-17 - one-click launcher and first-created-character lifecycle
 
 - `LOGIN.bat` is now the only normal entry point. A tracked runtime version updates the ignored local EXEs once when source changes, then daily launches remain immediate. The launcher selects and validates `DNF.exe`, persists only `client.directory` atomically, starts the service, registers or verifies the selected credential slot, and launches the client without manual `START.bat`, `STATUS.bat`, or JSON editing.
