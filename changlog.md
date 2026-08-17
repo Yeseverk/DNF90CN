@@ -1,5 +1,14 @@
 # DNF90 Operation Log
 
+## 2026-08-17 - restore the omitted null check in the current EXE op3 user-state handler
+
+- Entering the first scene crashed the client with `0xC0000005` at `0x00E44ED6`, reading `0x0000000C`. Five occurrences across two accounts, two jobs, three character slots, and both tutorial dungeons (`7115`/`53127` and `7145`/`70576`) carried byte-identical `eip`, `esp`, `ebp`, `eax`, `ecx`, `edx`, `esi`, and `edi`. Server packet logs disproved a server cause: for the same character in the same dungeon, a crashing run and a successful run emitted an identical first 163 events, and the successful run went on to persist tutorial completion and reach town.
+- Disassembly of the current EXE isolated the defect. `sub_1D88A10`, the class0/op3 user-state handler, reads a UI object with `sub_1D93780`, a lookup whose default and per-id branches both end in `xor eax, eax`, and then loads that result into `edi` and passes it as `this` with no null check. Its two neighbouring lookups in the same function do check and branch to `sub_1D88A10+0x194`. With a null `this`, `sub_25B69E0` stores it at `[ebp-0x14]`, runs 236 instructions, then `lea ecx, [esi+8]` and `sub_1E44ED0`'s `mov edx, [ecx+4]` dereference `0xC`, matching the reported fault address and `ecx=8` exactly.
+- `90CN.dll` now installs `InstallUserStateNullUiGuard`, restoring the missing check. It verifies the seven bytes `8B F8 E8 D8 BA 90 00` at `sub_1D88A10+0x181` before writing, relocates both displaced instructions into a 21-byte stub, and branches on the lookup result to the handler's own native null label. The branch is taken before the crashing call's two arguments are pushed, so no stack cleanup is invented and no calling convention is assumed. The non-null path executes the original instruction sequence unchanged.
+- The transport-only boundary is preserved: the guard adds no business behaviour, reads no packet, and writes no game state. `client-compatibility.json` pins the rebuilt DLL as one unit with the source.
+- Verified live on the character and dungeon that reproduced the crash twice within the preceding hour. `user-state null UI guard installed target=0x01D88B91 ... result=1` precedes a clean `lua enter_dungeon confirmed key=1` in the same map `53127`, with no exception recorded after the guard was installed.
+- `REBUILD_CLIENT_PATCH.bat` also probes `C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools`, which the previous list omitted, so the documented rebuild entry point works on an x86-installed VS2022 Build Tools host.
+
 ## 2026-08-17 - repair the LOGIN runtime refresh instead of masking a stale runtime
 
 - Root cause of the reported black-console block: the runtime refresh forced a rebuild of `DNF90Control.exe` *before* stopping the owned service. On a tester machine holding the older ignored EXE set with no Go installation, `LOGIN.bat` stopped at “Go was not found” even though the installed controller was perfectly able to stop the service. `LOGIN.bat` now stops through the installed controller first and only then replaces the runtime.
@@ -12,7 +21,6 @@
 - `deploy/windows/runtime.version` incremented to `2026.08.17.2` because `cmd/server/control` behaviour changed.
 - README distinguishes a complete release ZIP from a source checkout: `runtime/bin` is ignored by Git, so a copied checkout can never contain the executables a player needs.
 - Verification: `go build ./...`, `go vet` on control/release/dnfbridge, and `go test ./cmd/server/release ./internal/services/dnfbridge` pass on macOS with go1.26.5. `./cmd/server/control` keeps two failures, `TestResolveBinaryInstallStateRejectsEscapingPath` and `TestValidateInstance/absolute_asset`, which reproduce identically on the unmodified HEAD and are Windows path-semantics tests. Source passes; **no Windows client acceptance was performed for this change.**
-
 ## 2026-08-17 - one-click launcher and first-created-character lifecycle
 
 - `LOGIN.bat` is now the only normal entry point. A tracked runtime version updates the ignored local EXEs once when source changes, then daily launches remain immediate. The launcher selects and validates `DNF.exe`, persists only `client.directory` atomically, starts the service, registers or verifies the selected credential slot, and launches the client without manual `START.bat`, `STATUS.bat`, or JSON editing.
