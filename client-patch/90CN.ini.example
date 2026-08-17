@@ -1,0 +1,8 @@
+; Production 90CN.dll does not read 90CN.ini.
+;
+; Its supported settings are environment variables documented in README.md:
+; DNF_RESIDENT_CHANNEL_ID, DNF_CIPHER_PASSTHROUGH,
+; DNF_DPROTO_COMPAT, DNF_ROUTE_COMPAT, and DNF_PROTOCOL_TRACE.
+;
+; Debug compatibility belongs to the independent 90CN-debug test project.
+; Do not copy this example to the game directory.

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "profile": "90cn-decode-bypass-v1",
+  "files": [
+    {
+      "names": [
+        "DNF.exe",
+        "NoPack.exe"
+      ],
+      "required": true,
+      "sha256": "8A7AF614769D0B47D0647B77C33BCE725F2F20258651C01FC6C22AC1DB44AA4D"
+    },
+    {
+      "names": [
+        "ijl15.dll"
+      ],
+      "required": true,
+      "sha256": "946A2C769A622574F7115C4B6F5B5C0BC088519CA64689CE8CE568911128345B"
+    },
+    {
+      "names": [
+        "ijl15_real.dll"
+      ],
+      "required": true,
+      "sha256": "41D37BFB0A39017497E0AA373DC01F71AC9C5046C75F7CD269BEE52112A5F3A1"
+    },
+    {
+      "names": [
+        "90CN.dll"
+      ],
+      "required": true,
+      "sha256": "33BA46E898D592CACAD5B3774A682660BF1194DADB80332456C4773A781652CE"
+    },
+    {
+      "names": [
+        "90CNLua.dll"
+      ],
+      "required": true,
+      "sha256": "450C738888DDEE312C013D4D14EDB1F21E96DB29382CFA5C81DB4A9A7FDCD426"
+    }
+  ]
+}

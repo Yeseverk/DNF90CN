@@ -1,0 +1,11 @@
+#include "client_assets.h"
+
+IDR_COMBAT_POWER_PANEL_SKIN_V2 RCDATA "assets\\combat_power_panel_skin_v2.bgra"
+IDR_COMBAT_RANK_EXPLORE_V3 RCDATA "assets\\combat_rank_explore_v3.pbgra"
+IDR_COMBAT_RANK_PIONEER_V3 RCDATA "assets\\combat_rank_pioneer_v3.pbgra"
+IDR_COMBAT_RANK_FEARLESS_V3 RCDATA "assets\\combat_rank_fearless_v3.pbgra"
+IDR_COMBAT_RANK_CONQUER_V3 RCDATA "assets\\combat_rank_conquer_v3.pbgra"
+IDR_COMBAT_RANK_BATTLE_PINNACLE_V3 RCDATA "assets\\combat_rank_battle_pinnacle_v3.pbgra"
+IDR_COMBAT_RANK_HEROIC_V3 RCDATA "assets\\combat_rank_heroic_v3.pbgra"
+IDR_COMBAT_RANK_MARTIAL_MASTERY_V3 RCDATA "assets\\combat_rank_martial_mastery_v3.pbgra"
+IDR_COMBAT_POWER_RANK_TOOLTIP_V2 RCDATA "assets\\combat_power_rank_tooltip_v2.bgra"

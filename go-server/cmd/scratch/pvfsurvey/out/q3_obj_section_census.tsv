@@ -1,0 +1,185 @@
+section	files
+layer	19224
+basic action	19173
+name	17810
+pass type	17574
+piercing power	15418
+floating height	13499
+attack info	10138
+width	8781
+etc action	6667
+team	5999
+object destroy condition	5362
+hp destroy	4555
+basic motion	4430
+hp max	4204
+etc attack info	3802
+int data	2939
+string data	2439
+last action	1825
+etc motion	1732
+destroy particle	1359
+vanish on move collision	1348
+sound category	1312
+homing	1029
+homing follow	1029
+homing use	1029
+homing velocity	1028
+diff rotation	843
+homing check gap	815
+homing time	638
+layer level	624
+sync target move	545
+hp gage	488
+max rotation	442
+is hp by difficulty	421
+sync animation rotation	385
+init rotation	296
+passive object type	294
+add particles	266
+file	261
+particle	261
+matching attack info	201
+isometric cell map info	170
+create delay	158
+ignore change map	148
+passive object sub type	144
+hp gage visible time	143
+absolute zpos	141
+create sound	109
+max distance	109
+min distance	109
+warning	109
+follow parent	108
+piercing tolerance	107
+follow move map	81
+draw hit object hp	80
+add object effect	70
+movie unit	67
+type	66
+time	65
+blocking area	56
+motion type	55
+notice	53
+play bgm	51
+territory combat team	49
+category	48
+melee attack	39
+apply physics	37
+speech	36
+ani path	34
+ani title	31
+screenshot data	31
+target object type	31
+hp gauge ui off	30
+target object index	30
+object create status	28
+passive object icon	28
+homing direction	27
+use parent equipment magical defense	27
+use parent equipment physical defense	27
+use parent magical absolute defense	27
+use parent physical absolute defense	27
+ai flag	26
+transparent on meet player	26
+defender	25
+down arrow data	25
+damage stun off	24
+attacker	23
+look direction	22
+urban warfare score	22
+sniper type	21
+use parent hp	21
+wait time	21
+collision on map edge	20
+party count for hp max rate	20
+reward type	20
+use parent fire resistance	20
+use parent water resistance	20
+auto skip when nothing quest	17
+moving particle	17
+trap	16
+homing z axis	15
+monster destroy behavior skipable	15
+face image	14
+set pos	14
+draw name	13
+for tournament	13
+charm upgrade table	12
+charm upgrade using	12
+damage absorb	12
+under gravity	12
+add tail image	11
+can beat index	11
+die when parent die	11
+draw tail	11
+draw tail use	11
+tail bottom up layer	11
+tail rotate	11
+tail type	11
+time interval	11
+following immortal	10
+is force pattern	10
+index	9
+talk	8
+talk group data	8
+quest type	7
+flying mark	6
+move pos	6
+npc dialog npc index	6
+npc dialog text	6
+passive object	6
+speed	6
+speed control passive objects	6
+hp rate	4
+init velocity	4
+invoke check time	4
+invoke delay time	4
+invoke time	4
+is not focus	4
+shot distance	4
+show itembox mark in minimap	4
+columns	3
+damage immune	3
+data	3
+gate keeper	3
+interval	3
+object	3
+objects	3
+pattern	3
+patterns	3
+probability	3
+sequences	3
+apply parent ability category	2
+dungeon difficult king	2
+dungeon difficult slayer	2
+entry	2
+ground brighten height	2
+ground brighten width	2
+homing keep distance	2
+object brighten height	2
+object brighten width	2
+passiveobject	2
+perspective	2
+pvp room transparent value for observer	2
+racing dungeon probability	2
+random item fairy	2
+slow motion when die	2
+straight homing	2
+target object order	2
+allow enemy hit	1
+allow friend hit	1
+attakcer	1
+basic animation	1
+change action index when eat fairy	1
+for school	1
+independent drop	1
+list	1
+loop	1
+not combo check in training dungeon	1
+particle collision type	1
+save my object state	1
+set movie back ground	1
+set on proc	1
+use parent dark resistance	1
+use parent light resistance	1

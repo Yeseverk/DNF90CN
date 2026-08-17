@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "product": "MySQL Community Server",
+  "version": "8.4.10",
+  "platform": "winx64",
+  "sourceUrl": "https://cdn.mysql.com/Downloads/MySQL-8.4/mysql-8.4.10-winx64.zip",
+  "archive": {
+    "path": "deploy/vendor/mysql/mysql-8.4.10-winx64.zip",
+    "root": "mysql-8.4.10-winx64",
+    "size": 280672277,
+    "sha256": "3B950DB31C33FB59252568C012BD9EE5FAC50811E778CA7C8F1A0DC91686CD6F"
+  },
+  "files": [
+    {
+      "path": "bin/mysqld.exe",
+      "size": 51571328,
+      "sha256": "3CBF20F0AFAB5BD1F282A3937D50544F2FE50D4AEE7F7C54F4961B4C4C9F14A3"
+    },
+    {
+      "path": "bin/mysql.exe",
+      "size": 7177848,
+      "sha256": "1E8D7D6AD50B619A5C15E9FF6EB52FE84360B436A5E1EC16B233C195F4DBCD6E"
+    },
+    {
+      "path": "bin/mysqladmin.exe",
+      "size": 7053448,
+      "sha256": "C75E431F409E60035A5F688FA9E8083BD764ABFF13F53CE9338EBAC7A04882B8"
+    },
+    {
+      "path": "bin/libcrypto-3-x64.dll",
+      "size": 7144080,
+      "sha256": "D92B1C281D1CF1C598702A761878E8FACB286E2B1C00A4CF385E32E6A7366C2B"
+    },
+    {
+      "path": "bin/libssl-3-x64.dll",
+      "size": 1314952,
+      "sha256": "12E4C8CAE819798897F906AC232695617C009DD411806B00A5CB78FD3AEACC41"
+    },
+    {
+      "path": "bin/libprotobuf.dll",
+      "size": 4205192,
+      "sha256": "071992596B6952AA0696D252A3A83A12D881AC2A775F9E6DE20175F3039B8C12"
+    },
+    {
+      "path": "bin/libprotobuf-lite.dll",
+      "size": 674960,
+      "sha256": "B2A737BFE3CF8B8A228B64D8F6EE57E64F8628CF8DF4606911FA7999A364DB5D"
+    },
+    {
+      "path": "bin/abseil_dll.dll",
+      "size": 1751688,
+      "sha256": "E58BD69D31D4EE41F7AAECF5CAE83D3632FE3C1A77EFB92ED42008B8F7A9A1DB"
+    },
+    {
+      "path": "LICENSE",
+      "size": 259903,
+      "sha256": "B971AB677D232904FC158F196E8B9DBC0CF3FEE4501BA08285260A37841BE25A"
+    },
+    {
+      "path": "share/charsets/Index.xml",
+      "size": 19525,
+      "sha256": "610942FC8428F982B4212B516D4127E7904261D43C9FD5F7C8EA0F2693F0F2E8"
+    },
+    {
+      "path": "share/english/errmsg.sys",
+      "size": 412394,
+      "sha256": "F8B03886C63D523DD152E9235955F5795A807A6C9FF731B6B036056BC7D667CD"
+    }
+  ]
+}

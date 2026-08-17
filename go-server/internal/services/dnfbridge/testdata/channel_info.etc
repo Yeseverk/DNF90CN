@@ -1,0 +1,610 @@
+[dungeon]
+`[elven_guard]`
+<4::channel_info_dname_0>
+1
+2
+[/dungeon]
+
+
+[dungeon]
+`[granfloris]`
+<4::channel_info_dname_1>
+3
+5
+6
+7
+8
+9
+1000
+7143
+[/dungeon]
+
+
+[dungeon]
+`[sky_catle]`
+<4::channel_info_dname_2>
+10
+11
+12
+13
+14
+15
+17
+[/dungeon]
+
+
+[dungeon]
+`[behemoth]`
+<4::channel_info_dname_3>
+21
+22
+23
+24
+25
+26
+27
+[/dungeon]
+
+
+[dungeon]
+`[Alfhlyra]`
+<4::channel_info_dname_4>
+31
+32
+34
+35
+36
+37
+50
+51
+[/dungeon]
+
+
+[dungeon]
+`[north_myre]`
+<4::channel_info_dname_5>
+31
+32
+34
+35
+36
+37
+50
+51
+52
+53
+242
+[/dungeon]
+
+
+[dungeon]
+`[stormpass]`
+<4::channel_info_dname_6>
+40
+41
+42
+43
+45
+141
+[/dungeon]
+
+
+[dungeon]
+`[deathtower]`
+<4::channel_info_dname_7>
+11006
+11007
+11008
+5115
+[/dungeon]
+
+
+[dungeon]
+`[ancient]`
+<4::channel_info_dname_8>
+200
+201
+202
+203
+204
+205
+206
+7101
+7102
+7103
+7104
+7105
+7106
+7107
+[/dungeon]
+
+
+[dungeon]
+`[Fortress]`
+<4::channel_info_dname_9>
+60
+61
+110
+111
+112
+[/dungeon]
+
+
+[dungeon]
+`[Hall]`
+<4::channel_info_dname_10>
+110
+111
+112
+[/dungeon]
+
+
+[dungeon]
+`[Antwer]`
+<4::channel_info_dname_11>
+80
+81
+82
+83
+84
+85
+88
+89
+90
+[/dungeon]
+
+
+[dungeon]
+`[impossible]`
+<4::channel_info_dname_12>
+33
+62
+63
+64
+1500
+1501
+1502
+1504
+1506
+1507
+[/dungeon]
+
+
+[dungeon]
+`[seatrain]`
+<4::channel_info_dname_13>
+86
+87
+91
+92
+93
+[/dungeon]
+
+
+[dungeon]
+`[timedoor]`
+<4::channel_info_dname_15>
+70
+71
+72
+73
+74
+75
+76
+77
+78
+515
+516
+517
+518
+519
+520
+3066
+5100
+7152
+7527
+[/dungeon]
+
+
+[dungeon]
+`[powerstation]`
+<4::channel_info_dname_16>
+101
+102
+103
+104
+522
+[/dungeon]
+
+
+[dungeon]
+`[abnoba]`
+<4::chn_channel_info_035>
+144
+145
+146
+148
+7156
+[/dungeon]
+
+
+[dungeon]
+`[meltdown]`
+<4::chn_channel_info_004>
+156
+157
+158
+159
+160
+7158
+[/dungeon]
+
+
+[dungeon]
+`[driftcave]`
+<4::chn_channel_info_005>
+150
+151
+152
+153
+154
+155
+239
+[/dungeon]
+
+
+[dungeon]
+`[fallstothesky]`
+<4::chn_channel_info_006>
+161
+162
+163
+164
+165
+[/dungeon]
+
+
+[dungeon]
+`[icewall]`
+<4::chn_channel_info_007>
+166
+167
+168
+169
+170
+171
+172
+1003
+[/dungeon]
+
+
+[dungeon]
+`[noblsky]`
+<4::chn_channel_info_015>
+210
+211
+212
+213
+214
+215
+216
+218
+219
+220
+221
+222
+223
+224
+1006
+[/dungeon]
+
+
+[dungeon]
+`[castleofdead]`
+<4::chn_channel_info_020>
+190
+191
+192
+193
+194
+195
+7154
+7533
+8012
+[/dungeon]
+
+
+[dungeon]
+`[metro]`
+<4::chn_channel_info_024>
+310
+311
+312
+313
+314
+315
+316
+317
+7155
+7539
+[/dungeon]
+
+
+[dungeon]
+`[anton_normal]`
+<4::chn_channel_info_036>
+1006
+[/dungeon]
+
+
+[dungeon]
+`[anton_raid]`
+<4::chn_channel_info_016>
+210
+211
+212
+213
+214
+215
+216
+218
+219
+220
+221
+222
+223
+224
+[/dungeon]
+
+
+[dungeon]
+`[luke_normal]`
+<4::chn_channel_info_026>
+5101
+5102
+5103
+5104
+5105
+5106
+7160
+[/dungeon]
+
+
+[dungeon]
+`[luke_raid]`
+<4::chn_channel_info_025>
+5054
+5055
+5056
+5057
+5058
+5059
+5060
+5061
+5062
+5063
+5064
+5065
+5066
+5090
+5091
+5092
+5093
+5094
+5095
+5099
+5300
+5310
+5311
+5312
+5313
+5323
+5324
+5325
+5326
+5327
+5328
+5329
+5330
+5331
+5332
+5333
+5334
+[/dungeon]
+
+
+[dungeon]
+`[crack]`
+<4::chn_channel_info_046>
+7100
+7165
+7166
+7167
+7168
+7169
+7170
+7171
+7172
+7173
+7174
+7175
+7176
+7177
+7178
+7179
+[/dungeon]
+
+
+[dungeon]
+`[fiendwar]`
+<4::chn_channel_info_048>
+4953
+4954
+4955
+4956
+4957
+4958
+4959
+4960
+4961
+4962
+4963
+4964
+4965
+4966
+4967
+4968
+4969
+4970
+4971
+4972
+4973
+4974
+4975
+4976
+4977
+4978
+[/dungeon]
+
+
+[dungeon]
+`[goldenroad]`
+<4::chn_channel_info_002>
+[/dungeon]
+
+
+[dungeon]
+`[pvp]`
+<4::chn_channel_info_044>
+[/dungeon]
+
+
+//起源频道验证表.
+//保留已观察特殊编号: 23=安徒恩公共, 25=地轨中心, 28=卢克公共.
+//普通区域使用 type 11: 客户端可见类型集合接受, 且按区域名推导 categoryHint; type 3 会固定走金币/拍卖行图标.
+//普通区域只保留: 格兰之森、天空之城、阿法利亚、诺斯玛尔、安特贝鲁峡谷、海上列车、时空之门、能源中心、苍穹贵族号、地轨中心.
+//特殊区域使用当前 90 客户端已确认的可见类型: 远古地下城 type 22、交易-拍卖行 type 36、异次元裂缝 type 40、亡者峡谷 type 22.
+//交易-拍卖行使用 type 36 强制进入特殊区域; 异次元裂缝使用 type 40 对应客户端 categoryHint 30 背景.
+//团队频道固定映射 type 23/32/42: 安徒恩、卢克、超时空.
+//UI 展示号由客户端根据 ServerIndex、ChannelIndex、ChannelType 生成, 不要把 10011/1022 写入内部频道号.
+//里面不能添加/* */类型注释
+[server] 1
+   6   `<chn_channel_info_002>`   36   `[goldenroad]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   10   `<chn_channel_info_028>`   11   `[granfloris]`   5   0   0   0   0   0   0   0   0   0   0   ``
+   11   `<chn_channel_info_028>`   11   `[granfloris]`   5   0   0   0   0   0   0   0   0   0   0   ``
+   12   `<chn_channel_info_028>`   11   `[granfloris]`   5   0   0   0   0   0   0   0   0   0   0   ``
+   13   `<chn_channel_info_028>`   11   `[granfloris]`   5   0   0   0   0   0   0   0   0   0   0   ``
+   14   `<chn_channel_info_028>`   11   `[granfloris]`   5   0   0   0   0   0   0   0   0   0   0   ``
+   15   `<chn_channel_info_028>`   11   `[granfloris]`   5   0   0   0   0   0   0   0   0   0   0   ``
+   16   `<chn_channel_info_028>`   11   `[granfloris]`   5   0   0   0   0   0   0   0   0   0   0   ``
+   17   `<chn_channel_info_028>`   11   `[granfloris]`   5   0   0   0   0   0   0   0   0   0   0   ``
+   18   `<chn_channel_info_028>`   11   `[granfloris]`   5   0   0   0   0   0   0   0   0   0   0   ``
+   19   `<chn_channel_info_028>`   11   `[granfloris]`   5   0   0   0   0   0   0   0   0   0   0   ``
+   20   `<chn_channel_info_028>`   11   `[granfloris]`   5   0   0   0   0   0   0   0   0   0   0   ``
+   21   `<chn_channel_info_029>`   11   `[sky_catle]`   3   0   0   1   0   0   0   0   0   0   0   ``
+   23   `<chn_channel_info_016>`   23   `[anton_raid]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   24   `<chn_channel_info_029>`   11   `[sky_catle]`   3   0   0   1   0   0   0   0   0   0   0   ``
+   25   `<chn_channel_info_024>`   11   `[metro]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   26   `<chn_channel_info_029>`   11   `[sky_catle]`   3   0   0   1   0   0   0   0   0   0   0   ``
+   27   `<chn_channel_info_029>`   11   `[sky_catle]`   3   0   0   1   0   0   0   0   0   0   0   ``
+   28   `<chn_channel_info_025>`   32   `[luke_raid]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   29   `<chn_channel_info_029>`   11   `[sky_catle]`   3   0   0   1   0   0   0   0   0   0   0   ``
+   30   `<chn_channel_info_029>`   11   `[sky_catle]`   3   0   0   1   0   0   0   0   0   0   0   ``
+   41   `<chn_channel_info_031>`   11   `[Alfhlyra]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   42   `<chn_channel_info_031>`   11   `[Alfhlyra]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   43   `<chn_channel_info_031>`   11   `[Alfhlyra]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   44   `<chn_channel_info_031>`   11   `[Alfhlyra]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   45   `<chn_channel_info_031>`   11   `[Alfhlyra]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   46   `<chn_channel_info_031>`   11   `[Alfhlyra]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   47   `<chn_channel_info_031>`   11   `[Alfhlyra]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   48   `<chn_channel_info_031>`   11   `[Alfhlyra]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   49   `<chn_channel_info_031>`   11   `[Alfhlyra]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   50   `<chn_channel_info_031>`   11   `[Alfhlyra]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   51   `<chn_channel_info_034>`   11   `[north_myre]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   52   `<chn_channel_info_034>`   11   `[north_myre]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   53   `<chn_channel_info_034>`   11   `[north_myre]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   54   `<chn_channel_info_034>`   11   `[north_myre]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   55   `<chn_channel_info_034>`   11   `[north_myre]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   56   `<chn_channel_info_034>`   11   `[north_myre]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   57   `<chn_channel_info_034>`   11   `[north_myre]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   58   `<chn_channel_info_034>`   11   `[north_myre]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   59   `<chn_channel_info_034>`   11   `[north_myre]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   60   `<chn_channel_info_034>`   11   `[north_myre]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   91   `<chn_channel_info_008>`   11   `[Antwer]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   92   `<chn_channel_info_008>`   11   `[Antwer]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   93   `<chn_channel_info_008>`   11   `[Antwer]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   94   `<chn_channel_info_008>`   11   `[Antwer]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   95   `<chn_channel_info_008>`   11   `[Antwer]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   96   `<chn_channel_info_008>`   11   `[Antwer]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   97   `<chn_channel_info_008>`   11   `[Antwer]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   98   `<chn_channel_info_008>`   11   `[Antwer]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   99   `<chn_channel_info_008>`   11   `[Antwer]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   100   `<chn_channel_info_008>`   11   `[Antwer]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   111   `<chn_channel_info_009>`   11   `[seatrain]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   112   `<chn_channel_info_009>`   11   `[seatrain]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   113   `<chn_channel_info_009>`   11   `[seatrain]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   114   `<chn_channel_info_009>`   11   `[seatrain]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   115   `<chn_channel_info_009>`   11   `[seatrain]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   116   `<chn_channel_info_009>`   11   `[seatrain]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   117   `<chn_channel_info_009>`   11   `[seatrain]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   118   `<chn_channel_info_009>`   11   `[seatrain]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   119   `<chn_channel_info_009>`   11   `[seatrain]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   120   `<chn_channel_info_009>`   11   `[seatrain]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   121   `<chn_channel_info_014>`   22   `[ancient]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   141   `<chn_channel_info_011>`   11   `[timedoor]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   142   `<chn_channel_info_011>`   11   `[timedoor]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   143   `<chn_channel_info_011>`   11   `[timedoor]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   144   `<chn_channel_info_011>`   11   `[timedoor]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   145   `<chn_channel_info_011>`   11   `[timedoor]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   146   `<chn_channel_info_011>`   11   `[timedoor]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   147   `<chn_channel_info_011>`   11   `[timedoor]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   148   `<chn_channel_info_011>`   11   `[timedoor]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   149   `<chn_channel_info_011>`   11   `[timedoor]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   150   `<chn_channel_info_011>`   11   `[timedoor]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   151   `<chn_channel_info_010>`   11   `[powerstation]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   152   `<chn_channel_info_010>`   11   `[powerstation]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   153   `<chn_channel_info_010>`   11   `[powerstation]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   154   `<chn_channel_info_010>`   11   `[powerstation]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   155   `<chn_channel_info_010>`   11   `[powerstation]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   156   `<chn_channel_info_010>`   11   `[powerstation]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   157   `<chn_channel_info_010>`   11   `[powerstation]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   158   `<chn_channel_info_010>`   11   `[powerstation]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   159   `<chn_channel_info_010>`   11   `[powerstation]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   160   `<chn_channel_info_010>`   11   `[powerstation]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   181   `<chn_channel_info_015>`   11   `[noblsky]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   182   `<chn_channel_info_015>`   11   `[noblsky]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   183   `<chn_channel_info_015>`   11   `[noblsky]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   201   `<chn_channel_info_024>`   11   `[metro]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   202   `<chn_channel_info_024>`   11   `[metro]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   203   `<chn_channel_info_024>`   11   `[metro]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   204   `<chn_channel_info_024>`   11   `[metro]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   205   `<chn_channel_info_024>`   11   `[metro]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   206   `<chn_channel_info_024>`   11   `[metro]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   207   `<chn_channel_info_024>`   11   `[metro]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   208   `<chn_channel_info_024>`   11   `[metro]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   209   `<chn_channel_info_024>`   11   `[metro]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   210   `<chn_channel_info_024>`   11   `[metro]`   2   0   0   0   0   1   0   0   0   0   0   ``
+   221   `<chn_channel_info_016>`   23   `[anton_raid]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   222   `<chn_channel_info_016>`   23   `[anton_raid]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   223   `<chn_channel_info_016>`   23   `[anton_raid]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   231   `<chn_channel_info_026>`   32   `[luke_normal]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   232   `<chn_channel_info_026>`   32   `[luke_normal]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   233   `<chn_channel_info_026>`   32   `[luke_normal]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   241   `<chn_channel_info_025>`   32   `[luke_raid]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   242   `<chn_channel_info_025>`   32   `[luke_raid]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   243   `<chn_channel_info_025>`   32   `[luke_raid]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   251   `<chn_channel_info_046>`   40   `[crack]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   252   `<chn_channel_info_046>`   40   `[crack]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   253   `<chn_channel_info_046>`   40   `[crack]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   261   `<chn_channel_info_048>`   42   `[fiendwar]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   262   `<chn_channel_info_048>`   42   `[fiendwar]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   263   `<chn_channel_info_048>`   42   `[fiendwar]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   501   `<chn_channel_info_039>`   24   `[pvp]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   502   `<chn_channel_info_040>`   24   `[pvp]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   503   `<chn_channel_info_041>`   24   `[pvp]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   504   `<chn_channel_info_042>`   24   `[pvp]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   505   `<chn_channel_info_043>`   24   `[pvp]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   506   `<chn_channel_info_044>`   24   `[pvp]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   507   `<chn_channel_info_045>`   24   `[pvp]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+   508   `<chn_channel_info_001>`   22   `[deathtower]`   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   ``
+[/server]

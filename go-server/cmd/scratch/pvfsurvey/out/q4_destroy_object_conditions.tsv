@@ -1,0 +1,38 @@
+dungeon_id	dungeon_name	maze_index	target_id	count	status	placements	obj_ref
+25	第一脊椎	2	80458	1	count_match	map=53493 passive=1 special=0	ActionObject/Map/Cataclysm/Behemoth/questdummy_3205/dummy_3205.obj
+26	第二脊椎	3	80459	1	count_match	map=53536 passive=1 special=0	ActionObject/Map/Cataclysm/Behemoth/07_2ndBackbone/questdummy/dummy_3241.obj
+27	天帷禁地	1	80456	1	count_match	map=53508 passive=1 special=0	ActionObject/Monster/Cataclysm/Behemoth/03_BloodHell/dummy_3210.obj
+33	王的遗迹	1	69292	1	count_match	map=70147 passive=1 special=0	ActionObject/Monster/Cataclysm/questdummy/dummy2.obj
+73	暗黑圣战	4	10601	1	count_match	map=15368 passive=1 special=0; map=15372 passive=1 special=0; map=33254 passive=1 special=0; map=33266 passive=1 special=0	ActionObject/Map/timegate/questscene/dummy1.obj
+73	暗黑圣战	6	10617	1	count_match	map=15377 passive=1 special=0; map=33294 passive=1 special=0	ActionObject/Map/timegate/questscene/iris_seal.obj
+73	暗黑圣战	13	10601	1	count_match	map=15368 passive=1 special=0; map=15372 passive=1 special=0; map=33254 passive=1 special=0; map=33266 passive=1 special=0	ActionObject/Map/timegate/questscene/dummy1.obj
+73	暗黑圣战	14	10601	1	count_match	map=15368 passive=1 special=0; map=15372 passive=1 special=0; map=33254 passive=1 special=0; map=33266 passive=1 special=0	ActionObject/Map/timegate/questscene/dummy1.obj
+73	暗黑圣战	17	10617	1	count_match	map=15377 passive=1 special=0; map=33294 passive=1 special=0	ActionObject/Map/timegate/questscene/iris_seal.obj
+146	水晶矿脉	4	80454	1	count_match	map=53627 passive=1 special=0	ActionObject/Monster/Cataclysm/Abnoba/questdummy/dummy_3446.obj
+153	黄金矿洞	2	69291	1	count_match	map=70107 passive=1 special=0	ActionObject/Monster/Cataclysm/questdummy/dummy1.obj
+167	极光幻境	8	16072	1	count_match	map=35006 passive=1 special=0	ActionObject/Monster/3_Time.obj
+168	失落的神殿	14	10601	1	count_match	map=55261 passive=1 special=0	ActionObject/Map/timegate/questscene/dummy1.obj
+169	暮色之城	4	10601	1	count_match	map=55314 passive=1 special=0	ActionObject/Map/timegate/questscene/dummy1.obj
+169	暮色之城	11	10601	1	count_match	map=55314 passive=1 special=0	ActionObject/Map/timegate/questscene/dummy1.obj
+170	黑色雪山	8	16072	1	count_match	map=14364 passive=1 special=0; map=14365 passive=1 special=0; map=14366 passive=1 special=0; map=55445 passive=1 special=0	ActionObject/Monster/3_Time.obj
+170	黑色雪山	15	16072	1	count_match	map=14364 passive=1 special=0; map=14365 passive=1 special=0; map=14366 passive=1 special=0; map=55445 passive=1 special=0	ActionObject/Monster/3_Time.obj
+172	无尽的噩梦	10	16072	1	count_match	map=35017 passive=1 special=0	ActionObject/Monster/3_Time.obj
+172	无尽的噩梦	13	10601	1	count_match	map=55549 passive=1 special=0	ActionObject/Map/timegate/questscene/dummy1.obj
+191	卢克的聚光镜	3	69291	1	count_match	map=70407 passive=1 special=0	ActionObject/Monster/Cataclysm/questdummy/dummy1.obj
+193	能源熔炉	4	69292	1	count_match	map=70486 passive=1 special=0; map=70487 passive=1 special=0	ActionObject/Monster/Cataclysm/questdummy/dummy2.obj
+312	恐怖的栖息地	10	85194	1	count_match	map=76997 passive=1 special=0	ActionObject/Map/Cataclysm/MetroCenter/Say_Dummy/85194_Say_Aslan.obj
+517	无法地带	0	10601	1	count_match	map=15351 passive=1 special=0; map=15358 passive=1 special=0	ActionObject/Map/timegate/questscene/dummy1.obj
+1002	永恒梦境	0	16072	1	no_placement_in_dungeon_maps		ActionObject/Monster/3_Time.obj
+2007	时空裂隙	2	16072	1	count_match	map=35802 passive=1 special=0	ActionObject/Monster/3_Time.obj
+2007	时空裂隙	3	16072	1	count_match	map=35802 passive=1 special=0	ActionObject/Monster/3_Time.obj
+3570	艾肯（组队） - 遗落的神殿	0	53764	1	count_match	map=74195 passive=1 special=0; map=74203 passive=1 special=0	ActionObject/Map/Legend/Ekern/System/BossChecker/BossChecker.obj
+3570	艾肯（组队） - 遗落的神殿	1	53764	1	count_match	map=74195 passive=1 special=0; map=74203 passive=1 special=0	ActionObject/Map/Legend/Ekern/System/BossChecker/BossChecker.obj
+3572	艾肯（组队） - 遗落的神殿	0	53764	1	count_match	map=74195 passive=1 special=0; map=74203 passive=1 special=0	ActionObject/Map/Legend/Ekern/System/BossChecker/BossChecker.obj
+3572	艾肯（组队） - 遗落的神殿	1	53764	1	count_match	map=74195 passive=1 special=0; map=74203 passive=1 special=0	ActionObject/Map/Legend/Ekern/System/BossChecker/BossChecker.obj
+5063	能源控制室	0	64062	1	count_match	map=74232 passive=1 special=0	ActionObject/Map/Luke_raid/Phase2/Link_Obj/Solium_Light.obj
+5066	能源储藏室	0	64060	1	count_match	map=74247 passive=1 special=0	ActionObject/Map/Luke_raid/Phase2/Link_Obj/Solium_Dark.obj
+5097	艾肯（单人） - 遗落的神殿	0	53764	1	count_match	map=74195 passive=1 special=0; map=74203 passive=1 special=0; map=74216 passive=1 special=0; map=74217 passive=1 special=0	ActionObject/Map/Legend/Ekern/System/BossChecker/BossChecker.obj
+5097	艾肯（单人） - 遗落的神殿	1	53764	1	count_match	map=74195 passive=1 special=0; map=74203 passive=1 special=0; map=74216 passive=1 special=0; map=74217 passive=1 special=0	ActionObject/Map/Legend/Ekern/System/BossChecker/BossChecker.obj
+7156	次元空间	0	69292	1	count_match	map=70185 passive=1 special=0	ActionObject/Monster/Cataclysm/questdummy/dummy2.obj
+7157	遗忘之森	0	69292	1	count_match	map=70350 passive=1 special=0	ActionObject/Monster/Cataclysm/questdummy/dummy2.obj
+8003	时空裂隙	2	16072	1	count_match	map=35802 passive=1 special=0	ActionObject/Monster/3_Time.obj

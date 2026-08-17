@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "name": "DNF90-source-oneclick",
+  "generatedAt": "2026-08-06T03:23:46.3180566Z",
+  "sourceIncluded": true,
+  "oneClickRuntimeIncluded": true,
+  "databaseHost": "127.0.0.1:13306",
+  "clientDistribution": "client executables are not included; compatibility patch source and DLL are included"
+}

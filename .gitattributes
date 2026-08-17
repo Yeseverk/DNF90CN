@@ -1,0 +1,22 @@
+* text=auto
+
+*.go text eol=lf
+go.mod text eol=lf
+go.sum text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sql text eol=lf
+*.bat text eol=crlf
+
+*.bin binary
+*.bgra binary
+*.pbgra binary
+*.png binary
+*.dll binary
+*.etc binary
+*.pvf binary
+*.zip binary
+*.7z binary

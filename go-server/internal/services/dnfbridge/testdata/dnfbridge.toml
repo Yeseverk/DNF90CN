@@ -1,0 +1,57 @@
+[service]
+name = "dnfbridge"
+node_id = "dnfbridge-test-1"
+environment = "test"
+public_addr = "127.0.0.1:7001"
+private_addr = "127.0.0.1:18111"
+
+[cluster]
+id = "test"
+gid = 2
+virtual_gid = 2
+shard_id = 9999
+zone = "test"
+version = "test"
+data_version = "test"
+
+[admin]
+listen = "127.0.0.1:18111"
+token = "test-admin-token"
+
+[pvf]
+enabled = true
+path = "data/dnf/Script.pvf"
+max_bytes = 536870912
+
+[server_group]
+enabled = true
+store_kind = "file"
+plan_file = "configs/servergroup/plan.json"
+
+[topology]
+enabled = false
+
+[idempotency]
+kind = "memory"
+
+[registry]
+kind = "memory"
+
+[bus]
+kind = "memory"
+
+[cache]
+kind = "memory"
+
+[lock]
+kind = "memory"
+
+[presence]
+kind = "memory"
+
+[worker]
+size = 8
+queue = 256
+
+[profile_store]
+store_kind = "memory"

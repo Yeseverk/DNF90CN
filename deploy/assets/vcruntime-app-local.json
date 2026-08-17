@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "product": "Microsoft Visual C++ Redistributable",
+  "version": "14.50.35719.0",
+  "platform": "winx64",
+  "sourceUrl": "https://aka.ms/vs/17/release/vc_redist.x64.exe",
+  "files": [
+    {
+      "path": "MSVCP140.dll",
+      "size": 553552,
+      "sha256": "DEF46AA6A8F72F27BAFAC0C43334419486A4D1DCDB6C479A8EF7034B3E1FA4CB"
+    },
+    {
+      "path": "VCRUNTIME140.dll",
+      "size": 123472,
+      "sha256": "184146852727A9DB4EEA06178716BEC3CDBB1015C911F6B0F915B184AD7775B2"
+    },
+    {
+      "path": "VCRUNTIME140_1.dll",
+      "size": 47264,
+      "sha256": "E6BFB3662AB4B1969A73441DBE35C96D51441B6BFF8CF1FE7430BD5B246CA605"
+    }
+  ]
+}

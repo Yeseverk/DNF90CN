@@ -1,0 +1,5 @@
+; Production 90CN.dll does not read 90CN_socket_trace.ini and does not install
+; the historical socket/item-panel trace hooks.
+;
+; Transport diagnostics are limited to the production trace files documented
+; in README.md. Do not copy this example to the game directory.

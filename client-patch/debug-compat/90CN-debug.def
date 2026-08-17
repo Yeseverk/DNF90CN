@@ -1,0 +1,3 @@
+LIBRARY "90CN-debug"
+EXPORTS
+    Install90CNDebugCompat=_Install90CNDebugCompat@4

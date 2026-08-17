@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "installationId": "AUTO_GENERATE",
+  "mode": "local-single-account",
+  "server": {
+    "advertiseIp": "AUTO_DETECT",
+    "channelListen": "127.0.0.1:7001",
+    "adminListen": "127.0.0.1:18111",
+    "adminToken": "AUTO_GENERATE",
+    "accountId": "AUTO_GENERATE",
+    "packetLog": false,
+    "partyUdpRelayPortStart": 30000,
+    "partyUdpRelayPortCount": 64
+  },
+  "database": {
+    "mode": "portable",
+    "host": "127.0.0.1",
+    "port": 13306,
+    "name": "dnf_local",
+    "user": "root",
+    "password": "aa123456"
+  },
+  "game": {
+    "shardId": "9999",
+    "pvfPath": "data/dnf/Script.pvf",
+    "pvfMaxBytes": 536870912,
+    "channelInfoPath": "data/dnf/channel_info.etc"
+  },
+  "protocol": {
+    "profile": "90cn-decode-bypass-v1",
+    "gameUpperHeader": "server16",
+    "gameUpperBodyCodec": "plaintext",
+    "gameUpperClientBodyCodec": "plaintext",
+    "gameOuterToken": "de509f65e9ccaae621cb7278fc2b8e6c",
+    "channelServerIndex": 1,
+    "channelAdvertiseServerIndex": 0
+  },
+  "build": {
+    "goExecutable": "go"
+  },
+  "client": {
+    "directory": "",
+    "initialGamePort": 0,
+    "hookCreate": true
+  }
+}

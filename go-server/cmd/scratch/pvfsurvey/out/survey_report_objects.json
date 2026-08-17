@@ -1,0 +1,6473 @@
+{
+  "generated_at": "2026-08-01T10:58:48+08:00",
+  "pvf": {
+    "checksum": "1f82563b9a84d1cbeb2b9885f5cc002bdf8c18aad7371d69f30231e1d9df75e7",
+    "file_count": 1057625,
+    "format": "protected_nkpi",
+    "path": "D:/DNF/runtime/data/dnf/Script.pvf",
+    "size": 111092341
+  },
+  "q3": {
+    "elevator_trio_sections": {
+      "1111": [
+        "layer",
+        "basic motion",
+        "int data",
+        "name"
+      ],
+      "1112": [
+        "layer",
+        "basic motion",
+        "int data",
+        "name"
+      ],
+      "1113": [
+        "layer",
+        "basic motion",
+        "etc motion",
+        "int data",
+        "name"
+      ]
+    },
+    "full_list_files": [
+      "out/q3_obj_section_census.tsv",
+      "out/q3_obj_signatures.tsv"
+    ],
+    "keyword_examples": {
+      "attack info": [
+        236,
+        237,
+        261,
+        262,
+        263,
+        264,
+        265,
+        266
+      ],
+      "basic action": [
+        8000,
+        8001,
+        8002,
+        8003,
+        8004,
+        8005,
+        8007,
+        8011
+      ],
+      "basic motion": [
+        21,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227
+      ],
+      "destroy particle": [
+        267,
+        268,
+        269,
+        270,
+        340,
+        660,
+        802,
+        803
+      ],
+      "etc action": [
+        8018,
+        8019,
+        8020,
+        8021,
+        8022,
+        8032,
+        8035,
+        8045
+      ],
+      "etc motion": [
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230
+      ],
+      "int data": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "pass type": [
+        21,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227
+      ],
+      "string data": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "team": [
+        8016,
+        8017,
+        8029,
+        8030,
+        8036,
+        8037,
+        8039,
+        8040
+      ]
+    },
+    "keyword_sections": {
+      "attack info": 10138,
+      "basic action": 19173,
+      "basic motion": 4430,
+      "destroy particle": 1359,
+      "etc action": 6667,
+      "etc motion": 1732,
+      "int data": 2939,
+      "pass type": 17574,
+      "string data": 2439,
+      "team": 5999
+    },
+    "lst_entries": 25975,
+    "obj_limit": 0,
+    "obj_parse_fail": 0,
+    "obj_read_fail": 496,
+    "obj_read_ok": 25479,
+    "section_census": {
+      "absolute zpos": 141,
+      "add object effect": 70,
+      "add particles": 266,
+      "add tail image": 11,
+      "ai flag": 26,
+      "allow enemy hit": 1,
+      "allow friend hit": 1,
+      "ani path": 34,
+      "ani title": 31,
+      "apply parent ability category": 2,
+      "apply physics": 37,
+      "attack info": 10138,
+      "attacker": 23,
+      "attakcer": 1,
+      "auto skip when nothing quest": 17,
+      "basic action": 19173,
+      "basic animation": 1,
+      "basic motion": 4430,
+      "blocking area": 56,
+      "can beat index": 11,
+      "category": 48,
+      "change action index when eat fairy": 1,
+      "charm upgrade table": 12,
+      "charm upgrade using": 12,
+      "collision on map edge": 20,
+      "columns": 3,
+      "create delay": 158,
+      "create sound": 109,
+      "damage absorb": 12,
+      "damage immune": 3,
+      "damage stun off": 24,
+      "data": 3,
+      "defender": 25,
+      "destroy particle": 1359,
+      "die when parent die": 11,
+      "diff rotation": 843,
+      "down arrow data": 25,
+      "draw hit object hp": 80,
+      "draw name": 13,
+      "draw tail": 11,
+      "draw tail use": 11,
+      "dungeon difficult king": 2,
+      "dungeon difficult slayer": 2,
+      "entry": 2,
+      "etc action": 6667,
+      "etc attack info": 3802,
+      "etc motion": 1732,
+      "face image": 14,
+      "file": 261,
+      "floating height": 13499,
+      "flying mark": 6,
+      "follow move map": 81,
+      "follow parent": 108,
+      "following immortal": 10,
+      "for school": 1,
+      "for tournament": 13,
+      "gate keeper": 3,
+      "ground brighten height": 2,
+      "ground brighten width": 2,
+      "homing": 1029,
+      "homing check gap": 815,
+      "homing direction": 27,
+      "homing follow": 1029,
+      "homing keep distance": 2,
+      "homing time": 638,
+      "homing use": 1029,
+      "homing velocity": 1028,
+      "homing z axis": 15,
+      "hp destroy": 4555,
+      "hp gage": 488,
+      "hp gage visible time": 143,
+      "hp gauge ui off": 30,
+      "hp max": 4204,
+      "hp rate": 4,
+      "ignore change map": 148,
+      "independent drop": 1,
+      "index": 9,
+      "init rotation": 296,
+      "init velocity": 4,
+      "int data": 2939,
+      "interval": 3,
+      "invoke check time": 4,
+      "invoke delay time": 4,
+      "invoke time": 4,
+      "is force pattern": 10,
+      "is hp by difficulty": 421,
+      "is not focus": 4,
+      "isometric cell map info": 170,
+      "last action": 1825,
+      "layer": 19224,
+      "layer level": 624,
+      "list": 1,
+      "look direction": 22,
+      "loop": 1,
+      "matching attack info": 201,
+      "max distance": 109,
+      "max rotation": 442,
+      "melee attack": 39,
+      "min distance": 109,
+      "monster destroy behavior skipable": 15,
+      "motion type": 55,
+      "move pos": 6,
+      "movie unit": 67,
+      "moving particle": 17,
+      "name": 17810,
+      "not combo check in training dungeon": 1,
+      "notice": 53,
+      "npc dialog npc index": 6,
+      "npc dialog text": 6,
+      "object": 3,
+      "object brighten height": 2,
+      "object brighten width": 2,
+      "object create status": 28,
+      "object destroy condition": 5362,
+      "objects": 3,
+      "particle": 261,
+      "particle collision type": 1,
+      "party count for hp max rate": 20,
+      "pass type": 17574,
+      "passive object": 6,
+      "passive object icon": 28,
+      "passive object sub type": 144,
+      "passive object type": 294,
+      "passiveobject": 2,
+      "pattern": 3,
+      "patterns": 3,
+      "perspective": 2,
+      "piercing power": 15418,
+      "piercing tolerance": 107,
+      "play bgm": 51,
+      "probability": 3,
+      "pvp room transparent value for observer": 2,
+      "quest type": 7,
+      "racing dungeon probability": 2,
+      "random item fairy": 2,
+      "reward type": 20,
+      "save my object state": 1,
+      "screenshot data": 31,
+      "sequences": 3,
+      "set movie back ground": 1,
+      "set on proc": 1,
+      "set pos": 14,
+      "shot distance": 4,
+      "show itembox mark in minimap": 4,
+      "slow motion when die": 2,
+      "sniper type": 21,
+      "sound category": 1312,
+      "speech": 36,
+      "speed": 6,
+      "speed control passive objects": 6,
+      "straight homing": 2,
+      "string data": 2439,
+      "sync animation rotation": 385,
+      "sync target move": 545,
+      "tail bottom up layer": 11,
+      "tail rotate": 11,
+      "tail type": 11,
+      "talk": 8,
+      "talk group data": 8,
+      "target object index": 30,
+      "target object order": 2,
+      "target object type": 31,
+      "team": 5999,
+      "territory combat team": 49,
+      "time": 65,
+      "time interval": 11,
+      "transparent on meet player": 26,
+      "trap": 16,
+      "type": 66,
+      "under gravity": 12,
+      "urban warfare score": 22,
+      "use parent dark resistance": 1,
+      "use parent equipment magical defense": 27,
+      "use parent equipment physical defense": 27,
+      "use parent fire resistance": 20,
+      "use parent hp": 21,
+      "use parent light resistance": 1,
+      "use parent magical absolute defense": 27,
+      "use parent physical absolute defense": 27,
+      "use parent water resistance": 20,
+      "vanish on move collision": 1348,
+      "wait time": 21,
+      "warning": 109,
+      "width": 8781
+    },
+    "signatures": [
+      {
+        "signature": "basic motion+pass type",
+        "count": 523,
+        "examples": [
+          271,
+          272,
+          273,
+          274,
+          275,
+          276,
+          281,
+          282,
+          283,
+          284
+        ]
+      },
+      {
+        "signature": "basic action+pass type",
+        "count": 441,
+        "examples": [
+          8115,
+          8517,
+          8518,
+          8519,
+          8524,
+          8525,
+          8526,
+          8527,
+          8532,
+          8774
+        ]
+      },
+      {
+        "signature": "basic action+pass type+piercing power",
+        "count": 432,
+        "examples": [
+          8536,
+          8775,
+          9013,
+          9274,
+          9291,
+          9450,
+          9452,
+          9453,
+          9454,
+          9912
+        ]
+      },
+      {
+        "signature": "basic action",
+        "count": 209,
+        "examples": [
+          15309,
+          15310,
+          15416,
+          15453,
+          15463,
+          15467,
+          18524,
+          18570,
+          18598,
+          18619
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info",
+        "count": 194,
+        "examples": [
+          11352,
+          15285,
+          15295,
+          15327,
+          15328,
+          15454,
+          15466,
+          15469,
+          15470,
+          15479
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+pass type",
+        "count": 133,
+        "examples": [
+          8533,
+          8534,
+          10229,
+          10230,
+          11035,
+          11036,
+          11037,
+          11038,
+          11039,
+          11040
+        ]
+      },
+      {
+        "signature": "basic action+pass type+piercing power+team",
+        "count": 127,
+        "examples": [
+          8599,
+          8666,
+          8667,
+          8671,
+          9355,
+          9908,
+          9909,
+          9910,
+          9920,
+          10031
+        ]
+      },
+      {
+        "signature": "basic action+etc action+pass type+piercing power+team",
+        "count": 120,
+        "examples": [
+          8923,
+          10481,
+          10544,
+          10545,
+          10546,
+          10547,
+          10548,
+          10597,
+          10602,
+          10603
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+pass type+piercing power+team",
+        "count": 120,
+        "examples": [
+          9913,
+          19094,
+          39045,
+          39056,
+          39057,
+          39058,
+          39059,
+          39060,
+          39085,
+          39086
+        ]
+      },
+      {
+        "signature": "basic action+pass type+team",
+        "count": 82,
+        "examples": [
+          8877,
+          8878,
+          8879,
+          8880,
+          8957,
+          8958,
+          8959,
+          8987,
+          8989,
+          8991
+        ]
+      },
+      {
+        "signature": "basic action+etc action+pass type",
+        "count": 79,
+        "examples": [
+          9063,
+          9990,
+          9991,
+          10196,
+          10415,
+          10416,
+          10417,
+          10600,
+          10649,
+          11151
+        ]
+      },
+      {
+        "signature": "basic action+etc action+pass type+piercing power",
+        "count": 65,
+        "examples": [
+          8647,
+          8648,
+          8649,
+          8650,
+          8919,
+          9049,
+          9287,
+          9288,
+          10051,
+          10220
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+is hp by difficulty+last action+pass type+sound category+team",
+        "count": 64,
+        "examples": [
+          11326,
+          11327,
+          11328,
+          11329,
+          11330,
+          11331,
+          11332,
+          15221,
+          15222,
+          15232
+        ]
+      },
+      {
+        "signature": "basic motion+int data+pass type+string data",
+        "count": 63,
+        "examples": [
+          221,
+          222,
+          235,
+          238,
+          239,
+          300,
+          640,
+          641,
+          642,
+          643
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+pass type+sound category",
+        "count": 61,
+        "examples": [
+          8793,
+          8865,
+          10111,
+          11389,
+          11390,
+          11391,
+          14002,
+          35047,
+          37000,
+          37036
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+pass type+piercing power+team",
+        "count": 51,
+        "examples": [
+          8876,
+          8986,
+          9160,
+          9161,
+          9164,
+          9169,
+          11183,
+          11187,
+          11188,
+          11189
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+hp destroy+hp max+pass type+piercing power",
+        "count": 46,
+        "examples": [
+          52847,
+          52858,
+          52866,
+          52923,
+          52924,
+          120513,
+          2090077,
+          2090086,
+          2090087,
+          2090088
+        ]
+      },
+      {
+        "signature": "basic action+etc action+pass type+team",
+        "count": 45,
+        "examples": [
+          8138,
+          9045,
+          9061,
+          9479,
+          9482,
+          9483,
+          10190,
+          10191,
+          11372,
+          16313
+        ]
+      },
+      {
+        "signature": "basic action+etc action",
+        "count": 42,
+        "examples": [
+          18970,
+          18991,
+          18992,
+          18993,
+          18994,
+          19889,
+          19890,
+          19891,
+          19892,
+          54148
+        ]
+      },
+      {
+        "signature": "attack info+basic action+hp destroy+pass type+piercing power",
+        "count": 39,
+        "examples": [
+          2090007,
+          2090008,
+          2090009,
+          2092153,
+          2092154,
+          2092428,
+          2092429,
+          2092431,
+          2092432,
+          2092433
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+pass type+team",
+        "count": 38,
+        "examples": [
+          8551,
+          13057,
+          53621,
+          54340,
+          54341,
+          54656,
+          57702,
+          57703,
+          62098,
+          62110
+        ]
+      },
+      {
+        "signature": "basic motion+int data",
+        "count": 36,
+        "examples": [
+          319,
+          320,
+          321,
+          322,
+          326,
+          327,
+          328,
+          329,
+          333,
+          334
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+etc motion+int data+pass type+string data",
+        "count": 35,
+        "examples": [
+          802,
+          806,
+          807,
+          808,
+          817,
+          818,
+          832,
+          833,
+          837,
+          838
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+ignore change map+pass type",
+        "count": 34,
+        "examples": [
+          18281,
+          18282,
+          37044,
+          37045,
+          37046,
+          37047,
+          37048,
+          37049,
+          37050,
+          37051
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+hp destroy+hp max+pass type",
+        "count": 34,
+        "examples": [
+          9993,
+          9994,
+          10138,
+          10149,
+          10152,
+          10228,
+          10371,
+          10372,
+          10409,
+          10410
+        ]
+      },
+      {
+        "signature": "basic motion+etc motion+int data+pass type+string data",
+        "count": 33,
+        "examples": [
+          223,
+          224,
+          225,
+          226,
+          227,
+          228,
+          230,
+          231,
+          240,
+          243
+        ]
+      },
+      {
+        "signature": "basic motion",
+        "count": 32,
+        "examples": [
+          12082,
+          12083,
+          12084,
+          12085,
+          12086,
+          12087,
+          12088,
+          12089,
+          12090,
+          12091
+        ]
+      },
+      {
+        "signature": "int data+string data",
+        "count": 32,
+        "examples": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          13,
+          14
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+pass type+team",
+        "count": 31,
+        "examples": [
+          8955,
+          8956,
+          8962,
+          8990,
+          8993,
+          8994,
+          8995,
+          14082,
+          57001,
+          63574
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+pass type",
+        "count": 30,
+        "examples": [
+          10100,
+          10101,
+          10107,
+          10283,
+          16317,
+          16462,
+          18114,
+          18115,
+          37037,
+          52801
+        ]
+      },
+      {
+        "signature": "basic motion+pass type+piercing power",
+        "count": 30,
+        "examples": [
+          251,
+          252,
+          253,
+          254,
+          255,
+          256,
+          257,
+          3000,
+          3001,
+          3002
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+hp destroy+hp max+pass type+piercing power",
+        "count": 29,
+        "examples": [
+          2090103,
+          2090112,
+          2090113,
+          2090114,
+          2090115,
+          2090119,
+          2090120,
+          2090125,
+          2090126,
+          2090127
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+pass type+piercing power+team",
+        "count": 28,
+        "examples": [
+          8920,
+          19095,
+          39049,
+          39051,
+          53573,
+          53585,
+          70829,
+          70848,
+          70849,
+          70852
+        ]
+      },
+      {
+        "signature": "attack info+basic action+piercing power",
+        "count": 24,
+        "examples": [
+          74004,
+          2090015,
+          2090041,
+          2090044,
+          2090045,
+          2090049,
+          2090050,
+          2090051,
+          2090052,
+          2090054
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+hp destroy+hp max+pass type+sound category",
+        "count": 22,
+        "examples": [
+          10137,
+          10140,
+          10187,
+          10188,
+          10189,
+          10211,
+          10231,
+          10408,
+          10411,
+          10412
+        ]
+      },
+      {
+        "signature": "int data+passive object sub type+passive object type+play bgm+string data",
+        "count": 21,
+        "examples": [
+          19103,
+          19104,
+          19105,
+          19106,
+          19107,
+          19108,
+          19109,
+          19110,
+          19111,
+          19112
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+team",
+        "count": 21,
+        "examples": [
+          8593,
+          18734,
+          18791,
+          39095,
+          39097,
+          39098,
+          54946,
+          54947,
+          54949,
+          70537
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+ignore change map+pass type",
+        "count": 21,
+        "examples": [
+          52884,
+          52895,
+          52896,
+          52897,
+          52898,
+          52899,
+          52900,
+          52901,
+          52902,
+          52903
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+pass type+piercing power",
+        "count": 20,
+        "examples": [
+          8058,
+          8152,
+          8324,
+          8326,
+          8331,
+          8500,
+          8940,
+          10240,
+          120971,
+          120999
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+max distance+min distance+pass type+piercing power+warning",
+        "count": 20,
+        "examples": [
+          10670,
+          10671,
+          10672,
+          10679,
+          11227,
+          11228,
+          11229,
+          11235,
+          15090,
+          15099
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+pass type",
+        "count": 19,
+        "examples": [
+          18976,
+          57755,
+          74031,
+          74032,
+          74033,
+          74035,
+          74043,
+          74250,
+          76366,
+          85073
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+piercing power",
+        "count": 19,
+        "examples": [
+          15206,
+          16126,
+          57650,
+          57651,
+          57652,
+          57653,
+          57654,
+          63587,
+          63609,
+          63626
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+piercing power+team",
+        "count": 18,
+        "examples": [
+          11201,
+          15164,
+          15208,
+          39062,
+          57647,
+          80375,
+          86075,
+          86076,
+          86077,
+          86078
+        ]
+      },
+      {
+        "signature": "basic action+etc attack info+hp destroy+hp gage+hp gage visible time+hp max+isometric cell map info+pass type+team",
+        "count": 18,
+        "examples": [
+          71023,
+          71024,
+          71031,
+          71033,
+          71034,
+          71035,
+          71036,
+          71040,
+          71041,
+          71042
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+etc motion+int data+pass type+piercing power+string data",
+        "count": 18,
+        "examples": [
+          236,
+          261,
+          262,
+          263,
+          264,
+          829,
+          859,
+          1017,
+          1018,
+          1057
+        ]
+      },
+      {
+        "signature": "basic action+blocking area+pass type",
+        "count": 17,
+        "examples": [
+          15418,
+          18866,
+          19495,
+          39070,
+          39200,
+          54436,
+          54980,
+          61226,
+          61966,
+          80356
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp gage+hp gage visible time+hp max+isometric cell map info+last action+pass type+piercing power+sound category+team",
+        "count": 17,
+        "examples": [
+          71081,
+          71082,
+          71083,
+          71085,
+          71101,
+          71102,
+          71104,
+          71105,
+          71107,
+          71109
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+pass type",
+        "count": 16,
+        "examples": [
+          8144,
+          10463,
+          16312,
+          18285,
+          19185,
+          19632,
+          37199,
+          37301,
+          39063,
+          57523
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+piercing power+team",
+        "count": 16,
+        "examples": [
+          15292,
+          15296,
+          15297,
+          18726,
+          18795,
+          19749,
+          19795,
+          48359,
+          61530,
+          61599
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp max+pass type+piercing power+sound category",
+        "count": 16,
+        "examples": [
+          48386,
+          48395,
+          48404,
+          48413,
+          109000576,
+          109000577,
+          109006910,
+          109006911,
+          109006912,
+          109006913
+        ]
+      },
+      {
+        "signature": "basic action+etc action+int data+pass type",
+        "count": 15,
+        "examples": [
+          39046,
+          39047,
+          39048,
+          39050,
+          39052,
+          39053,
+          70911,
+          70912,
+          70916,
+          70954
+        ]
+      },
+      {
+        "signature": "basic action+etc action+layer level+pass type",
+        "count": 15,
+        "examples": [
+          10510,
+          10512,
+          10514,
+          35662,
+          35671,
+          35672,
+          57705,
+          57706,
+          57721,
+          61869
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+pass type+piercing power+team",
+        "count": 15,
+        "examples": [
+          10658,
+          54973,
+          57593,
+          69204,
+          69205,
+          69206,
+          69207,
+          69208,
+          80362,
+          80363
+        ]
+      },
+      {
+        "signature": "basic action+hp max+pass type+team",
+        "count": 15,
+        "examples": [
+          8766,
+          11271,
+          11273,
+          11275,
+          11299,
+          11300,
+          11302,
+          11307,
+          11308,
+          11310
+        ]
+      },
+      {
+        "signature": "attack info+basic action+pass type+piercing power+team",
+        "count": 15,
+        "examples": [
+          8458,
+          10285,
+          15160,
+          15161,
+          54228,
+          54229,
+          54230,
+          54231,
+          200475,
+          200476
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+pass type+team",
+        "count": 14,
+        "examples": [
+          19063,
+          19064,
+          19065,
+          19090,
+          57696,
+          57700,
+          68218,
+          68219,
+          68279,
+          68280
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp max+pass type+team",
+        "count": 13,
+        "examples": [
+          11259,
+          11262,
+          11264,
+          11283,
+          11285,
+          11287,
+          11303,
+          11305,
+          11311,
+          11312
+        ]
+      },
+      {
+        "signature": "basic motion+pass type+team",
+        "count": 13,
+        "examples": [
+          9481,
+          9485,
+          10146,
+          10147,
+          10232,
+          10233,
+          10234,
+          17014,
+          17017,
+          17018
+        ]
+      },
+      {
+        "signature": "basic action+ignore change map+pass type+piercing power+team",
+        "count": 13,
+        "examples": [
+          69100,
+          69101,
+          69102,
+          69103,
+          69104,
+          69105,
+          69106,
+          69107,
+          69108,
+          69109
+        ]
+      },
+      {
+        "signature": "basic motion+etc motion+int data+pass type",
+        "count": 12,
+        "examples": [
+          1024,
+          1071,
+          12550,
+          12551,
+          12552,
+          12553,
+          12554,
+          12555,
+          12556,
+          12557
+        ]
+      },
+      {
+        "signature": "attack info+basic action+pass type+piercing power",
+        "count": 12,
+        "examples": [
+          10383,
+          10609,
+          18107,
+          48467,
+          57504,
+          57505,
+          57506,
+          57507,
+          69016,
+          400000
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+int data+pass type+string data",
+        "count": 12,
+        "examples": [
+          803,
+          809,
+          826,
+          843,
+          858,
+          49009,
+          49010,
+          49011,
+          49012,
+          49013
+        ]
+      },
+      {
+        "signature": "basic action+etc action+last action+pass type+piercing power+team",
+        "count": 12,
+        "examples": [
+          64228,
+          64285,
+          69003,
+          69294,
+          69295,
+          69296,
+          69297,
+          69298,
+          69299,
+          69300
+        ]
+      },
+      {
+        "signature": "basic action+etc action+layer level+pass type+piercing power+team",
+        "count": 12,
+        "examples": [
+          14106,
+          14107,
+          14108,
+          14109,
+          120177,
+          120179,
+          120180,
+          120181,
+          121369,
+          121371
+        ]
+      },
+      {
+        "signature": "basic action+pass type+sound category",
+        "count": 11,
+        "examples": [
+          18382,
+          18522,
+          18523,
+          37311,
+          53825,
+          64217,
+          80417,
+          109000585,
+          109000586,
+          109000587
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+is hp by difficulty+team",
+        "count": 11,
+        "examples": [
+          11333,
+          11336,
+          11337,
+          15247,
+          15256,
+          18048,
+          18049,
+          48430,
+          48431,
+          48440
+        ]
+      },
+      {
+        "signature": "basic motion+etc motion+int data+pass type+piercing power+string data",
+        "count": 11,
+        "examples": [
+          1008,
+          1009,
+          1010,
+          1011,
+          1012,
+          1013,
+          1056,
+          1064,
+          11097,
+          83094
+        ]
+      },
+      {
+        "signature": "basic action+piercing power+team",
+        "count": 10,
+        "examples": [
+          54962,
+          54963,
+          54964,
+          54965,
+          54966,
+          54969,
+          57671,
+          74270,
+          109007497,
+          109007498
+        ]
+      },
+      {
+        "signature": "basic action+piercing power",
+        "count": 10,
+        "examples": [
+          63514,
+          76052,
+          80310,
+          80414,
+          109007270,
+          109007271,
+          109007272,
+          109022220,
+          109022221,
+          109030925
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp max+pass type+piercing power+team",
+        "count": 10,
+        "examples": [
+          37128,
+          37129,
+          37130,
+          37131,
+          37132,
+          70717,
+          70718,
+          70719,
+          70720,
+          70721
+        ]
+      },
+      {
+        "signature": "add particles+basic action+create delay+file+particle",
+        "count": 9,
+        "examples": [
+          15455,
+          15456,
+          15462,
+          15472,
+          15473,
+          61338,
+          61339,
+          61340,
+          61341
+        ]
+      },
+      {
+        "signature": "basic action+int data",
+        "count": 9,
+        "examples": [
+          15219,
+          15220,
+          15223,
+          15224,
+          15225,
+          15226,
+          120807,
+          120808,
+          120809
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+pass type+piercing power",
+        "count": 9,
+        "examples": [
+          8018,
+          10289,
+          10291,
+          10590,
+          18442,
+          18444,
+          54807,
+          54865,
+          64083
+        ]
+      },
+      {
+        "signature": "basic motion+etc motion+pass type",
+        "count": 9,
+        "examples": [
+          5108,
+          10386,
+          10387,
+          12558,
+          12559,
+          12573,
+          12574,
+          12575,
+          54997
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+last action",
+        "count": 9,
+        "examples": [
+          19097,
+          19098,
+          19099,
+          19100,
+          67044,
+          69226,
+          85107,
+          107002536,
+          109004810
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+last action+pass type+piercing power",
+        "count": 9,
+        "examples": [
+          18674,
+          18821,
+          18822,
+          19712,
+          19815,
+          19816,
+          61493,
+          61625,
+          61626
+        ]
+      },
+      {
+        "signature": "auto skip when nothing quest+int data+passive object sub type+passive object type+play bgm+string data",
+        "count": 9,
+        "examples": [
+          19062,
+          19079,
+          19092,
+          19120,
+          19527,
+          19528,
+          19529,
+          19530,
+          39727
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+pass type+piercing power",
+        "count": 9,
+        "examples": [
+          8180,
+          8181,
+          8182,
+          8183,
+          8333,
+          8502,
+          8820,
+          8822,
+          53820
+        ]
+      },
+      {
+        "signature": "basic action+last action",
+        "count": 9,
+        "examples": [
+          18819,
+          18930,
+          56040,
+          56083,
+          67027,
+          72310,
+          85120,
+          107002535,
+          109000518
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+last action+team",
+        "count": 9,
+        "examples": [
+          18798,
+          18884,
+          18885,
+          18886,
+          18887,
+          19798,
+          61602,
+          70544,
+          109000496
+        ]
+      },
+      {
+        "signature": "basic action+etc action+object destroy condition+pass type+piercing power+team",
+        "count": 8,
+        "examples": [
+          10606,
+          10610,
+          57648,
+          69291,
+          80454,
+          80456,
+          80458,
+          82028
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+is hp by difficulty+pass type+piercing power+sound category+team",
+        "count": 8,
+        "examples": [
+          18460,
+          18461,
+          18463,
+          53551,
+          53575,
+          53576,
+          69134,
+          69135
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+is hp by difficulty+pass type+sound category+team",
+        "count": 8,
+        "examples": [
+          10673,
+          10674,
+          11230,
+          68001,
+          68003,
+          68004,
+          68005,
+          68006
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+vanish on move collision",
+        "count": 8,
+        "examples": [
+          15353,
+          18334,
+          18335,
+          18336,
+          18337,
+          18338,
+          121464,
+          121465
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+pass type+piercing power",
+        "count": 8,
+        "examples": [
+          13097,
+          19045,
+          19134,
+          19135,
+          19136,
+          52834,
+          52837,
+          120694
+        ]
+      },
+      {
+        "signature": "basic action+layer level",
+        "count": 8,
+        "examples": [
+          9341,
+          54358,
+          54359,
+          54360,
+          54665,
+          54666,
+          54667,
+          109000485
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+pass type+piercing power",
+        "count": 8,
+        "examples": [
+          8315,
+          8316,
+          8317,
+          8318,
+          8319,
+          8320,
+          8322,
+          76325
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+pass type+team",
+        "count": 8,
+        "examples": [
+          54335,
+          54336,
+          54337,
+          54338,
+          54339,
+          54643,
+          125128,
+          125129
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp gage+hp gage visible time+hp max+int data+isometric cell map info+pass type+passive object type+sound category+team",
+        "count": 8,
+        "examples": [
+          71011,
+          71012,
+          71013,
+          71014,
+          71016,
+          71017,
+          71019,
+          71020
+        ]
+      },
+      {
+        "signature": "add particles+basic motion+create delay+file+particle+pass type+piercing power",
+        "count": 8,
+        "examples": [
+          9389,
+          9390,
+          9391,
+          9392,
+          11057,
+          11060,
+          35063,
+          35064
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp gage+hp gage visible time+hp max+isometric cell map info+last action+pass type+sound category+team",
+        "count": 8,
+        "examples": [
+          71091,
+          71092,
+          71095,
+          71121,
+          71125,
+          71127,
+          71128,
+          71130
+        ]
+      },
+      {
+        "signature": "basic action+etc action+pass type+piercing power+sound category+team",
+        "count": 8,
+        "examples": [
+          10623,
+          16033,
+          53593,
+          53594,
+          2092111,
+          2092112,
+          2092113,
+          2092114
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+pass type",
+        "count": 8,
+        "examples": [
+          9995,
+          9996,
+          9997,
+          9998,
+          121158,
+          121159,
+          121160,
+          121161
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp max+pass type+sound category",
+        "count": 8,
+        "examples": [
+          10585,
+          10586,
+          10587,
+          109006750,
+          109006958,
+          109006961,
+          109006962,
+          109006967
+        ]
+      },
+      {
+        "signature": "basic action+hp max+pass type+piercing power+sound category",
+        "count": 8,
+        "examples": [
+          109000579,
+          109006927,
+          109006928,
+          109006929,
+          109006930,
+          109006931,
+          109006932,
+          109006983
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+pass type+piercing power",
+        "count": 8,
+        "examples": [
+          8032,
+          18428,
+          18429,
+          18430,
+          18431,
+          52927,
+          57672,
+          80357
+        ]
+      },
+      {
+        "signature": "pass type",
+        "count": 8,
+        "examples": [
+          57522,
+          70708,
+          200598,
+          200599,
+          200600,
+          400058,
+          400059,
+          400060
+        ]
+      },
+      {
+        "signature": "basic motion+etc motion+int data",
+        "count": 8,
+        "examples": [
+          323,
+          330,
+          337,
+          706,
+          713,
+          720,
+          1113,
+          120888
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+pass type+sound category",
+        "count": 8,
+        "examples": [
+          14011,
+          14012,
+          14013,
+          14014,
+          35149,
+          35150,
+          35152,
+          35153
+        ]
+      },
+      {
+        "signature": "basic action+etc action+piercing power",
+        "count": 8,
+        "examples": [
+          57766,
+          68320,
+          69266,
+          76131,
+          2092115,
+          2092116,
+          2092117,
+          2092118
+        ]
+      },
+      {
+        "signature": "basic action+etc action+pass type+sound category+team",
+        "count": 7,
+        "examples": [
+          8598,
+          10464,
+          39064,
+          57525,
+          80280,
+          80416,
+          120461
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+last action+pass type",
+        "count": 7,
+        "examples": [
+          80460,
+          200157,
+          200158,
+          200159,
+          200160,
+          200161,
+          200162
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+pass type+piercing power+sound category+team+vanish on move collision",
+        "count": 7,
+        "examples": [
+          13098,
+          15046,
+          15047,
+          16017,
+          16019,
+          121184,
+          121185
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+last action+pass type+piercing power+sound category+team",
+        "count": 7,
+        "examples": [
+          53567,
+          53743,
+          53744,
+          53776,
+          53777,
+          72325,
+          72326
+        ]
+      },
+      {
+        "signature": "basic action+etc action+ignore change map+pass type",
+        "count": 7,
+        "examples": [
+          18458,
+          37084,
+          37101,
+          37223,
+          54942,
+          54971,
+          68055
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+pass type",
+        "count": 7,
+        "examples": [
+          8730,
+          10608,
+          16143,
+          16144,
+          64017,
+          121195,
+          121282
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+object destroy condition+pass type",
+        "count": 7,
+        "examples": [
+          10501,
+          10502,
+          10506,
+          35120,
+          35134,
+          35341,
+          61860
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+last action+piercing power+team",
+        "count": 7,
+        "examples": [
+          69274,
+          69275,
+          69276,
+          80392,
+          80393,
+          80394,
+          109018872
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+last action+pass type",
+        "count": 7,
+        "examples": [
+          8143,
+          18935,
+          18956,
+          52922,
+          57697,
+          67045,
+          109006868
+        ]
+      },
+      {
+        "signature": "basic action+hp max+pass type+sound category+team",
+        "count": 7,
+        "examples": [
+          109006872,
+          109006917,
+          109006918,
+          109006919,
+          109006920,
+          109006921,
+          109006922
+        ]
+      },
+      {
+        "signature": "auto skip when nothing quest+passive object sub type+passive object type+play bgm+string data",
+        "count": 7,
+        "examples": [
+          39717,
+          39722,
+          39723,
+          39724,
+          39725,
+          39726,
+          39730
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+hp destroy+hp max+object destroy condition+pass type",
+        "count": 7,
+        "examples": [
+          10421,
+          10422,
+          10423,
+          10446,
+          10447,
+          10448,
+          35339
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+last action+team",
+        "count": 7,
+        "examples": [
+          15538,
+          19981,
+          61316,
+          70296,
+          70485,
+          200401,
+          109006098
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp max+ignore change map+piercing power+vanish on move collision",
+        "count": 7,
+        "examples": [
+          52931,
+          52932,
+          52933,
+          52934,
+          52935,
+          52936,
+          52937
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+pass type+team",
+        "count": 6,
+        "examples": [
+          37234,
+          37235,
+          37236,
+          37237,
+          37238,
+          37239
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+int data+pass type+piercing power+string data",
+        "count": 6,
+        "examples": [
+          1014,
+          1058,
+          1059,
+          1060,
+          1063,
+          8107
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp gage+hp max+is hp by difficulty+pass type+piercing power+sound category+team+vanish on move collision",
+        "count": 6,
+        "examples": [
+          15449,
+          19922,
+          61257,
+          70237,
+          109006030,
+          109006039
+        ]
+      },
+      {
+        "signature": "attack info+basic action+hp destroy+object destroy condition+pass type+piercing power",
+        "count": 6,
+        "examples": [
+          2092444,
+          2092445,
+          2092447,
+          2092451,
+          2092453,
+          2092457
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+etc motion+hp destroy+hp max",
+        "count": 6,
+        "examples": [
+          18539,
+          18540,
+          18541,
+          18545,
+          18546,
+          18547
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+piercing power",
+        "count": 6,
+        "examples": [
+          19123,
+          19124,
+          19125,
+          19126,
+          56046,
+          69197
+        ]
+      },
+      {
+        "signature": "add object effect+attack info+basic action+etc action+etc attack info+hp destroy+pass type+piercing power+sound category+team+vanish on move collision",
+        "count": 6,
+        "examples": [
+          18075,
+          18076,
+          18077,
+          18078,
+          18079,
+          18087
+        ]
+      },
+      {
+        "signature": "basic action+layer level+pass type",
+        "count": 6,
+        "examples": [
+          76051,
+          83077,
+          83079,
+          83080,
+          83082,
+          83087
+        ]
+      },
+      {
+        "signature": "attack info+basic action+pass type",
+        "count": 6,
+        "examples": [
+          19537,
+          19538,
+          19539,
+          19540,
+          19541,
+          19545
+        ]
+      },
+      {
+        "signature": "basic action+hp max+piercing power",
+        "count": 6,
+        "examples": [
+          82049,
+          82052,
+          85059,
+          85060,
+          109000544,
+          109000546
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+pass type+string data",
+        "count": 6,
+        "examples": [
+          8833,
+          8834,
+          14015,
+          14016,
+          35228,
+          35229
+        ]
+      },
+      {
+        "signature": "basic action+etc action+pass type+piercing power+sound category",
+        "count": 6,
+        "examples": [
+          16100,
+          16101,
+          16132,
+          39071,
+          52845,
+          80369
+        ]
+      },
+      {
+        "signature": "attack info+basic action+layer level+pass type+piercing power",
+        "count": 6,
+        "examples": [
+          10532,
+          10552,
+          35674,
+          35677,
+          61786,
+          61882
+        ]
+      },
+      {
+        "signature": "attack info+basic action+destroy particle+pass type+piercing power",
+        "count": 6,
+        "examples": [
+          2092404,
+          2092405,
+          2092406,
+          2092407,
+          2092408,
+          2092409
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+hp destroy+hp max+pass type+sound category+team",
+        "count": 6,
+        "examples": [
+          10143,
+          10145,
+          16805,
+          17005,
+          17011,
+          121137
+        ]
+      },
+      {
+        "signature": "basic action+object destroy condition+pass type+piercing power",
+        "count": 6,
+        "examples": [
+          9895,
+          13082,
+          19269,
+          121217,
+          2092122,
+          109007490
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+is hp by difficulty+pass type+team",
+        "count": 6,
+        "examples": [
+          11231,
+          18162,
+          18163,
+          18164,
+          18165,
+          68002
+        ]
+      },
+      {
+        "signature": "basic action+draw hit object hp+etc action+hp destroy+hp max+is hp by difficulty+pass type+piercing power",
+        "count": 6,
+        "examples": [
+          64060,
+          64062,
+          64064,
+          64066,
+          64251,
+          64287
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+etc motion+int data+pass type+string data",
+        "count": 6,
+        "examples": [
+          2001,
+          2100,
+          2200,
+          2500,
+          2600,
+          17031
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+layer level+pass type+piercing power",
+        "count": 6,
+        "examples": [
+          19201,
+          19202,
+          19203,
+          61357,
+          61358,
+          61359
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+pass type",
+        "count": 6,
+        "examples": [
+          2092598,
+          2092601,
+          2092602,
+          2092603,
+          2092604,
+          2092605
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+pass type+piercing power+sound category",
+        "count": 6,
+        "examples": [
+          8818,
+          8819,
+          8863,
+          48332,
+          48338,
+          48352
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+pass type+sound category+team",
+        "count": 5,
+        "examples": [
+          109006436,
+          109006437,
+          109006438,
+          109006439,
+          109006440
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+ignore change map+pass type",
+        "count": 5,
+        "examples": [
+          18296,
+          18297,
+          37104,
+          37269,
+          37270
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+hp destroy+hp max+is hp by difficulty+last action+pass type+piercing power+team",
+        "count": 5,
+        "examples": [
+          10006,
+          10015,
+          10033,
+          85119,
+          85127
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+last action+pass type",
+        "count": 5,
+        "examples": [
+          12013,
+          18112,
+          52824,
+          54760,
+          120727
+        ]
+      },
+      {
+        "signature": "passive object sub type+passive object type+play bgm+string data",
+        "count": 5,
+        "examples": [
+          39719,
+          39720,
+          39721,
+          70810,
+          121419
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+max distance+min distance+pass type+piercing power+warning",
+        "count": 5,
+        "examples": [
+          15091,
+          15092,
+          121264,
+          121318,
+          121319
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+is hp by difficulty+pass type+team",
+        "count": 5,
+        "examples": [
+          85185,
+          109000301,
+          109000302,
+          109000303,
+          109000304
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+is hp by difficulty+pass type+piercing power+team",
+        "count": 5,
+        "examples": [
+          9905,
+          19251,
+          64230,
+          64243,
+          64276
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+etc motion+int data+pass type+piercing power+string data",
+        "count": 5,
+        "examples": [
+          1015,
+          8496,
+          120172,
+          109007016,
+          109007017
+        ]
+      },
+      {
+        "signature": "basic action+etc action+layer level",
+        "count": 5,
+        "examples": [
+          54362,
+          54669,
+          57723,
+          57724,
+          57742
+        ]
+      },
+      {
+        "signature": "attack info+basic action+hp destroy+hp gage+hp gage visible time+hp max+isometric cell map info+pass type+piercing power+team",
+        "count": 5,
+        "examples": [
+          71001,
+          71004,
+          71005,
+          71007,
+          71009
+        ]
+      },
+      {
+        "signature": "basic action+team",
+        "count": 5,
+        "examples": [
+          54434,
+          54435,
+          61902,
+          83073,
+          200109
+        ]
+      },
+      {
+        "signature": "basic action+pass type+piercing power+sound category",
+        "count": 5,
+        "examples": [
+          18089,
+          18090,
+          48345,
+          80315,
+          120756
+        ]
+      },
+      {
+        "signature": "basic action+draw hit object hp+etc action+etc attack info+hp destroy+hp max+isometric cell map info+pass type+team",
+        "count": 5,
+        "examples": [
+          71111,
+          71114,
+          71115,
+          71117,
+          71118
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+last action+pass type+team",
+        "count": 5,
+        "examples": [
+          8612,
+          52930,
+          54497,
+          67007,
+          67046
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+last action+team",
+        "count": 5,
+        "examples": [
+          18739,
+          67057,
+          67058,
+          67059,
+          67095
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+hp destroy+hp max+pass type+team",
+        "count": 5,
+        "examples": [
+          9480,
+          9484,
+          10148,
+          17001,
+          35103
+        ]
+      },
+      {
+        "signature": "int data",
+        "count": 5,
+        "examples": [
+          1066,
+          1067,
+          1068,
+          48046,
+          48047
+        ]
+      },
+      {
+        "signature": "basic action+etc action+last action+pass type+team",
+        "count": 5,
+        "examples": [
+          61988,
+          61998,
+          61999,
+          80020,
+          80021
+        ]
+      },
+      {
+        "signature": "(presentation-only)",
+        "count": 5,
+        "examples": [
+          54451,
+          54452,
+          54453,
+          401000,
+          401001
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+is hp by difficulty+piercing power+team",
+        "count": 5,
+        "examples": [
+          63263,
+          76090,
+          76091,
+          76092,
+          76093
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+is hp by difficulty+pass type",
+        "count": 5,
+        "examples": [
+          15217,
+          120804,
+          120805,
+          120806,
+          120825
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+is hp by difficulty+pass type+piercing power",
+        "count": 5,
+        "examples": [
+          64098,
+          64099,
+          64100,
+          72140,
+          72141
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+etc motion+int data+pass type+piercing power",
+        "count": 5,
+        "examples": [
+          1006,
+          1007,
+          9916,
+          9917,
+          120865
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+etc attack info+hp destroy+hp max+pass type+team",
+        "count": 4,
+        "examples": [
+          37003,
+          109002445,
+          109002448,
+          109006752
+        ]
+      },
+      {
+        "signature": "basic action+hp max+pass type",
+        "count": 4,
+        "examples": [
+          8563,
+          8564,
+          8565,
+          109007050
+        ]
+      },
+      {
+        "signature": "attack info+basic action+destroy particle+etc action+hp destroy+hp max+pass type+piercing power+team+vanish on move collision",
+        "count": 4,
+        "examples": [
+          18123,
+          52823,
+          69305,
+          69306
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+destroy particle+etc motion+int data+pass type+piercing power",
+        "count": 4,
+        "examples": [
+          268,
+          270,
+          340,
+          890
+        ]
+      },
+      {
+        "signature": "basic action+object destroy condition+pass type+piercing power+team",
+        "count": 4,
+        "examples": [
+          8769,
+          74284,
+          400106,
+          400107
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+int data+pass type+passive object type+piercing power+string data",
+        "count": 4,
+        "examples": [
+          866,
+          881,
+          882,
+          883
+        ]
+      },
+      {
+        "signature": "basic action+etc attack info",
+        "count": 4,
+        "examples": [
+          80286,
+          80287,
+          85187,
+          109000255
+        ]
+      },
+      {
+        "signature": "basic action+etc action+piercing power+team",
+        "count": 4,
+        "examples": [
+          57649,
+          68306,
+          68308,
+          85182
+        ]
+      },
+      {
+        "signature": "ai flag+int data+motion type+movie unit+notice+passive object sub type+passive object type+speech+time+type",
+        "count": 4,
+        "examples": [
+          54831,
+          54833,
+          54834,
+          54836
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+pass type+piercing power+sound category+team",
+        "count": 4,
+        "examples": [
+          8864,
+          8867,
+          8868,
+          10624
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+pass type",
+        "count": 4,
+        "examples": [
+          16003,
+          16009,
+          37073,
+          37077
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+hp destroy+hp max+pass type+piercing power+team",
+        "count": 4,
+        "examples": [
+          37227,
+          37228,
+          37229,
+          37230
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+last action+pass type+piercing power+team",
+        "count": 4,
+        "examples": [
+          15043,
+          16039,
+          16040,
+          69001
+        ]
+      },
+      {
+        "signature": "basic action+etc action+last action+pass type+piercing power",
+        "count": 4,
+        "examples": [
+          82048,
+          82053,
+          85058,
+          85061
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+last action+pass type+sound category",
+        "count": 4,
+        "examples": [
+          52911,
+          52912,
+          52939,
+          52940
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp max+pass type",
+        "count": 4,
+        "examples": [
+          10405,
+          10581,
+          10582,
+          121141
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+pass type+sound category+team",
+        "count": 4,
+        "examples": [
+          8559,
+          8960,
+          19040,
+          19041
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp gage+hp max+is hp by difficulty+pass type+sound category+team",
+        "count": 4,
+        "examples": [
+          80247,
+          80248,
+          80249,
+          80250
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+piercing power+piercing tolerance",
+        "count": 4,
+        "examples": [
+          57744,
+          57745,
+          57746,
+          57747
+        ]
+      },
+      {
+        "signature": "basic action+last action+pass type",
+        "count": 4,
+        "examples": [
+          56082,
+          64028,
+          64040,
+          69323
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+pass type+piercing power",
+        "count": 4,
+        "examples": [
+          8732,
+          74139,
+          76368,
+          85104
+        ]
+      },
+      {
+        "signature": "basic motion+index+int data+pass type+passive object+speed+speed control passive objects+team",
+        "count": 4,
+        "examples": [
+          9043,
+          9054,
+          35092,
+          35105
+        ]
+      },
+      {
+        "signature": "basic action+category+etc action+pass type",
+        "count": 4,
+        "examples": [
+          57579,
+          57599,
+          109000612,
+          109000613
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+last action+pass type+piercing power",
+        "count": 4,
+        "examples": [
+          19096,
+          19102,
+          76339,
+          80316
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+pass type+sound category+team",
+        "count": 4,
+        "examples": [
+          8944,
+          8988,
+          9914,
+          39203
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp max+last action+pass type+piercing power",
+        "count": 4,
+        "examples": [
+          18862,
+          18863,
+          18892,
+          18893
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+is hp by difficulty+pass type+piercing power+sound category+team",
+        "count": 4,
+        "examples": [
+          15440,
+          19913,
+          61248,
+          70228
+        ]
+      },
+      {
+        "signature": "basic action+etc action+pass type+piercing power+vanish on move collision",
+        "count": 4,
+        "examples": [
+          16021,
+          18471,
+          69184,
+          76101
+        ]
+      },
+      {
+        "signature": "basic action+blocking area+destroy particle+hp destroy+hp max+pass type+team",
+        "count": 4,
+        "examples": [
+          53620,
+          68178,
+          125093,
+          125121
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+is hp by difficulty+last action+pass type+team",
+        "count": 4,
+        "examples": [
+          74333,
+          74334,
+          74335,
+          74336
+        ]
+      },
+      {
+        "signature": "basic action+draw hit object hp+hp destroy+hp max+int data+isometric cell map info+layer level+passive object type+team",
+        "count": 4,
+        "examples": [
+          71071,
+          71074,
+          71075,
+          71077
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+is hp by difficulty+pass type+piercing power",
+        "count": 4,
+        "examples": [
+          64080,
+          64081,
+          64095,
+          64096
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp gage+hp max+last action+team",
+        "count": 4,
+        "examples": [
+          18731,
+          18820,
+          70477,
+          70566
+        ]
+      },
+      {
+        "signature": "basic action+int data+pass type+string data",
+        "count": 4,
+        "examples": [
+          14024,
+          14027,
+          35046,
+          35049
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+object destroy condition+pass type",
+        "count": 4,
+        "examples": [
+          10157,
+          10424,
+          10449,
+          35338
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+pass type",
+        "count": 4,
+        "examples": [
+          62096,
+          64027,
+          85106,
+          85111
+        ]
+      },
+      {
+        "signature": "add particles+basic action+destroy particle+etc action+file+hp destroy+hp gage+hp max+is hp by difficulty+max distance+min distance+particle+pass type+piercing power+team+warning",
+        "count": 4,
+        "examples": [
+          11215,
+          19533,
+          19534,
+          19535
+        ]
+      },
+      {
+        "signature": "basic action+last action+object destroy condition+piercing power",
+        "count": 4,
+        "examples": [
+          109000538,
+          109000539,
+          109000540,
+          109000541
+        ]
+      },
+      {
+        "signature": "basic motion+int data+pass type+reward type+string data",
+        "count": 4,
+        "examples": [
+          779,
+          853,
+          861,
+          862
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+pass type+reward type+sound category+team",
+        "count": 3,
+        "examples": [
+          8961,
+          8963,
+          57691
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+etc attack info+hp destroy+hp max+pass type+piercing power+sound category+team",
+        "count": 3,
+        "examples": [
+          72283,
+          72284,
+          72285
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+pass type+piercing power+sound category",
+        "count": 3,
+        "examples": [
+          83070,
+          109006969,
+          109006970
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+last action+pass type+piercing power+team",
+        "count": 3,
+        "examples": [
+          37254,
+          37255,
+          37256
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+last action+piercing power",
+        "count": 3,
+        "examples": [
+          15166,
+          18864,
+          53010
+        ]
+      },
+      {
+        "signature": "passive object sub type+passive object type+string data",
+        "count": 3,
+        "examples": [
+          38019,
+          38020,
+          38021
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp max+layer level+pass type+team",
+        "count": 3,
+        "examples": [
+          68053,
+          68054,
+          68058
+        ]
+      },
+      {
+        "signature": "basic action+hp max+last action+team",
+        "count": 3,
+        "examples": [
+          53833,
+          56003,
+          56009
+        ]
+      },
+      {
+        "signature": "basic action+int data+last action+pass type+piercing power+vanish on move collision",
+        "count": 3,
+        "examples": [
+          18443,
+          56017,
+          69313
+        ]
+      },
+      {
+        "signature": "attacker+basic action+pass type+team+territory combat team",
+        "count": 3,
+        "examples": [
+          68269,
+          68281,
+          125170
+        ]
+      },
+      {
+        "signature": "basic action+etc action+ignore change map+last action+pass type",
+        "count": 3,
+        "examples": [
+          37224,
+          37271,
+          37279
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+hp destroy+hp max+pass type+piercing power",
+        "count": 3,
+        "examples": [
+          8153,
+          8154,
+          76363
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+is hp by difficulty+pass type+sound category+team",
+        "count": 3,
+        "examples": [
+          15102,
+          15103,
+          19544
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+is hp by difficulty+max distance+min distance+pass type+sound category+team+warning",
+        "count": 3,
+        "examples": [
+          11232,
+          15104,
+          16113
+        ]
+      },
+      {
+        "signature": "attack info+basic action+piercing power+team",
+        "count": 3,
+        "examples": [
+          18951,
+          74269,
+          109000618
+        ]
+      },
+      {
+        "signature": "basic action+basic motion+pass type",
+        "count": 3,
+        "examples": [
+          57657,
+          200016,
+          200136
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+is hp by difficulty+last action+pass type+team",
+        "count": 3,
+        "examples": [
+          64030,
+          120739,
+          120740
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+destroy particle+hp destroy+hp max+pass type+piercing power",
+        "count": 3,
+        "examples": [
+          2092470,
+          2092471,
+          2092472
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+etc motion+hp max+pass type+piercing power+team",
+        "count": 3,
+        "examples": [
+          18542,
+          18543,
+          18544
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+etc motion+pass type",
+        "count": 3,
+        "examples": [
+          62169,
+          62174,
+          62175
+        ]
+      },
+      {
+        "signature": "basic action+etc attack info+pass type",
+        "count": 3,
+        "examples": [
+          109000249,
+          109000250,
+          109000251
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+pass type+piercing power",
+        "count": 3,
+        "examples": [
+          18534,
+          2092123,
+          109007310
+        ]
+      },
+      {
+        "signature": "basic action+pass type+piercing power+vanish on move collision",
+        "count": 3,
+        "examples": [
+          53685,
+          57664,
+          86002
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+last action+piercing power+team",
+        "count": 3,
+        "examples": [
+          15163,
+          76095,
+          83093
+        ]
+      },
+      {
+        "signature": "basic action+blocking area+pass type+piercing power+vanish on move collision",
+        "count": 3,
+        "examples": [
+          19248,
+          19249,
+          19264
+        ]
+      },
+      {
+        "signature": "basic action+last action+pass type+piercing power",
+        "count": 3,
+        "examples": [
+          15125,
+          15126,
+          80449
+        ]
+      },
+      {
+        "signature": "basic motion+pass type+piercing power+team",
+        "count": 3,
+        "examples": [
+          16026,
+          16027,
+          80453
+        ]
+      },
+      {
+        "signature": "basic action+last action+pass type+team",
+        "count": 3,
+        "examples": [
+          69303,
+          109018861,
+          109021446
+        ]
+      },
+      {
+        "signature": "attack info+basic action+destroy particle+hp destroy+hp max+is hp by difficulty+pass type+piercing power+sound category+team",
+        "count": 3,
+        "examples": [
+          9019,
+          9020,
+          86027
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp max+pass type+piercing power+team",
+        "count": 3,
+        "examples": [
+          15038,
+          16036,
+          2092101
+        ]
+      },
+      {
+        "signature": "basic motion+layer level+pass type+piercing power",
+        "count": 3,
+        "examples": [
+          10560,
+          35673,
+          61794
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+pass type+team",
+        "count": 3,
+        "examples": [
+          67070,
+          76096,
+          76107
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+last action+pass type",
+        "count": 3,
+        "examples": [
+          18531,
+          18535,
+          74090
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+pass type",
+        "count": 3,
+        "examples": [
+          8363,
+          37083,
+          63191
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp gage+hp max+is hp by difficulty+last action+pass type+sound category",
+        "count": 3,
+        "examples": [
+          69160,
+          69161,
+          69162
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+int data+pass type+piercing power",
+        "count": 3,
+        "examples": [
+          1027,
+          1028,
+          1032
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+blocking area+can beat index+destroy particle+hp destroy+hp max+pass type",
+        "count": 3,
+        "examples": [
+          10269,
+          10273,
+          54496
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+hp max+is hp by difficulty+object destroy condition+pass type+piercing power+team",
+        "count": 3,
+        "examples": [
+          11341,
+          11344,
+          18073
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+sniper type+wait time",
+        "count": 3,
+        "examples": [
+          15227,
+          69290,
+          120753
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp max+ignore change map",
+        "count": 3,
+        "examples": [
+          18295,
+          52878,
+          109001824
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max",
+        "count": 3,
+        "examples": [
+          57699,
+          57756,
+          57757
+        ]
+      },
+      {
+        "signature": "basic action+layer level+pass type+piercing power+team",
+        "count": 3,
+        "examples": [
+          14133,
+          120176,
+          121368
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp max+is hp by difficulty+pass type+sound category",
+        "count": 3,
+        "examples": [
+          11392,
+          19261,
+          109018940
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+object destroy condition+pass type+sound category+team",
+        "count": 3,
+        "examples": [
+          18068,
+          18081,
+          109018911
+        ]
+      },
+      {
+        "signature": "basic action+category+hp destroy+hp gage+hp max+last action+pass type+team",
+        "count": 3,
+        "examples": [
+          57592,
+          85004,
+          85005
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+layer level+pass type+piercing power+team",
+        "count": 3,
+        "examples": [
+          14105,
+          120178,
+          121370
+        ]
+      },
+      {
+        "signature": "basic motion+layer level",
+        "count": 3,
+        "examples": [
+          8786,
+          14006,
+          35091
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+is hp by difficulty+last action+pass type+piercing power",
+        "count": 3,
+        "examples": [
+          64067,
+          64179,
+          64180
+        ]
+      },
+      {
+        "signature": "attack info+basic action+int data+pass type+piercing power+string data",
+        "count": 3,
+        "examples": [
+          19137,
+          19138,
+          19139
+        ]
+      },
+      {
+        "signature": "basic action+last action+piercing power",
+        "count": 3,
+        "examples": [
+          69293,
+          80367,
+          85065
+        ]
+      },
+      {
+        "signature": "basic action+defender+pass type+team+territory combat team",
+        "count": 3,
+        "examples": [
+          68270,
+          68282,
+          125171
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+pass type+sound category",
+        "count": 3,
+        "examples": [
+          10607,
+          16142,
+          16145
+        ]
+      },
+      {
+        "signature": "basic action+pass type+vanish on move collision",
+        "count": 3,
+        "examples": [
+          16316,
+          18091,
+          401006
+        ]
+      },
+      {
+        "signature": "basic action+etc attack info+team",
+        "count": 3,
+        "examples": [
+          39096,
+          39113,
+          82026
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+pass type+piercing power+team",
+        "count": 2,
+        "examples": [
+          11256,
+          15293
+        ]
+      },
+      {
+        "signature": "basic action+int data+pass type+piercing power+string data",
+        "count": 2,
+        "examples": [
+          39044,
+          400119
+        ]
+      },
+      {
+        "signature": "basic action+etc action+team",
+        "count": 2,
+        "examples": [
+          109007043,
+          109007049
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+is hp by difficulty+pass type+piercing power+sound category",
+        "count": 2,
+        "examples": [
+          11239,
+          121288
+        ]
+      },
+      {
+        "signature": "basic motion+int data+pass type",
+        "count": 2,
+        "examples": [
+          4500,
+          4600
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp gage+hp max+is hp by difficulty+pass type+sound category",
+        "count": 2,
+        "examples": [
+          14074,
+          14075
+        ]
+      },
+      {
+        "signature": "basic motion+int data+pass type+piercing power",
+        "count": 2,
+        "examples": [
+          9348,
+          35122
+        ]
+      },
+      {
+        "signature": "int data+passive object sub type+passive object type+play bgm",
+        "count": 2,
+        "examples": [
+          19117,
+          80327
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+pass type+piercing power+team",
+        "count": 2,
+        "examples": [
+          69314,
+          69315
+        ]
+      },
+      {
+        "signature": "ani path+ani title+down arrow data+int data+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+speech+time+type",
+        "count": 2,
+        "examples": [
+          121016,
+          121033
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+int data+team",
+        "count": 2,
+        "examples": [
+          70480,
+          86003
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+etc attack info+hp destroy+hp max+max distance+min distance+pass type+piercing power+team+warning",
+        "count": 2,
+        "examples": [
+          85160,
+          85161
+        ]
+      },
+      {
+        "signature": "attack info+basic action+hp destroy+piercing power",
+        "count": 2,
+        "examples": [
+          2090016,
+          2090017
+        ]
+      },
+      {
+        "signature": "ai flag+ani path+int data+is force pattern+look direction+motion type+movie unit+passive object sub type+passive object type+set pos+speech+target object index+target object type+time+type",
+        "count": 2,
+        "examples": [
+          54846,
+          54850
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp max+pass type+sound category+team",
+        "count": 2,
+        "examples": [
+          8985,
+          11306
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp max+pass type+piercing power+sound category+team",
+        "count": 2,
+        "examples": [
+          48449,
+          120791
+        ]
+      },
+      {
+        "signature": "basic action+etc action+object destroy condition+pass type+piercing power+quest type+team",
+        "count": 2,
+        "examples": [
+          10601,
+          13099
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+is hp by difficulty+pass type+piercing power+team",
+        "count": 2,
+        "examples": [
+          18462,
+          53552
+        ]
+      },
+      {
+        "signature": "basic action+blocking area+pass type+piercing power",
+        "count": 2,
+        "examples": [
+          10365,
+          120478
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+piercing power+vanish on move collision",
+        "count": 2,
+        "examples": [
+          15340,
+          18325
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+destroy particle+etc motion+int data+pass type+piercing power+string data",
+        "count": 2,
+        "examples": [
+          1037,
+          1045
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+last action+pass type+piercing power+trap",
+        "count": 2,
+        "examples": [
+          8800,
+          8809
+        ]
+      },
+      {
+        "signature": "basic action+int data+pass type",
+        "count": 2,
+        "examples": [
+          39054,
+          39055
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp max+pass type+piercing power",
+        "count": 2,
+        "examples": [
+          82054,
+          85031
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+etc motion+ignore change map+int data",
+        "count": 2,
+        "examples": [
+          15336,
+          61891
+        ]
+      },
+      {
+        "signature": "basic motion+layer level+pass type",
+        "count": 2,
+        "examples": [
+          76348,
+          76349
+        ]
+      },
+      {
+        "signature": "attack info+basic action+object destroy condition+pass type+piercing power+team+vanish on move collision",
+        "count": 2,
+        "examples": [
+          2092108,
+          2092109
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+pass type+piercing power+team",
+        "count": 2,
+        "examples": [
+          8440,
+          8442
+        ]
+      },
+      {
+        "signature": "basic action+object destroy condition+piercing power",
+        "count": 2,
+        "examples": [
+          2092125,
+          2092126
+        ]
+      },
+      {
+        "signature": "basic motion+etc motion+gate keeper+int data+pass type",
+        "count": 2,
+        "examples": [
+          30397,
+          30398
+        ]
+      },
+      {
+        "signature": "basic motion+piercing power",
+        "count": 2,
+        "examples": [
+          19242,
+          19244
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+last action",
+        "count": 2,
+        "examples": [
+          109004804,
+          109004805
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+int data+pass type+piercing power",
+        "count": 2,
+        "examples": [
+          55005,
+          55015
+        ]
+      },
+      {
+        "signature": "basic action+damage stun off+destroy particle+hp destroy+hp max+pass type+passive object type",
+        "count": 2,
+        "examples": [
+          64097,
+          64201
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+ignore change map+is hp by difficulty+pass type+piercing power+sound category+team",
+        "count": 2,
+        "examples": [
+          18484,
+          18485
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp gage+hp max+last action+pass type+team",
+        "count": 2,
+        "examples": [
+          54948,
+          74094
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+max distance+min distance+pass type+piercing power+sound category+warning",
+        "count": 2,
+        "examples": [
+          16109,
+          16110
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp gage+hp gage visible time+hp max+last action+sound category+team",
+        "count": 2,
+        "examples": [
+          74337,
+          74338
+        ]
+      },
+      {
+        "signature": "apply physics+attack info+basic action+etc action+int data+pass type+piercing power+team+vanish on move collision",
+        "count": 2,
+        "examples": [
+          10286,
+          120007
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+object destroy condition+pass type+piercing power+sound category",
+        "count": 2,
+        "examples": [
+          9329,
+          400102
+        ]
+      },
+      {
+        "signature": "attack info+basic action+destroy particle+etc action+pass type",
+        "count": 2,
+        "examples": [
+          8550,
+          18532
+        ]
+      },
+      {
+        "signature": "ani path+ani title+down arrow data+int data+look direction+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+target object index+target object type+time+type",
+        "count": 2,
+        "examples": [
+          121023,
+          121042
+        ]
+      },
+      {
+        "signature": "basic motion+etc motion+hp destroy+hp max+int data+pass type+piercing power+string data+team",
+        "count": 2,
+        "examples": [
+          19071,
+          19073
+        ]
+      },
+      {
+        "signature": "basic action+etc action+layer level+team",
+        "count": 2,
+        "examples": [
+          54315,
+          54316
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+etc attack info+hp destroy+hp max+last action+pass type+trap",
+        "count": 2,
+        "examples": [
+          52883,
+          52928
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+etc motion+piercing power+team",
+        "count": 2,
+        "examples": [
+          109000264,
+          109000494
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+is hp by difficulty+pass type+sound category",
+        "count": 2,
+        "examples": [
+          15216,
+          15218
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+etc motion+pass type",
+        "count": 2,
+        "examples": [
+          839,
+          109000263
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+object destroy condition+pass type+team",
+        "count": 2,
+        "examples": [
+          120856,
+          120857
+        ]
+      },
+      {
+        "signature": "basic action+object destroy condition",
+        "count": 2,
+        "examples": [
+          54144,
+          109002459
+        ]
+      },
+      {
+        "signature": "ani path+ani title+down arrow data+int data+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+time+type",
+        "count": 2,
+        "examples": [
+          121032,
+          121040
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp max+pass type+sound category+team",
+        "count": 2,
+        "examples": [
+          11276,
+          80302
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+is hp by difficulty+pass type",
+        "count": 2,
+        "examples": [
+          54911,
+          64250
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+is hp by difficulty+pass type+reward type+sound category+team",
+        "count": 2,
+        "examples": [
+          16111,
+          16112
+        ]
+      },
+      {
+        "signature": "basic action+etc attack info+piercing power",
+        "count": 2,
+        "examples": [
+          80360,
+          80361
+        ]
+      },
+      {
+        "signature": "ani path+ani title+int data+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+speech+time+type",
+        "count": 2,
+        "examples": [
+          121010,
+          121013
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+max distance+min distance+pass type+piercing power+sound category+warning",
+        "count": 2,
+        "examples": [
+          56018,
+          56019
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+hp destroy+hp max+pass type+reward type+sound category",
+        "count": 2,
+        "examples": [
+          10197,
+          10198
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+etc attack info+hp destroy+hp max+last action+pass type+sound category",
+        "count": 2,
+        "examples": [
+          48363,
+          120775
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp gage+hp max+last action+pass type+sound category+team",
+        "count": 2,
+        "examples": [
+          61991,
+          80022
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+piercing power+team",
+        "count": 2,
+        "examples": [
+          109018873,
+          109018874
+        ]
+      },
+      {
+        "signature": "basic motion+etc motion+int data+pass type+piercing power",
+        "count": 2,
+        "examples": [
+          889,
+          1023
+        ]
+      },
+      {
+        "signature": "basic action+pass type+piercing power+quest type",
+        "count": 2,
+        "examples": [
+          10362,
+          120495
+        ]
+      },
+      {
+        "signature": "ai flag+int data+is force pattern+motion type+movie unit+notice+passive object sub type+passive object type+time+type",
+        "count": 2,
+        "examples": [
+          200069,
+          200070
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+piercing power+team+vanish on move collision",
+        "count": 2,
+        "examples": [
+          37123,
+          37124
+        ]
+      },
+      {
+        "signature": "basic motion+etc motion+pass type+piercing power",
+        "count": 2,
+        "examples": [
+          1033,
+          120149
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+object destroy condition+pass type+sound category+team+trap",
+        "count": 2,
+        "examples": [
+          109000421,
+          109000422
+        ]
+      },
+      {
+        "signature": "basic action+category+pass type",
+        "count": 2,
+        "examples": [
+          57580,
+          57581
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+etc attack info+hp destroy+hp max+last action+pass type+sniper type+sound category+wait time",
+        "count": 2,
+        "examples": [
+          48344,
+          69268
+        ]
+      },
+      {
+        "signature": "ani path+ani title+down arrow data+int data+motion type+move pos+movie unit+notice+passive object sub type+passive object type+screenshot data+speech+time+type",
+        "count": 2,
+        "examples": [
+          121000,
+          121002
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+pass type+piercing power",
+        "count": 2,
+        "examples": [
+          52938,
+          72126
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp gage+hp max+last action+pass type",
+        "count": 2,
+        "examples": [
+          68214,
+          68215
+        ]
+      },
+      {
+        "signature": "basic action+last action+team",
+        "count": 2,
+        "examples": [
+          18895,
+          56005
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+hp destroy+pass type+piercing power+sound category+team+vanish on move collision",
+        "count": 2,
+        "examples": [
+          120725,
+          120793
+        ]
+      },
+      {
+        "signature": "basic motion+int data+pass type+sound category+string data",
+        "count": 2,
+        "examples": [
+          828,
+          885
+        ]
+      },
+      {
+        "signature": "basic action+etc attack info+piercing power+team",
+        "count": 2,
+        "examples": [
+          72315,
+          109000259
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+pass type+piercing power+vanish on move collision",
+        "count": 2,
+        "examples": [
+          8875,
+          9005
+        ]
+      },
+      {
+        "signature": "ani path+ani title+down arrow data+int data+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+speech+target object index+target object type+time+type",
+        "count": 2,
+        "examples": [
+          121026,
+          121035
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp max+pass type+team",
+        "count": 2,
+        "examples": [
+          11257,
+          109002442
+        ]
+      },
+      {
+        "signature": "ani path+ani title+down arrow data+int data+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+target object index+target object type+time+type",
+        "count": 2,
+        "examples": [
+          121022,
+          121025
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+object destroy condition+pass type+piercing power",
+        "count": 2,
+        "examples": [
+          9467,
+          120104
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+object destroy condition",
+        "count": 2,
+        "examples": [
+          67213,
+          67269
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+is hp by difficulty+team",
+        "count": 2,
+        "examples": [
+          57762,
+          57763
+        ]
+      },
+      {
+        "signature": "add object effect+basic motion+pass type",
+        "count": 2,
+        "examples": [
+          338,
+          120946
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+pass type+piercing power+team",
+        "count": 2,
+        "examples": [
+          8129,
+          8130
+        ]
+      },
+      {
+        "signature": "attack info+basic action+object destroy condition+pass type+piercing power+team",
+        "count": 2,
+        "examples": [
+          8624,
+          2092106
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+pass type+string data",
+        "count": 2,
+        "examples": [
+          8815,
+          8817
+        ]
+      },
+      {
+        "signature": "basic action+hp max+pass type+piercing power",
+        "count": 2,
+        "examples": [
+          109006923,
+          109006924
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+etc motion+int data+pass type",
+        "count": 2,
+        "examples": [
+          804,
+          805
+        ]
+      },
+      {
+        "signature": "ai flag+ani path+ani title+down arrow data+int data+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+set movie back ground+set pos+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121004
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp gage+hp max+is hp by difficulty+max distance+min distance+pass type+piercing power+team+warning",
+        "count": 1,
+        "examples": [
+          19536
+        ]
+      },
+      {
+        "signature": "add particles+basic action+create delay+etc action+file+object destroy condition+particle+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          57741
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp gage+hp max+is hp by difficulty+pass type+piercing power+team",
+        "count": 1,
+        "examples": [
+          8922
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp max+pass type+piercing power+team",
+        "count": 1,
+        "examples": [
+          11191
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp gage+team",
+        "count": 1,
+        "examples": [
+          39207
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+destroy particle+hp destroy+hp max+object destroy condition+pass type+piercing power+sound category+team",
+        "count": 1,
+        "examples": [
+          61894
+        ]
+      },
+      {
+        "signature": "basic action+is hp by difficulty+pass type+sound category+team",
+        "count": 1,
+        "examples": [
+          109000580
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+pass type+piercing power+piercing tolerance+team",
+        "count": 1,
+        "examples": [
+          52800
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+etc attack info+etc motion+hp destroy+hp gage+is hp by difficulty+last action+object destroy condition+pass type+sound category+team",
+        "count": 1,
+        "examples": [
+          109000400
+        ]
+      },
+      {
+        "signature": "basic action+etc action+object destroy condition",
+        "count": 1,
+        "examples": [
+          109007055
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+hp max+pass type",
+        "count": 1,
+        "examples": [
+          54862
+        ]
+      },
+      {
+        "signature": "attack info+basic action+blocking area+pass type",
+        "count": 1,
+        "examples": [
+          10691
+        ]
+      },
+      {
+        "signature": "apply physics+basic action+etc action+etc attack info+pass type+piercing power+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          73000
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+last action+sound category",
+        "count": 1,
+        "examples": [
+          18553
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+last action+pass type+sound category+team",
+        "count": 1,
+        "examples": [
+          72100
+        ]
+      },
+      {
+        "signature": "ai flag+int data+is force pattern+is not focus+look direction+motion type+movie unit+npc dialog npc index+npc dialog text+passive object sub type+passive object type+set pos+speech+target object index+target object order+target object type+time+type",
+        "count": 1,
+        "examples": [
+          400068
+        ]
+      },
+      {
+        "signature": "basic action+etc action+last action+pass type+team+trap",
+        "count": 1,
+        "examples": [
+          80304
+        ]
+      },
+      {
+        "signature": "attack info+basic action+last action+pass type",
+        "count": 1,
+        "examples": [
+          18924
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+last action+pass type+sound category",
+        "count": 1,
+        "examples": [
+          69254
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp max+team",
+        "count": 1,
+        "examples": [
+          67222
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max",
+        "count": 1,
+        "examples": [
+          2092427
+        ]
+      },
+      {
+        "signature": "basic action+object destroy condition+pass type+team",
+        "count": 1,
+        "examples": [
+          9332
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+pass type+sound category",
+        "count": 1,
+        "examples": [
+          10583
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+last action+pass type+sound category+team",
+        "count": 1,
+        "examples": [
+          52941
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+last action+pass type+piercing power+sound category",
+        "count": 1,
+        "examples": [
+          64082
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action",
+        "count": 1,
+        "examples": [
+          2092142
+        ]
+      },
+      {
+        "signature": "int data+movie unit+notice+passive object sub type+passive object type+time+type",
+        "count": 1,
+        "examples": [
+          121041
+        ]
+      },
+      {
+        "signature": "basic action+etc action+last action+pass type+piercing power+vanish on move collision",
+        "count": 1,
+        "examples": [
+          109007034
+        ]
+      },
+      {
+        "signature": "basic action+etc action+last action+pass type",
+        "count": 1,
+        "examples": [
+          109018913
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp gage+hp max+last action+pass type+piercing power+team",
+        "count": 1,
+        "examples": [
+          67260
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy",
+        "count": 1,
+        "examples": [
+          2092615
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+destroy particle+int data+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          9138
+        ]
+      },
+      {
+        "signature": "basic action+draw name+hp destroy+hp max+is hp by difficulty+pass type+reward type+team",
+        "count": 1,
+        "examples": [
+          85176
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp gage+hp max+pass type+team",
+        "count": 1,
+        "examples": [
+          39101
+        ]
+      },
+      {
+        "signature": "basic action+etc action+layer level+pass type+piercing power+piercing tolerance",
+        "count": 1,
+        "examples": [
+          76100
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+pass type+sound category",
+        "count": 1,
+        "examples": [
+          52843
+        ]
+      },
+      {
+        "signature": "basic action+etc action+ignore change map+int data+pass type+piercing power+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          18407
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+is hp by difficulty+piercing power",
+        "count": 1,
+        "examples": [
+          72142
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+piercing power+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          37125
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+hp max+pass type+piercing power+sound category+team",
+        "count": 1,
+        "examples": [
+          48450
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          69260
+        ]
+      },
+      {
+        "signature": "basic action+pass type+sound category+string data",
+        "count": 1,
+        "examples": [
+          109000510
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+hp destroy+hp max+last action+pass type+team",
+        "count": 1,
+        "examples": [
+          61896
+        ]
+      },
+      {
+        "signature": "basic action+category+hp destroy+hp max+last action+object destroy condition+pass type+team",
+        "count": 1,
+        "examples": [
+          57586
+        ]
+      },
+      {
+        "signature": "basic action+etc action+object destroy condition+pass type+vanish on move collision",
+        "count": 1,
+        "examples": [
+          200276
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+last action+piercing power+team",
+        "count": 1,
+        "examples": [
+          56039
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+object destroy condition+pass type+sound category",
+        "count": 1,
+        "examples": [
+          10199
+        ]
+      },
+      {
+        "signature": "basic action+layer level+piercing power",
+        "count": 1,
+        "examples": [
+          76004
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+pass type+sound category",
+        "count": 1,
+        "examples": [
+          19116
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+destroy particle+hp destroy+hp max+last action+object destroy condition+pass type+piercing power+team",
+        "count": 1,
+        "examples": [
+          61898
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp gage+hp max+last action+pass type+sound category",
+        "count": 1,
+        "examples": [
+          18568
+        ]
+      },
+      {
+        "signature": "attack info+basic action+damage absorb+etc action+hp destroy+hp gage+hp max+matching attack info+party count for hp max rate+pass type+piercing power+team",
+        "count": 1,
+        "examples": [
+          54086
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+last action+pass type+piercing power+team",
+        "count": 1,
+        "examples": [
+          57627
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+etc motion+hp destroy+hp max+int data+is hp by difficulty+pass type+piercing power+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          9000
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+pass type+piercing power+sound category",
+        "count": 1,
+        "examples": [
+          8033
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+ignore change map+pass type",
+        "count": 1,
+        "examples": [
+          37074
+        ]
+      },
+      {
+        "signature": "basic motion+etc motion+int data+is hp by difficulty+pass type+piercing power+sound category+string data",
+        "count": 1,
+        "examples": [
+          1065
+        ]
+      },
+      {
+        "signature": "basic action+layer level+object destroy condition+pass type",
+        "count": 1,
+        "examples": [
+          8781
+        ]
+      },
+      {
+        "signature": "ani path+ani title+down arrow data+int data+look direction+motion type+move pos+movie unit+notice+passive object sub type+passive object type+screenshot data+speech+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121038
+        ]
+      },
+      {
+        "signature": "attack info+basic action+diff rotation+homing+homing check gap+homing follow+homing time+homing use+homing velocity+max rotation+object destroy condition+pass type+piercing power+team",
+        "count": 1,
+        "examples": [
+          2092124
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+piercing power+piercing tolerance+vanish on move collision",
+        "count": 1,
+        "examples": [
+          53674
+        ]
+      },
+      {
+        "signature": "basic action+last action+pass type+piercing power+vanish on move collision",
+        "count": 1,
+        "examples": [
+          18491
+        ]
+      },
+      {
+        "signature": "int data+look direction+movie unit+npc dialog npc index+npc dialog text+passive object sub type+passive object type",
+        "count": 1,
+        "examples": [
+          401004
+        ]
+      },
+      {
+        "signature": "basic action+category+destroy particle+etc action+hp destroy+hp max+pass type+piercing power+piercing tolerance+sound category",
+        "count": 1,
+        "examples": [
+          8509
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp max+pass type+vanish on move collision",
+        "count": 1,
+        "examples": [
+          109007032
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+etc attack info+hp destroy+hp max+last action+max distance+min distance+pass type+piercing power+team+warning",
+        "count": 1,
+        "examples": [
+          15087
+        ]
+      },
+      {
+        "signature": "basic action+last action+pass type+piercing power+team",
+        "count": 1,
+        "examples": [
+          109021442
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+is hp by difficulty+max distance+min distance+pass type+team+warning",
+        "count": 1,
+        "examples": [
+          10675
+        ]
+      },
+      {
+        "signature": "basic action+ignore change map+pass type",
+        "count": 1,
+        "examples": [
+          37102
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+etc motion+hp gage+int data+is hp by difficulty+object destroy condition+pass type+piercing power+string data",
+        "count": 1,
+        "examples": [
+          61982
+        ]
+      },
+      {
+        "signature": "attack info+basic action+dungeon difficult king+dungeon difficult slayer+etc action+etc attack info+piercing power+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          53564
+        ]
+      },
+      {
+        "signature": "add particles+basic action+destroy particle+etc action+etc attack info+file+is hp by difficulty+particle+pass type+piercing power+team+trap",
+        "count": 1,
+        "examples": [
+          80378
+        ]
+      },
+      {
+        "signature": "basic action+blocking area+team",
+        "count": 1,
+        "examples": [
+          19131
+        ]
+      },
+      {
+        "signature": "ani path+down arrow data+int data+movie unit+notice+passive object sub type+passive object type+set pos+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121003
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+team",
+        "count": 1,
+        "examples": [
+          68330
+        ]
+      },
+      {
+        "signature": "attack info+basic action+destroy particle+etc action+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          2092410
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp max+last action+team",
+        "count": 1,
+        "examples": [
+          67215
+        ]
+      },
+      {
+        "signature": "basic motion+int data+string data",
+        "count": 1,
+        "examples": [
+          54170
+        ]
+      },
+      {
+        "signature": "int data+motion type+movie unit+notice+passive object sub type+passive object type+speech+time+type",
+        "count": 1,
+        "examples": [
+          54832
+        ]
+      },
+      {
+        "signature": "add object effect+attack info+basic action+destroy particle+etc action+etc attack info+hp destroy+hp max+piercing power+sound category+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          18094
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+last action+pass type+team",
+        "count": 1,
+        "examples": [
+          15289
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+pass type+piercing power+sound category",
+        "count": 1,
+        "examples": [
+          8197
+        ]
+      },
+      {
+        "signature": "attack info+basic action+pass type+piercing power+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          9001
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+object destroy condition+pass type+team",
+        "count": 1,
+        "examples": [
+          200126
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+pass type+piercing power+sound category",
+        "count": 1,
+        "examples": [
+          8461
+        ]
+      },
+      {
+        "signature": "basic action+pass type+piercing power+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          9112
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy",
+        "count": 1,
+        "examples": [
+          2092473
+        ]
+      },
+      {
+        "signature": "basic action+category+pass type+piercing power+piercing tolerance",
+        "count": 1,
+        "examples": [
+          57588
+        ]
+      },
+      {
+        "signature": "ai flag+ani path+ani title+down arrow data+int data+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+set pos+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121001
+        ]
+      },
+      {
+        "signature": "basic action+pass type+piercing power+piercing tolerance+team",
+        "count": 1,
+        "examples": [
+          80303
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+pass type+team+trap",
+        "count": 1,
+        "examples": [
+          80306
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp gage+hp max+is hp by difficulty+last action+pass type+piercing power+reward type+sound category+team",
+        "count": 1,
+        "examples": [
+          69014
+        ]
+      },
+      {
+        "signature": "attack info+basic action+int data+object destroy condition+pass type+piercing power+sound category+team",
+        "count": 1,
+        "examples": [
+          19024
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+pass type+sound category+team",
+        "count": 1,
+        "examples": [
+          39204
+        ]
+      },
+      {
+        "signature": "basic action+etc action+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          54532
+        ]
+      },
+      {
+        "signature": "basic action+category+etc action+pass type+piercing power+piercing tolerance+team",
+        "count": 1,
+        "examples": [
+          57582
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+pass type+sound category",
+        "count": 1,
+        "examples": [
+          72012
+        ]
+      },
+      {
+        "signature": "pass type+piercing power",
+        "count": 1,
+        "examples": [
+          200028
+        ]
+      },
+      {
+        "signature": "basic action+damage stun off+destroy particle+hp destroy+hp max+last action+pass type+passive object type",
+        "count": 1,
+        "examples": [
+          109007048
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+pass type+piercing power+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          85155
+        ]
+      },
+      {
+        "signature": "basic action+hp max+last action+pass type+piercing power+team",
+        "count": 1,
+        "examples": [
+          56002
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+etc attack info+etc motion+hp max+int data+piercing power+vanish on move collision",
+        "count": 1,
+        "examples": [
+          48362
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp gage+hp max+is hp by difficulty+max distance+min distance+pass type+piercing power+warning",
+        "count": 1,
+        "examples": [
+          121265
+        ]
+      },
+      {
+        "signature": "basic action+etc action+matching attack info+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          2093658
+        ]
+      },
+      {
+        "signature": "attack info+basic action+object destroy condition+piercing power",
+        "count": 1,
+        "examples": [
+          2092121
+        ]
+      },
+      {
+        "signature": "ai flag+int data+is not focus+look direction+movie unit+npc dialog npc index+npc dialog text+passive object sub type+passive object type+set pos+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          120561
+        ]
+      },
+      {
+        "signature": "basic animation",
+        "count": 1,
+        "examples": [
+          76362
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+etc motion+int data+object destroy condition+pass type+piercing power+string data",
+        "count": 1,
+        "examples": [
+          61987
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+is hp by difficulty+pass type",
+        "count": 1,
+        "examples": [
+          64216
+        ]
+      },
+      {
+        "signature": "attack info+basic action+diff rotation+homing+homing check gap+homing follow+homing use+homing velocity+init rotation+last action+max rotation+object destroy condition+pass type+piercing power+sound category+sync animation rotation",
+        "count": 1,
+        "examples": [
+          8614
+        ]
+      },
+      {
+        "signature": "basic action+basic motion+etc action+etc motion+int data+pass type+piercing power+team",
+        "count": 1,
+        "examples": [
+          76063
+        ]
+      },
+      {
+        "signature": "apply physics+basic action+pass type+team",
+        "count": 1,
+        "examples": [
+          109000465
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp gage+hp max+is hp by difficulty+pass type",
+        "count": 1,
+        "examples": [
+          54438
+        ]
+      },
+      {
+        "signature": "basic action+draw hit object hp+etc action+hp destroy+hp gage+hp max+pass type",
+        "count": 1,
+        "examples": [
+          76326
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+is hp by difficulty+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          64252
+        ]
+      },
+      {
+        "signature": "ai flag+ani path+ani title+int data+look direction+movie unit+notice+passive object sub type+passive object type+screenshot data+set pos+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121012
+        ]
+      },
+      {
+        "signature": "basic motion+int data+pass type+piercing power+string data",
+        "count": 1,
+        "examples": [
+          9139
+        ]
+      },
+      {
+        "signature": "basic action+category+etc action+etc attack info+hp destroy+hp max+last action+pass type+team",
+        "count": 1,
+        "examples": [
+          76102
+        ]
+      },
+      {
+        "signature": "ai flag+ani path+ani title+int data+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+set on proc+speech+time+type",
+        "count": 1,
+        "examples": [
+          121014
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp gage+hp max+pass type+piercing power+sound category",
+        "count": 1,
+        "examples": [
+          48358
+        ]
+      },
+      {
+        "signature": "basic action+etc action+int data+pass type+string data+team",
+        "count": 1,
+        "examples": [
+          16012
+        ]
+      },
+      {
+        "signature": "int data+passive object sub type+passive object type",
+        "count": 1,
+        "examples": [
+          80415
+        ]
+      },
+      {
+        "signature": "ai flag+ani path+ani title+int data+motion type+move pos+movie unit+notice+passive object sub type+passive object type+screenshot data+speech+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121008
+        ]
+      },
+      {
+        "signature": "ai flag+ani path+ani title+down arrow data+hp rate+int data+look direction+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121034
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp max+ignore change map+pass type",
+        "count": 1,
+        "examples": [
+          52925
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+object destroy condition+team",
+        "count": 1,
+        "examples": [
+          200115
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp max",
+        "count": 1,
+        "examples": [
+          109000486
+        ]
+      },
+      {
+        "signature": "basic motion+etc action+pass type",
+        "count": 1,
+        "examples": [
+          54842
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+matching attack info+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          52579
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+etc attack info+hp max+max distance+min distance+pass type+piercing power+warning",
+        "count": 1,
+        "examples": [
+          11220
+        ]
+      },
+      {
+        "signature": "int data+string data+transparent on meet player",
+        "count": 1,
+        "examples": [
+          64232
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc motion+int data+pass type+string data",
+        "count": 1,
+        "examples": [
+          14056
+        ]
+      },
+      {
+        "signature": "basic action+etc action+layer level+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          76057
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+last action+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          107002532
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max",
+        "count": 1,
+        "examples": [
+          109000504
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+pass type+piercing power+string data",
+        "count": 1,
+        "examples": [
+          8816
+        ]
+      },
+      {
+        "signature": "basic action+draw name+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          85154
+        ]
+      },
+      {
+        "signature": "ai flag+down arrow data+int data+motion type+movie unit+notice+passive object sub type+passive object type+speech+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121031
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+last action+pass type+sound category",
+        "count": 1,
+        "examples": [
+          37002
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+last action+pass type+piercing power+vanish on move collision",
+        "count": 1,
+        "examples": [
+          18922
+        ]
+      },
+      {
+        "signature": "basic action+draw hit object hp+etc action+hp destroy+hp max+is hp by difficulty+pass type",
+        "count": 1,
+        "examples": [
+          64249
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+piercing power+sound category+team",
+        "count": 1,
+        "examples": [
+          69267
+        ]
+      },
+      {
+        "signature": "int data+look direction+motion type+movie unit+notice+passive object sub type+passive object type+time+type",
+        "count": 1,
+        "examples": [
+          121039
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+pass type+team",
+        "count": 1,
+        "examples": [
+          85112
+        ]
+      },
+      {
+        "signature": "ani path+ani title+int data+look direction+movie unit+notice+passive object sub type+passive object type+screenshot data+set pos+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121017
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+etc motion+int data+pass type+piercing power+sound category+string data",
+        "count": 1,
+        "examples": [
+          237
+        ]
+      },
+      {
+        "signature": "basic action+category+etc action+pass type+piercing power+piercing tolerance",
+        "count": 1,
+        "examples": [
+          57590
+        ]
+      },
+      {
+        "signature": "add particles+basic action+destroy particle+etc action+file+hp destroy+hp gage+hp max+is hp by difficulty+max distance+min distance+particle+pass type+piercing power+team+trap+warning",
+        "count": 1,
+        "examples": [
+          80354
+        ]
+      },
+      {
+        "signature": "ani path+ani title+down arrow data+int data+look direction+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+set pos+speech+time+type",
+        "count": 1,
+        "examples": [
+          121018
+        ]
+      },
+      {
+        "signature": "basic action+etc action+object destroy condition+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          2093151
+        ]
+      },
+      {
+        "signature": "ai flag+int data+motion type+movie unit+notice+passive object sub type+passive object type+time+type",
+        "count": 1,
+        "examples": [
+          200135
+        ]
+      },
+      {
+        "signature": "attack info+basic action+hp max+last action+pass type+piercing power+team",
+        "count": 1,
+        "examples": [
+          56011
+        ]
+      },
+      {
+        "signature": "ani path+ani title+down arrow data+int data+motion type+move pos+movie unit+notice+passive object sub type+passive object type+screenshot data+speech+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121036
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+is hp by difficulty+object destroy condition+pass type+piercing power+sound category+team",
+        "count": 1,
+        "examples": [
+          16120
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp gage+hp max+last action",
+        "count": 1,
+        "examples": [
+          18929
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+pass type+piercing power+sound category+team",
+        "count": 1,
+        "examples": [
+          15089
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp gage+hp max+team",
+        "count": 1,
+        "examples": [
+          2092483
+        ]
+      },
+      {
+        "signature": "basic action+etc action+layer level+pass type+piercing power+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          10060
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp max+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          109000547
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+blocking area+can beat index+destroy particle+hp destroy+hp max+pass type+sound category",
+        "count": 1,
+        "examples": [
+          10274
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+last action+piercing power",
+        "count": 1,
+        "examples": [
+          85114
+        ]
+      },
+      {
+        "signature": "basic action+can beat index+hp destroy+hp gage+hp max+last action+team",
+        "count": 1,
+        "examples": [
+          54450
+        ]
+      },
+      {
+        "signature": "attack info+basic motion+etc motion+int data+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          342
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+object destroy condition+piercing power+sound category+team",
+        "count": 1,
+        "examples": [
+          120754
+        ]
+      },
+      {
+        "signature": "add particles+basic action+create delay+file+particle+pass type+piercing power+piercing tolerance",
+        "count": 1,
+        "examples": [
+          63200
+        ]
+      },
+      {
+        "signature": "basic motion+destroy particle+hp destroy+hp max+pass type+piercing power+sound category",
+        "count": 1,
+        "examples": [
+          8251
+        ]
+      },
+      {
+        "signature": "ani path+ani title+down arrow data+int data+look direction+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+set pos+speech+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121024
+        ]
+      },
+      {
+        "signature": "ai flag+hp rate+int data+look direction+motion type+movie unit+notice+passive object sub type+passive object type+set pos+speech+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121030
+        ]
+      },
+      {
+        "signature": "ani path+ani title+int data+look direction+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+speech+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121009
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+object destroy condition",
+        "count": 1,
+        "examples": [
+          39039
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp gage+hp max+last action+pass type",
+        "count": 1,
+        "examples": [
+          56067
+        ]
+      },
+      {
+        "signature": "add object effect+attack info+basic action+destroy particle+etc action+etc attack info+hp destroy+hp max+pass type+piercing power+sound category+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          18099
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+pass type+piercing power+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          18151
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+pass type+team",
+        "count": 1,
+        "examples": [
+          16004
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+last action+pass type+team",
+        "count": 1,
+        "examples": [
+          63630
+        ]
+      },
+      {
+        "signature": "basic action+object destroy condition+pass type+vanish on move collision",
+        "count": 1,
+        "examples": [
+          200277
+        ]
+      },
+      {
+        "signature": "basic motion+int data+pass type+string data+vanish on move collision",
+        "count": 1,
+        "examples": [
+          10086
+        ]
+      },
+      {
+        "signature": "basic motion+int data+layer level",
+        "count": 1,
+        "examples": [
+          11398
+        ]
+      },
+      {
+        "signature": "ai flag+hp rate+int data+is force pattern+is not focus+look direction+motion type+movie unit+npc dialog npc index+npc dialog text+passive object sub type+passive object type+save my object state+set pos+speech+target object index+target object order+target object type+time+type",
+        "count": 1,
+        "examples": [
+          120560
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+int data+sound category+string data",
+        "count": 1,
+        "examples": [
+          109000521
+        ]
+      },
+      {
+        "signature": "basic action+blocking area+last action+pass type",
+        "count": 1,
+        "examples": [
+          74089
+        ]
+      },
+      {
+        "signature": "basic action+ignore change map+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          52917
+        ]
+      },
+      {
+        "signature": "basic action+category+etc action+etc attack info+hp destroy+hp max+is hp by difficulty+last action+pass type+team",
+        "count": 1,
+        "examples": [
+          76108
+        ]
+      },
+      {
+        "signature": "ani path+ani title+down arrow data+int data+look direction+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+speech+time+type",
+        "count": 1,
+        "examples": [
+          121019
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+hp destroy+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          85090
+        ]
+      },
+      {
+        "signature": "attack info+basic action+hp destroy+hp max+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          10058
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+int data+piercing power",
+        "count": 1,
+        "examples": [
+          67089
+        ]
+      },
+      {
+        "signature": "ani path+ani title+int data+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121015
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp gage+hp gage visible time+hp max+last action",
+        "count": 1,
+        "examples": [
+          109000835
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp gage+hp max+is hp by difficulty+pass type+piercing power+sound category",
+        "count": 1,
+        "examples": [
+          85157
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+hp destroy+hp max+pass type+piercing power+reward type+sound category+team",
+        "count": 1,
+        "examples": [
+          52853
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp gage+hp max+is hp by difficulty+max distance+min distance+pass type+piercing power+sound category+warning",
+        "count": 1,
+        "examples": [
+          11245
+        ]
+      },
+      {
+        "signature": "basic action+etc attack info+last action+piercing power+team",
+        "count": 1,
+        "examples": [
+          109000258
+        ]
+      },
+      {
+        "signature": "attack info+basic action+object destroy condition+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          48094
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp gage+hp gage visible time+hp max+isometric cell map info+pass type+team",
+        "count": 1,
+        "examples": [
+          71021
+        ]
+      },
+      {
+        "signature": "ani path+ani title+down arrow data+int data+look direction+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+speech+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121021
+        ]
+      },
+      {
+        "signature": "ani path+ani title+down arrow data+int data+look direction+motion type+movie unit+notice+passive object sub type+passive object type+screenshot data+time+type",
+        "count": 1,
+        "examples": [
+          121037
+        ]
+      },
+      {
+        "signature": "basic motion+pass type+pvp room transparent value for observer+transparent on meet player",
+        "count": 1,
+        "examples": [
+          5000
+        ]
+      },
+      {
+        "signature": "basic action+hp destroy+hp max+object destroy condition+pass type+team",
+        "count": 1,
+        "examples": [
+          80331
+        ]
+      },
+      {
+        "signature": "basic action+etc action+int data+team",
+        "count": 1,
+        "examples": [
+          67080
+        ]
+      },
+      {
+        "signature": "basic action+hp max+pass type+sound category+string data",
+        "count": 1,
+        "examples": [
+          8824
+        ]
+      },
+      {
+        "signature": "attack info+basic action+hp destroy+hp max+pass type+piercing power+team",
+        "count": 1,
+        "examples": [
+          76098
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+etc attack info+hp destroy+hp max+last action+pass type",
+        "count": 1,
+        "examples": [
+          15165
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+pass type+reward type",
+        "count": 1,
+        "examples": [
+          109006893
+        ]
+      },
+      {
+        "signature": "basic action+draw name+hp destroy+hp max+last action+pass type+piercing power+sound category",
+        "count": 1,
+        "examples": [
+          109004863
+        ]
+      },
+      {
+        "signature": "attack info+basic action+pass type+team",
+        "count": 1,
+        "examples": [
+          74186
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+hp destroy+hp max+last action+object destroy condition+pass type+piercing power+team",
+        "count": 1,
+        "examples": [
+          80365
+        ]
+      },
+      {
+        "signature": "basic action+etc action+last action+pass type+sound category",
+        "count": 1,
+        "examples": [
+          69262
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+object destroy condition+piercing power+sound category+team",
+        "count": 1,
+        "examples": [
+          15263
+        ]
+      },
+      {
+        "signature": "basic action+pass type+pvp room transparent value for observer+transparent on meet player",
+        "count": 1,
+        "examples": [
+          8814
+        ]
+      },
+      {
+        "signature": "basic motion+hp destroy+hp max+pass type",
+        "count": 1,
+        "examples": [
+          8145
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp gage+hp max+last action+piercing power",
+        "count": 1,
+        "examples": [
+          74030
+        ]
+      },
+      {
+        "signature": "add particles+basic action+destroy particle+etc action+file+hp destroy+hp max+is hp by difficulty+max distance+min distance+particle+pass type+piercing power+team+warning",
+        "count": 1,
+        "examples": [
+          85159
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+pass type+piercing power+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          72150
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+pass type+sound category+string data",
+        "count": 1,
+        "examples": [
+          80284
+        ]
+      },
+      {
+        "signature": "attack info+basic action+draw hit object hp+hp destroy+hp max+isometric cell map info+last action+pass type+piercing power+team",
+        "count": 1,
+        "examples": [
+          74341
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+etc attack info+hp max+layer level+pass type+sound category+team",
+        "count": 1,
+        "examples": [
+          69130
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+hp destroy+hp max+object destroy condition+pass type+piercing power+piercing tolerance+sound category+team",
+        "count": 1,
+        "examples": [
+          8083
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+pass type+piercing power+team+vanish on move collision",
+        "count": 1,
+        "examples": [
+          37080
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+last action+piercing power",
+        "count": 1,
+        "examples": [
+          48447
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+pass type",
+        "count": 1,
+        "examples": [
+          80314
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+int data+last action+pass type+string data+team+trap",
+        "count": 1,
+        "examples": [
+          8104
+        ]
+      },
+      {
+        "signature": "ani path+ani title+int data+motion type+move pos+movie unit+notice+passive object sub type+passive object type+screenshot data+speech+target object index+target object type+time+type",
+        "count": 1,
+        "examples": [
+          121011
+        ]
+      },
+      {
+        "signature": "basic action+diff rotation+homing+homing follow+homing use+homing velocity+last action+sync target move",
+        "count": 1,
+        "examples": [
+          53823
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp max+pass type+sound category+team",
+        "count": 1,
+        "examples": [
+          11254
+        ]
+      },
+      {
+        "signature": "basic action+etc action+hp destroy+hp max+piercing power+vanish on move collision",
+        "count": 1,
+        "examples": [
+          37103
+        ]
+      },
+      {
+        "signature": "basic action+etc action+max distance+min distance+pass type+piercing power+team+warning",
+        "count": 1,
+        "examples": [
+          11236
+        ]
+      },
+      {
+        "signature": "basic motion+etc motion+int data+is hp by difficulty+pass type+piercing power+string data",
+        "count": 1,
+        "examples": [
+          121114
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+hp destroy+hp max+pass type+reward type+sound category",
+        "count": 1,
+        "examples": [
+          8453
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+pass type+piercing power+sound category",
+        "count": 1,
+        "examples": [
+          80368
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+last action+piercing power+vanish on move collision",
+        "count": 1,
+        "examples": [
+          54555
+        ]
+      },
+      {
+        "signature": "basic action+layer level+object destroy condition+pass type+piercing power",
+        "count": 1,
+        "examples": [
+          83048
+        ]
+      },
+      {
+        "signature": "basic action+draw name+etc action+etc attack info",
+        "count": 1,
+        "examples": [
+          85134
+        ]
+      },
+      {
+        "signature": "attack info+basic action+etc action+etc attack info+hp destroy+hp max+last action+piercing power+team",
+        "count": 1,
+        "examples": [
+          80364
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp gage+hp max+is hp by difficulty+object destroy condition+pass type+reward type+sound category+team",
+        "count": 1,
+        "examples": [
+          8964
+        ]
+      },
+      {
+        "signature": "basic action+destroy particle+etc action+hp destroy+hp max+last action+pass type+sound category+string data+trap",
+        "count": 1,
+        "examples": [
+          80282
+        ]
+      },
+      {
+        "signature": "basic action+diff rotation+etc action+etc attack info+homing+homing check gap+homing follow+homing use+homing velocity+sync target move+vanish on move collision",
+        "count": 1,
+        "examples": [
+          15352
+        ]
+      },
+      {
+        "signature": "basic action+etc action+etc attack info+hp destroy+hp max+int data+pass type+string data+team",
+        "count": 1,
+        "examples": [
+          19101
+        ]
+      }
+    ],
+    "taxonomy_level1": {
+      "actionobject": 17751,
+      "character": 1785,
+      "cinematicobject": 135,
+      "common": 191,
+      "creature": 193,
+      "equipmentpassiveobject": 464,
+      "event": 1786,
+      "gcontents": 418,
+      "mapobject": 2350,
+      "monster": 806,
+      "throwitem": 96
+    },
+    "taxonomy_level2": {
+      "actionobject/act8": 132,
+      "actionobject/ammu": 6,
+      "actionobject/ancientgate": 9,
+      "actionobject/armor_monster_object": 6,
+      "actionobject/breakableobject": 99,
+      "actionobject/c_event": 394,
+      "actionobject/character": 2,
+      "actionobject/circus": 79,
+      "actionobject/common": 185,
+      "actionobject/event": 39,
+      "actionobject/gent_alpha": 4,
+      "actionobject/j_event": 2,
+      "actionobject/lotus": 3,
+      "actionobject/map": 5284,
+      "actionobject/monster": 10840,
+      "actionobject/obstacle": 129,
+      "actionobject/quest": 35,
+      "actionobject/spc": 231,
+      "actionobject/throwitem": 24,
+      "actionobject/trap": 71,
+      "actionobject/usingcharm": 12,
+      "actionobject/westerndungeon": 165,
+      "character/common": 2,
+      "character/demoniclancer": 101,
+      "character/dummyskillpassiveeffect.obj": 1,
+      "character/fighter": 175,
+      "character/gunblader": 88,
+      "character/gunner": 237,
+      "character/knight": 125,
+      "character/mage": 387,
+      "character/priest": 192,
+      "character/swordman": 353,
+      "character/thief": 124,
+      "cinematicobject/capsule_guide.obj": 1,
+      "cinematicobject/chn_carrier": 6,
+      "cinematicobject/chn_knight": 2,
+      "cinematicobject/dimensiongatedungeonmovie": 45,
+      "cinematicobject/event": 2,
+      "cinematicobject/normaldungeonmovie": 4,
+      "cinematicobject/returneecaremovie": 21,
+      "cinematicobject/scenariomodequest.obj": 1,
+      "cinematicobject/specialdungeonmovie": 37,
+      "cinematicobject/startmapfromskydirector.obj": 1,
+      "cinematicobject/threekingdomsdungeonmovie": 9,
+      "cinematicobject/tutorialdungeonmovie": 4,
+      "cinematicobject/westerndungeon": 2,
+      "common/attackbox.obj": 1,
+      "common/blast.obj": 1,
+      "common/blast_inc.obj": 1,
+      "common/blast_monster.obj": 1,
+      "common/blindbubble.obj": 1,
+      "common/blindgas.obj": 1,
+      "common/bodyhit.obj": 2,
+      "common/chn_commonabsolutenonedamageitem.obj": 1,
+      "common/circleappendagemaker.obj": 4,
+      "common/cloudkill.obj": 1,
+      "common/cloudkill3_weapon.obj": 1,
+      "common/cloudkillitemhit.obj": 1,
+      "common/coldboysnowfall.obj": 1,
+      "common/coldboysnowfall_item.obj": 1,
+      "common/commhit.obj": 1,
+      "common/commhitmagic.obj": 1,
+      "common/commonabsolutedarkdamage.obj": 1,
+      "common/commonabsolutedarkdamageitem.obj": 1,
+      "common/commonabsolutedarkdamageitem_pvp.obj": 1,
+      "common/commonabsolutefiredamage.obj": 1,
+      "common/commonabsolutefiredamageitem.obj": 1,
+      "common/commonabsolutefiredamageitem_pvp.obj": 1,
+      "common/commonabsolutelightdamage.obj": 1,
+      "common/commonabsolutelightdamageitem.obj": 1,
+      "common/commonabsolutelightdamageitem_pvp.obj": 1,
+      "common/commonabsolutenonedamage.obj": 1,
+      "common/commonabsolutenonedamageitem.obj": 1,
+      "common/commonabsolutenonedamageitem_pvp.obj": 1,
+      "common/commonabsolutewaterdamage.obj": 1,
+      "common/commonabsolutewaterdamageitem.obj": 1,
+      "common/commonabsolutewaterdamageitem_pvp.obj": 1,
+      "common/commondarkexplosion.obj": 1,
+      "common/commondarkexplosion2.obj": 1,
+      "common/commonfireexplosion.obj": 1,
+      "common/commonfreeelementalattacktypedamage.obj": 1,
+      "common/commonlightexplosion.obj": 1,
+      "common/commonmagicaldarkdamage.obj": 4,
+      "common/commonmagicaldarkdamageitemhit.obj": 1,
+      "common/commonmagicalfiredamage.obj": 1,
+      "common/commonmagicalfiredamageitemhit.obj": 1,
+      "common/commonmagicallightdamage.obj": 3,
+      "common/commonmagicallightdamageitemhit.obj": 1,
+      "common/commonmagicalnonedamage.obj": 1,
+      "common/commonmagicalnonedamageignoredefence.obj": 1,
+      "common/commonmagicalnonedamageitemhit.obj": 1,
+      "common/commonmagicalwaterdamage.obj": 1,
+      "common/commonmagicalwaterdamageitemhit.obj": 1,
+      "common/commonnoneexplosion.obj": 1,
+      "common/commonphysicaldarkdamage.obj": 1,
+      "common/commonphysicalfiredamage.obj": 1,
+      "common/commonphysicallightdamage.obj": 1,
+      "common/commonphysicalnonedamage.obj": 1,
+      "common/commonphysicalwaterdamage.obj": 1,
+      "common/commonwaterexplosion.obj": 1,
+      "common/confusegas.obj": 2,
+      "common/darkexplosion.obj": 1,
+      "common/darkexplosion2.obj": 1,
+      "common/darkexplosion2itemattack.obj": 1,
+      "common/darkexplosion3.obj": 1,
+      "common/darkthunderbolt.obj": 1,
+      "common/definitebodyhit.obj": 1,
+      "common/divisionsoul.obj": 1,
+      "common/earthfire.obj": 2,
+      "common/earthfirel.obj": 2,
+      "common/earthquake.obj": 1,
+      "common/enryuoverfire.obj": 1,
+      "common/eplpcampfire.obj": 1,
+      "common/explosionobject.obj": 1,
+      "common/firedarkexplosion.obj": 1,
+      "common/fireexplosion.obj": 1,
+      "common/fireexplosion2.obj": 1,
+      "common/fireexplosion2_item.obj": 1,
+      "common/fireexplosion2itemattack.obj": 1,
+      "common/fireexplosionconversion.obj": 1,
+      "common/fireexplosionitemattack.obj": 1,
+      "common/fireexplosionitemattack2.obj": 1,
+      "common/fireexplosionitemattack3.obj": 1,
+      "common/fireexplosionitemattack4.obj": 1,
+      "common/fireexplosionitemattack5.obj": 1,
+      "common/fireexplosionitemattack6.obj": 1,
+      "common/fireexplosionitemattack7.obj": 1,
+      "common/fireexplosionitemattack8.obj": 1,
+      "common/fireexplosionitemdead.obj": 1,
+      "common/fireexplosionitemdead2.obj": 1,
+      "common/fireexplosionitemhit.obj": 1,
+      "common/firemissile.obj": 1,
+      "common/forcefield.obj": 1,
+      "common/freezegas.obj": 1,
+      "common/freezegasvertical.obj": 1,
+      "common/ghosttrainblast.obj": 1,
+      "common/golgosoul.obj": 1,
+      "common/golgosoul_item.obj": 1,
+      "common/golgosoul_item_summon.obj": 1,
+      "common/golgosoul_pvp.obj": 1,
+      "common/gorecrossattack.obj": 1,
+      "common/guidelaserfire.obj": 1,
+      "common/iceexplosion2.obj": 1,
+      "common/icemissile.obj": 1,
+      "common/icemissilefreeze.obj": 1,
+      "common/iceniddle1.obj": 1,
+      "common/iceniddle2.obj": 1,
+      "common/iceniddle3.obj": 1,
+      "common/iceniddle4.obj": 1,
+      "common/iceniddlegroup.obj": 1,
+      "common/icewaveupitem.obj": 1,
+      "common/icewaveupitem2.obj": 1,
+      "common/invincible_barrier_large_blue.obj": 1,
+      "common/invincible_barrier_large_blue_loop.obj": 1,
+      "common/invincible_barrier_large_red.obj": 1,
+      "common/invincible_barrier_large_red_loop.obj": 1,
+      "common/invincible_barrier_large_white.obj": 1,
+      "common/invincible_barrier_large_white_loop.obj": 1,
+      "common/invincible_barrier_small_blue.obj": 1,
+      "common/invincible_barrier_small_blue_back.obj": 1,
+      "common/invincible_barrier_small_blue_back_forth.obj": 1,
+      "common/invincible_barrier_small_blue_back_forth_loop.obj": 1,
+      "common/invincible_barrier_small_blue_back_loop.obj": 1,
+      "common/invincible_barrier_small_blue_loop.obj": 1,
+      "common/invincible_barrier_small_red.obj": 1,
+      "common/invincible_barrier_small_red_back.obj": 1,
+      "common/invincible_barrier_small_red_back_forth.obj": 1,
+      "common/invincible_barrier_small_red_back_forth_loop.obj": 1,
+      "common/invincible_barrier_small_red_back_loop.obj": 1,
+      "common/invincible_barrier_small_red_loop.obj": 1,
+      "common/invincible_barrier_small_white.obj": 1,
+      "common/invincible_barrier_small_white_back.obj": 1,
+      "common/invincible_barrier_small_white_back_forth.obj": 1,
+      "common/invincible_barrier_small_white_back_forth_loop.obj": 1,
+      "common/invincible_barrier_small_white_back_loop.obj": 1,
+      "common/invincible_barrier_small_white_loop.obj": 1,
+      "common/labinasnowfall.obj": 1,
+      "common/largeexp.obj": 2,
+      "common/largeexp_item.obj": 1,
+      "common/letsburn_bentinck_earthfire.obj": 1,
+      "common/lightexplosion.obj": 1,
+      "common/lightexplosion2.obj": 1,
+      "common/lightexplosionattack.obj": 1,
+      "common/lightningsub.obj": 1,
+      "common/magictargetwarning.obj": 1,
+      "common/magictargetwarningarea150.obj": 1,
+      "common/magictargetwarningarea500.obj": 1,
+      "common/magictargetwarninglinear.obj": 1,
+      "common/magictargetwarningloop.obj": 1,
+      "common/magictargetwarningterrible.obj": 1,
+      "common/napalmbombexplosion.obj": 1,
+      "common/noneexplosion.obj": 1,
+      "common/redrock.obj": 1,
+      "common/shootingstar.obj": 1,
+      "common/shootingstarexp.obj": 1,
+      "common/shootingstarexpitem.obj": 1,
+      "common/shootingstarexpitem2.obj": 1,
+      "common/shootingstaritem.obj": 1,
+      "common/shootingstaritem2.obj": 1,
+      "common/shootingstaritemhit.obj": 1,
+      "common/silverbulletmagicallightdamage.obj": 1,
+      "common/singleicewave.obj": 1,
+      "common/sleepgas.obj": 1,
+      "common/snowfall.obj": 1,
+      "common/stonebubble.obj": 1,
+      "common/stonegas.obj": 1,
+      "common/storage.obj": 1,
+      "common/storagebird.obj": 1,
+      "common/storagesub.obj": 1,
+      "common/summonmonster.obj": 1,
+      "common/sunkenrock.obj": 1,
+      "common/superblast.obj": 1,
+      "common/thunderbolt.obj": 1,
+      "common/thunderbolt_light_title.obj": 1,
+      "common/thunderboltitemattack.obj": 1,
+      "common/thunderboltitemattack1.obj": 1,
+      "common/thunderboltitemattack2.obj": 1,
+      "common/thunderboltitemattack3.obj": 1,
+      "common/thunderboltitemattack4.obj": 1,
+      "common/thunderboltitemattack5.obj": 1,
+      "common/thunderboltitemhit.obj": 1,
+      "common/thunderboltitemhit2.obj": 1,
+      "common/title_mega.obj": 1,
+      "common/title_mega_drop.obj": 1,
+      "creature/2014foundation": 1,
+      "creature/2015summer": 4,
+      "creature/aquajello": 6,
+      "creature/artbook_creature": 1,
+      "creature/bakal": 1,
+      "creature/balam": 2,
+      "creature/belz": 1,
+      "creature/belzebe": 2,
+      "creature/belzebuite": 4,
+      "creature/bonnybunny": 1,
+      "creature/botis": 1,
+      "creature/bronzepig": 1,
+      "creature/charp": 1,
+      "creature/chn_2018_spring_festival": 14,
+      "creature/chn_dragon_hunter": 7,
+      "creature/chn_qirin": 8,
+      "creature/chn_shelby": 18,
+      "creature/chn_threekingdom": 8,
+      "creature/common": 1,
+      "creature/creaturegil": 1,
+      "creature/creaturejaesuk": 2,
+      "creature/elbon": 3,
+      "creature/fairytale": 4,
+      "creature/faras": 1,
+      "creature/firedragon": 2,
+      "creature/glasya": 2,
+      "creature/goldpig": 1,
+      "creature/gon": 2,
+      "creature/gon_kor": 1,
+      "creature/haagenti": 1,
+      "creature/halphas": 1,
+      "creature/icedragon": 2,
+      "creature/japan": 3,
+      "creature/launchergirl": 4,
+      "creature/magi": 15,
+      "creature/marbas": 2,
+      "creature/nazarl": 1,
+      "creature/phoenix": 1,
+      "creature/purpledragon": 2,
+      "creature/raum": 1,
+      "creature/reva": 6,
+      "creature/rider": 1,
+      "creature/rumenus": 1,
+      "creature/sao": 8,
+      "creature/silverpig": 1,
+      "creature/treecreature": 9,
+      "creature/valefor": 2,
+      "creature/zagan": 1,
+      "creature/zodiac": 30,
+      "equipmentpassiveobject/140187_epic_weapon_light_sword": 1,
+      "equipmentpassiveobject/2015_bossunique": 4,
+      "equipmentpassiveobject/20lv_bossunique_broom": 2,
+      "equipmentpassiveobject/35lv_bossunique_dagger": 2,
+      "equipmentpassiveobject/40lv_bossunique_amulet": 3,
+      "equipmentpassiveobject/45lv_set_item": 1,
+      "equipmentpassiveobject/45lvbossunique_halberd": 2,
+      "equipmentpassiveobject/52510_amulet": 1,
+      "equipmentpassiveobject/52515_totem": 1,
+      "equipmentpassiveobject/52517_ring": 3,
+      "equipmentpassiveobject/52519_ring": 5,
+      "equipmentpassiveobject/52534_magicstone": 3,
+      "equipmentpassiveobject/52537_support": 2,
+      "equipmentpassiveobject/52539_support": 1,
+      "equipmentpassiveobject/52540_leatherpants": 2,
+      "equipmentpassiveobject/52544_staff": 3,
+      "equipmentpassiveobject/52547_leatherpants": 3,
+      "equipmentpassiveobject/52550_totem": 2,
+      "equipmentpassiveobject/52552_support": 2,
+      "equipmentpassiveobject/52554_ring": 1,
+      "equipmentpassiveobject/52556_claw": 10,
+      "equipmentpassiveobject/75lvbossunique_halberd": 1,
+      "equipmentpassiveobject/80lv_epic_beamspear": 1,
+      "equipmentpassiveobject/80lv_epic_bowgun": 3,
+      "equipmentpassiveobject/80lv_epic_bowgun2": 2,
+      "equipmentpassiveobject/80lv_epic_revolver": 1,
+      "equipmentpassiveobject/80lv_epic_staff": 1,
+      "equipmentpassiveobject/85lv_bossunique_support": 2,
+      "equipmentpassiveobject/85lv_legendary_beamspear": 1,
+      "equipmentpassiveobject/85lv_quest_legendary_gracia_set": 1,
+      "equipmentpassiveobject/85lv_quest_legendary_seagod": 1,
+      "equipmentpassiveobject/85lv_quest_legendary_seagod_6set": 2,
+      "equipmentpassiveobject/90lv_epic_all_larmor": 1,
+      "equipmentpassiveobject/90lv_epic_weapon": 2,
+      "equipmentpassiveobject/90lv_legendary_all_acc": 3,
+      "equipmentpassiveobject/90lv_legendary_weapon": 20,
+      "equipmentpassiveobject/_stardust": 2,
+      "equipmentpassiveobject/ancient_legendary": 82,
+      "equipmentpassiveobject/ancientdeer": 1,
+      "equipmentpassiveobject/anton": 49,
+      "equipmentpassiveobject/arrow": 1,
+      "equipmentpassiveobject/at13conclude1.obj": 1,
+      "equipmentpassiveobject/at13conclude2.obj": 1,
+      "equipmentpassiveobject/atdarkstrike": 6,
+      "equipmentpassiveobject/aura.obj": 1,
+      "equipmentpassiveobject/bloodythunder": 2,
+      "equipmentpassiveobject/boom": 1,
+      "equipmentpassiveobject/cypher_teleport.obj": 1,
+      "equipmentpassiveobject/darkexplosion": 1,
+      "equipmentpassiveobject/darkthunderbolt": 2,
+      "equipmentpassiveobject/demonic lancer_halberd": 1,
+      "equipmentpassiveobject/elementalbusterexpbodylight.obj": 1,
+      "equipmentpassiveobject/elementalbusterexpbodywater.obj": 1,
+      "equipmentpassiveobject/epicproduction": 75,
+      "equipmentpassiveobject/equip_ancient_accessary": 12,
+      "equipmentpassiveobject/equip_ancient_armor": 4,
+      "equipmentpassiveobject/equip_ancient_weapon": 16,
+      "equipmentpassiveobject/equip_epic_accessary": 4,
+      "equipmentpassiveobject/equip_epic_armor": 15,
+      "equipmentpassiveobject/equip_epic_support": 4,
+      "equipmentpassiveobject/equip_epic_weapon": 8,
+      "equipmentpassiveobject/event_goblin": 1,
+      "equipmentpassiveobject/event_thunder_item1": 1,
+      "equipmentpassiveobject/expofthej.obj": 1,
+      "equipmentpassiveobject/fire_boom": 1,
+      "equipmentpassiveobject/firebreath": 1,
+      "equipmentpassiveobject/guide_fireball": 1,
+      "equipmentpassiveobject/guild_dungeon_item": 12,
+      "equipmentpassiveobject/headlessknight": 1,
+      "equipmentpassiveobject/iris": 4,
+      "equipmentpassiveobject/itemdummy": 1,
+      "equipmentpassiveobject/larguslake": 1,
+      "equipmentpassiveobject/lighting": 1,
+      "equipmentpassiveobject/magma_buttom.obj": 1,
+      "equipmentpassiveobject/map_bottomlight": 1,
+      "equipmentpassiveobject/poisonmissile2": 1,
+      "equipmentpassiveobject/power.obj": 1,
+      "equipmentpassiveobject/power_beam.obj": 1,
+      "equipmentpassiveobject/requiem": 18,
+      "equipmentpassiveobject/revengeful_spirit2": 2,
+      "equipmentpassiveobject/revengethunderbolt": 1,
+      "equipmentpassiveobject/roarstun.obj": 1,
+      "equipmentpassiveobject/sandstorm_zero": 1,
+      "equipmentpassiveobject/seria_scream.obj": 1,
+      "equipmentpassiveobject/shield.obj": 1,
+      "equipmentpassiveobject/soniccrash2.obj": 1,
+      "equipmentpassiveobject/special": 3,
+      "equipmentpassiveobject/stone_load": 1,
+      "equipmentpassiveobject/taudarkthunderbolt2.obj": 1,
+      "equipmentpassiveobject/timegate": 2,
+      "equipmentpassiveobject/title_ozma": 1,
+      "equipmentpassiveobject/toothfish": 1,
+      "equipmentpassiveobject/tornadostab": 1,
+      "equipmentpassiveobject/umtara": 2,
+      "equipmentpassiveobject/warpondamage.obj": 1,
+      "equipmentpassiveobject/windcutter5_2_item.obj": 1,
+      "equipmentpassiveobject/windcutter5_item.obj": 1,
+      "equipmentpassiveobject/windcutter6_item.obj": 1,
+      "equipmentpassiveobject/windcutter8_item.obj": 1,
+      "equipmentpassiveobject/windforce": 2,
+      "event/2013aprilfools": 2,
+      "event/2013ghostseriaeventchn": 1,
+      "event/2013gta": 4,
+      "event/2013newyear": 14,
+      "event/2013sign": 6,
+      "event/2013summereventchn": 6,
+      "event/2014_antony": 5,
+      "event/2014farmer": 1,
+      "event/2014money": 5,
+      "event/2014sunung": 2,
+      "event/20150730_summer_evening": 2,
+      "event/2016_8bit": 76,
+      "event/2016_epicroad": 14,
+      "event/2016_knight_adventure": 1,
+      "event/2016_kwikki": 1,
+      "event/2016_levelupevent": 1,
+      "event/2016_mini": 1,
+      "event/2016_thedarkiscoming": 6,
+      "event/2016_timestone": 1,
+      "event/2016_yundyrun": 6,
+      "event/2017_aprilfools": 1,
+      "event/2017_devildomstyle": 3,
+      "event/2017_doomsday": 1,
+      "event/2017_escape": 147,
+      "event/2017_golden2": 12,
+      "event/2017_gunblader": 48,
+      "event/adventurermaker": 10,
+      "event/arad": 17,
+      "event/bluemarble": 9,
+      "event/bluemarble2": 829,
+      "event/carrier": 3,
+      "event/chn_160630_dungeon_and_foodfighter": 9,
+      "event/chn_161020_pumpkin_express": 50,
+      "event/chn_161215_christmas_isilien": 1,
+      "event/chn_171102_dating_simulation": 16,
+      "event/chn_arpilfoolsday": 12,
+      "event/chn_battleship": 199,
+      "event/chn_detective": 212,
+      "event/chn_event_dungeon": 2,
+      "event/chn_event_where_is_son": 1,
+      "event/chn_fishing_fairy": 1,
+      "event/chn_fromstar": 1,
+      "event/chn_hidden_truth_seria_skill": 1,
+      "event/chn_labor_day": 2,
+      "event/chn_rich_dungeon": 1,
+      "event/chn_species_dungeon": 4,
+      "event/chn_springcleaning": 1,
+      "event/chn_traditional_day": 3,
+      "event/defense": 4,
+      "event/dfo": 1,
+      "event/eventbomb": 2,
+      "event/eventcreature": 1,
+      "event/minigame": 2,
+      "event/obstacle": 2,
+      "event/real_estate": 3,
+      "event/seatrain999": 6,
+      "event/wedding": 14,
+      "gcontents/171116_dayofdungeon": 62,
+      "gcontents/180201_wildforest": 48,
+      "gcontents/180619_fiendwar": 308,
+      "mapobject/breakableobject": 246,
+      "mapobject/obstacle": 416,
+      "mapobject/particlefactory": 20,
+      "mapobject/pathgate": 1525,
+      "mapobject/trap": 143,
+      "monster/babydragon": 2,
+      "monster/bantu": 5,
+      "monster/buff_boom": 1,
+      "monster/buff_image": 1,
+      "monster/buff_image2": 1,
+      "monster/casillas": 1,
+      "monster/characterstatue": 3,
+      "monster/coldboy": 3,
+      "monster/cosmofiend": 28,
+      "monster/crimebuffalo": 4,
+      "monster/daily": 2,
+      "monster/darkelf": 3,
+      "monster/dendroid": 11,
+      "monster/dollmaster": 3,
+      "monster/draconian": 1,
+      "monster/dragondungeon": 96,
+      "monster/drake": 13,
+      "monster/evileye": 8,
+      "monster/flydragon": 6,
+      "monster/gatekeeper": 5,
+      "monster/gent_buff": 1,
+      "monster/gent_homing": 1,
+      "monster/gent_poro": 1,
+      "monster/gent_poro2": 1,
+      "monster/gent_poro3": 1,
+      "monster/ghosttrain": 1,
+      "monster/ghoul": 7,
+      "monster/goblin": 44,
+      "monster/golem": 6,
+      "monster/guildagitwar": 20,
+      "monster/headlessknight": 6,
+      "monster/hunter": 2,
+      "monster/illusionslashwave_q": 1,
+      "monster/lordoflight": 2,
+      "monster/lotus": 2,
+      "monster/magma": 4,
+      "monster/mist": 3,
+      "monster/monsterflower": 4,
+      "monster/nugol": 10,
+      "monster/peterthepiper": 10,
+      "monster/skeleton": 16,
+      "monster/soceress": 23,
+      "monster/soldier": 5,
+      "monster/spacefish": 4,
+      "monster/spider": 8,
+      "monster/spikeking": 2,
+      "monster/spirit": 23,
+      "monster/statue": 1,
+      "monster/succubus": 1,
+      "monster/tau": 7,
+      "monster/thief": 6,
+      "monster/toy": 7,
+      "monster/vehicle": 6,
+      "monster/villageattacked2": 353,
+      "monster/wraith": 3,
+      "monster/zealot": 7,
+      "monster/zealotrebirth": 3,
+      "monster/zepplin": 5,
+      "monster/zombie": 2,
+      "throwitem/bomb.obj": 5,
+      "throwitem/bomb_event.obj": 1,
+      "throwitem/bombmine1.obj": 1,
+      "throwitem/bombmine2.obj": 1,
+      "throwitem/bombmine2_event.obj": 1,
+      "throwitem/bombmine3.obj": 1,
+      "throwitem/bombmine4.obj": 1,
+      "throwitem/bombsub1.obj": 1,
+      "throwitem/bombsub2.obj": 1,
+      "throwitem/bombsub3.obj": 1,
+      "throwitem/bombsub4.obj": 1,
+      "throwitem/bombsub5.obj": 1,
+      "throwitem/boomerang1.obj": 1,
+      "throwitem/boomerang2.obj": 1,
+      "throwitem/boomerang3.obj": 1,
+      "throwitem/boomerang4.obj": 1,
+      "throwitem/boomerang5.obj": 1,
+      "throwitem/boomerang6.obj": 1,
+      "throwitem/bouncer1.obj": 1,
+      "throwitem/bouncer2.obj": 1,
+      "throwitem/bouncer3.obj": 1,
+      "throwitem/bouncer4.obj": 1,
+      "throwitem/bouncer5.obj": 1,
+      "throwitem/chn_6th_bomb.obj": 1,
+      "throwitem/chn_6th_bomb_sub.obj": 1,
+      "throwitem/chn_big_bomb.obj": 1,
+      "throwitem/chn_big_bomb_sub.obj": 1,
+      "throwitem/chn_catch_bug.obj": 1,
+      "throwitem/chn_detective_check.obj": 1,
+      "throwitem/chn_dynamite.obj": 1,
+      "throwitem/chn_dynamitebomb.obj": 1,
+      "throwitem/chn_fruit_bomb.obj": 1,
+      "throwitem/chn_mooncake_bomb.obj": 1,
+      "throwitem/chn_national_bomb.obj": 1,
+      "throwitem/chn_national_bomb_sub.obj": 1,
+      "throwitem/chn_scent_bag.obj": 1,
+      "throwitem/chn_tissue.obj": 1,
+      "throwitem/chn_tissue_sub.obj": 1,
+      "throwitem/cubepiece1.obj": 1,
+      "throwitem/cubepiece2.obj": 1,
+      "throwitem/cubepiece3.obj": 1,
+      "throwitem/cubepiece4.obj": 1,
+      "throwitem/cursebomb1.obj": 1,
+      "throwitem/cursebombsub1.obj": 1,
+      "throwitem/flybomb.obj": 2,
+      "throwitem/flybombsub.obj": 1,
+      "throwitem/flybombsub2.obj": 1,
+      "throwitem/goblinball.obj": 1,
+      "throwitem/gravel1.obj": 1,
+      "throwitem/gravel2.obj": 1,
+      "throwitem/gravel3.obj": 1,
+      "throwitem/gravel4.obj": 1,
+      "throwitem/gravel5.obj": 1,
+      "throwitem/gravel6.obj": 1,
+      "throwitem/gravel7.obj": 1,
+      "throwitem/hanrabong.obj": 1,
+      "throwitem/hanrabongsub.obj": 1,
+      "throwitem/letsburn_bentinck": 4,
+      "throwitem/poisonmissile.obj": 1,
+      "throwitem/redoil1.obj": 1,
+      "throwitem/redoil2.obj": 1,
+      "throwitem/redoil3.obj": 1,
+      "throwitem/redoil4.obj": 1,
+      "throwitem/redoil5.obj": 1,
+      "throwitem/redoilflask1.obj": 1,
+      "throwitem/redoilflask2.obj": 1,
+      "throwitem/redoilflask3.obj": 1,
+      "throwitem/redoilflask4.obj": 1,
+      "throwitem/redoilflask5.obj": 1,
+      "throwitem/rtx_redoil5.obj": 1,
+      "throwitem/rtx_redoilflask.obj": 1,
+      "throwitem/sleepstone.obj": 1,
+      "throwitem/snowball1.obj": 1,
+      "throwitem/soccerball.obj": 1,
+      "throwitem/suriken1.obj": 1,
+      "throwitem/suriken2.obj": 1,
+      "throwitem/suriken3.obj": 1,
+      "throwitem/suriken4.obj": 1,
+      "throwitem/suriken5.obj": 1,
+      "throwitem/suriken6.obj": 1,
+      "throwitem/toothsfish.obj": 2,
+      "throwitem/volleyball.obj": 1,
+      "throwitem/zombie_mine_big.obj": 1,
+      "throwitem/zombie_mine_dark.obj": 1,
+      "throwitem/zombie_mine_freeze.obj": 1,
+      "throwitem/zombie_mine_slow.obj": 1,
+      "throwitem/zombie_mine_small.obj": 1
+    },
+    "used_on_any_map": 5492,
+    "used_on_dungeon_maps": 5483
+  },
+  "worldmap_snapshot": {
+    "maps": 18374,
+    "areas": 80,
+    "dungeons": 1450,
+    "mazes": 2654,
+    "dungeon_refs": 382
+  }
+}

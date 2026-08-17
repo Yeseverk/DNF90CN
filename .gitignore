@@ -1,0 +1,49 @@
+# Generated runtime state
+/runtime/bin/
+/runtime/config/instance.json
+/runtime/config/docker.env
+/runtime/config/mysql.ini
+/runtime/configs/
+/runtime/logs/
+/runtime/state/
+/runtime/mysql/
+
+# Large runtime asset: distribute separately or place it before install.
+/runtime/data/dnf/Script.pvf
+/runtime/data/dnf/channel_info.etc
+
+# Release output
+/releases/*
+!/releases/.gitkeep
+
+# Bundled third-party archives are copied into release packages, not Git.
+/deploy/vendor/mysql/*.zip
+!/deploy/vendor/mysql/.gitkeep
+/deploy/vendor/vcruntime/x64/*.dll
+!/deploy/vendor/vcruntime/x64/.gitkeep
+
+# Go and editor output
+*.exe
+*.test
+*.out
+*.log
+__pycache__/
+*.py[cod]
+.idea/
+.vscode/
+
+# Local database exports
+/dnf_local-*.sql
+
+# Accidental backups and reverse-engineering artifacts
+*.bak*
+*.broken*
+*.dmp
+*.idb
+*.i64
+*.orig
+*.rej
+*.tmp
+*~
+/_codex_tmp/
+/_deployment_staging/
