@@ -3,6 +3,7 @@ package main
 import (
 	"archive/zip"
 	"bufio"
+	"bytes"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
@@ -378,7 +379,11 @@ func clientPatchSourceFileAllowed(rel string, entry fs.DirEntry) bool {
 }
 
 func buildRuntimeBinaries(root, payload string) error {
-	goExe, err := exec.LookPath("go")
+	goName := strings.TrimSpace(os.Getenv("DNF90_GO_EXE"))
+	if goName == "" {
+		goName = "go"
+	}
+	goExe, err := exec.LookPath(goName)
 	if err != nil {
 		return fmt.Errorf("Go is required to build release binaries: %w", err)
 	}
@@ -391,10 +396,10 @@ func buildRuntimeBinaries(root, payload string) error {
 		pkg     string
 		ldflags string
 	}{
-		{name: "DNF90Control.exe", pkg: `.\cmd\server\control`},
-		{name: "DNF90Doctor.exe", pkg: `.\cmd\server\doctor`},
-		{name: "DNF90Launcher.exe", pkg: `.\cmd\server\launcher`, ldflags: "-H=windowsgui"},
-		{name: "DNF90Server.exe", pkg: `.\cmd\server\dnf90`},
+		{name: "DNF90Control.exe", pkg: "./cmd/server/control"},
+		{name: "DNF90Doctor.exe", pkg: "./cmd/server/doctor"},
+		{name: "DNF90Launcher.exe", pkg: "./cmd/server/launcher", ldflags: "-H=windowsgui"},
+		{name: "DNF90Server.exe", pkg: "./cmd/server/dnf90"},
 	}
 	for _, target := range targets {
 		fmt.Println("Building", target.name)
@@ -414,6 +419,7 @@ func buildRuntimeBinaries(root, payload string) error {
 		)
 		cmd := exec.Command(goExe, args...)
 		cmd.Dir = filepath.Join(root, "go-server")
+		cmd.Env = windowsRuntimeBuildEnv()
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 		if err := cmd.Run(); err != nil {
@@ -424,6 +430,16 @@ func buildRuntimeBinaries(root, payload string) error {
 		filepath.Join(root, "deploy", "windows", "runtime.version"),
 		filepath.Join(binDir, "DNF90Build.version"),
 	)
+}
+
+// windowsRuntimeBuildEnv pins the release build to the only target the package
+// ever ships. Without it a non-Windows host produces host binaries under .exe
+// names that still satisfy every validation rule below, so a package could look
+// complete and be unrunnable. The server needs no cgo, so this is a pure
+// cross-build. exec dedups the environment keeping the last entry, so these
+// override any host GOOS/GOARCH.
+func windowsRuntimeBuildEnv() []string {
+	return append(os.Environ(), "GOOS=windows", "GOARCH=amd64", "CGO_ENABLED=0")
 }
 
 func copyRuntimeBinaries(root, payload string) error {
@@ -466,11 +482,23 @@ func validatePayload(payload string) error {
 		"client-patch/90CN.cpp",
 		"client-patch/bin/90CN.dll",
 		"go-server/go.mod",
+		"deploy/windows/runtime.version",
 	}
 	for _, rel := range required {
 		if !regularFile(filepath.Join(payload, filepath.FromSlash(rel))) {
 			return fmt.Errorf("required release file is missing: %s", rel)
 		}
+	}
+	sourceVersion, err := os.ReadFile(filepath.Join(payload, "deploy", "windows", "runtime.version"))
+	if err != nil {
+		return fmt.Errorf("read release runtime version: %w", err)
+	}
+	installedVersion, err := os.ReadFile(filepath.Join(payload, "runtime", "bin", "DNF90Build.version"))
+	if err != nil {
+		return fmt.Errorf("read installed release runtime version: %w", err)
+	}
+	if !bytes.Equal(sourceVersion, installedVersion) {
+		return errors.New("release runtime.version does not match runtime/bin/DNF90Build.version")
 	}
 	return filepath.WalkDir(payload, func(path string, entry fs.DirEntry, walkErr error) error {
 		if walkErr != nil {

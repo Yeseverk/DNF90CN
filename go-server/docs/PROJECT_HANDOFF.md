@@ -81,7 +81,9 @@
 ~~~text
 LOGIN.bat
   -> 检查 runtime.version 与 runtime/bin/DNF90Build.version
-  -> 必要时停止旧服务并通过 control.bat build 更新忽略的 EXE
+  -> 必要时先用现有控制器停止本安装拥有的旧服务
+  -> 再通过 control.bat build --force=true 重建控制器和其余三个 EXE 并写入版本标记
+  -> 版本不匹配且本机没有 Go 时直接拒绝启动，不会给旧 EXE 补版本标记
   -> DNF90Launcher.exe
        -> 选择并校验 DNF.exe/NoPack.exe 所在目录
        -> configure-client（只原子更新 client.directory）
@@ -241,6 +243,11 @@ Windows 本地验收顺序：
 - 当前提交已通过源码和模拟协议回归，但首角色完整链路仍需要 Windows 真客户端验收；macOS 不代表客户端行为已通过。
 - 如果现场仍掉线，下一步是日志/最后协议证据，不是继续堆叠响应包。
 - runtime/bin 被 Git 忽略；涉及服务端或登录器二进制行为的改动必须递增 deploy/windows/runtime.version，否则旧本地 EXE 可能继续运行。
+- `runtime/bin/DNF90Build.version` 只由「当前源码的控制器构建」写入。标记缺失等价于「这批 EXE 早于标记本身」，也就必然不含 125a469 的首角色修复。`LOGIN.bat` 在任何情况下都不得替旧 EXE 补写该标记：一旦补写，陈旧运行时会被判定为最新，安装从此不再更新，首角色问题在现场会表现为「一直没修好」。
+- 版本不匹配且本机没有 Go 时，`LOGIN.bat` 直接拒绝启动并区分「runtime\bin 不完整」与「runtime\bin 陈旧」，给出发布包或 `REBUILD.bat` 两条恢复路径。
+- 控制器无法覆盖自己正在运行的镜像，`DNF90Control.exe` 也不在控制器构建的三个目标里，所以 `DNF90_FORCE_CONTROL_BUILD=1` 必须加在 stop 之后的 build 步骤上；去掉它会让控制器永远停留在旧版本，而版本标记却声称已是最新。
+- 发布器会拒绝 `deploy/windows/runtime.version` 与包内 `runtime/bin/DNF90Build.version` 不一致的产物；不要绕过该检查手工拼接测试包。
+- 分发给玩家/测试的唯一有效形态是 `PACKAGE_RELEASE.bat` 产出的发布包。`runtime/bin` 被 Git 忽略，直接复制源码目录得到的安装永远缺少四个 EXE。
 - 客户端兼容 profile、五个文件、PVF 和频道清单是一个版本单元；任何一项改变都要同步清单、测试和 changlog。
 
 ## 12. 变更规则

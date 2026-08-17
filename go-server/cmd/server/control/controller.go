@@ -634,10 +634,11 @@ func (c *controller) buildBinaries(ctx context.Context, cfg instanceConfig, forc
 		fmt.Fprintln(c.stdout, "Binaries are present.")
 		return nil
 	}
-	goExecutable := strings.TrimSpace(cfg.Build.GoExecutable)
-	if goExecutable == "" {
-		goExecutable = "go"
-	}
+	// LOGIN.bat may discover a standard Windows Go installation that is not on
+	// PATH. The wrapper passes that absolute executable through the environment
+	// so the freshly built controller can use the same toolchain for the full
+	// server/doctor/launcher set.
+	goExecutable := goExecutableForBuild(cfg)
 	if _, err := exec.LookPath(goExecutable); err != nil {
 		return fmt.Errorf(
 			"Go is required to build the server; install the version from go-server/go.mod: %w",
@@ -709,6 +710,16 @@ func (c *controller) buildBinaries(ctx context.Context, cfg instanceConfig, forc
 		return err
 	}
 	return installRuntimeBuildVersion(c.paths)
+}
+
+func goExecutableForBuild(cfg instanceConfig) string {
+	if executable := strings.TrimSpace(os.Getenv("DNF90_GO_EXE")); executable != "" {
+		return executable
+	}
+	if executable := strings.TrimSpace(cfg.Build.GoExecutable); executable != "" {
+		return executable
+	}
+	return "go"
 }
 
 type builtBinary struct {

@@ -32,6 +32,7 @@ func TestValidatePayloadRejectsGeneratedRuntimeState(t *testing.T) {
 		"client-patch/90CN.cpp",
 		"client-patch/bin/90CN.dll",
 		"go-server/go.mod",
+		"deploy/windows/runtime.version",
 	}
 	for _, rel := range required {
 		writeTestFile(t, filepath.Join(payload, filepath.FromSlash(rel)))
@@ -39,6 +40,13 @@ func TestValidatePayloadRejectsGeneratedRuntimeState(t *testing.T) {
 	if err := validatePayload(payload); err != nil {
 		t.Fatalf("clean payload rejected: %v", err)
 	}
+	if err := os.WriteFile(filepath.Join(payload, "runtime", "bin", "DNF90Build.version"), []byte("stale"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if err := validatePayload(payload); err == nil || !strings.Contains(err.Error(), "runtime.version does not match") {
+		t.Fatalf("runtime version mismatch error=%v", err)
+	}
+	writeTestFile(t, filepath.Join(payload, "runtime", "bin", "DNF90Build.version"))
 
 	writeTestFile(t, filepath.Join(payload, "runtime", "config", "instance.json"))
 	err := validatePayload(payload)

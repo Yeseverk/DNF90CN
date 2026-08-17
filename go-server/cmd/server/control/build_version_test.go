@@ -5,6 +5,22 @@ import (
 	"testing"
 )
 
+func TestBuildUsesWrapperDiscoveredGoExecutable(t *testing.T) {
+	t.Setenv("DNF90_GO_EXE", `C:\Program Files\Go\bin\go.exe`)
+	cfg := instanceConfig{Build: buildConfig{GoExecutable: "go"}}
+	if got := goExecutableForBuild(cfg); got != `C:\Program Files\Go\bin\go.exe` {
+		t.Fatalf("go executable = %q", got)
+	}
+}
+
+func TestBuildUsesConfiguredGoExecutableWhenWrapperDidNotDiscoverOne(t *testing.T) {
+	t.Setenv("DNF90_GO_EXE", "")
+	cfg := instanceConfig{Build: buildConfig{GoExecutable: `D:\Go\bin\go.exe`}}
+	if got := goExecutableForBuild(cfg); got != `D:\Go\bin\go.exe` {
+		t.Fatalf("go executable = %q", got)
+	}
+}
+
 func TestInstallRuntimeBuildVersion(t *testing.T) {
 	paths := newProjectPaths(t.TempDir())
 	want := []byte("test-version\n")
