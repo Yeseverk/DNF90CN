@@ -119,6 +119,72 @@ func (s *Service) handleCurrentGameEndpointRequest(session *gameSession, classif
 	return nil
 }
 
+// currentLegacyEndpointRequestBodySize is the proved body length of the
+// current EXE's legacy-framed class1/op1 endpoint request. Live capture
+// game-000121 on channel 253 shows cmd=1 type=1 ENUM_CMDPACKET_LOGIN with a
+// 594-byte body carrying the outer login token, sent immediately after the
+// class0/op1 CHANNELINFO notice. It is the same logical request as the
+// upper-framed 590/598-byte shape, only on the legacy frame.
+const currentLegacyEndpointRequestBodySize = 594
+
+func isCurrentLegacyEndpointRequestBodyLen(bodyLen int) bool {
+	return bodyLen == currentLegacyEndpointRequestBodySize ||
+		isCurrentChannelReconnectDisplayProbeBodyLen(bodyLen)
+}
+
+// handleCurrentLegacyGameEndpointRequest completes the CHANNELINFO handshake
+// when the endpoint request arrives on the legacy frame. Without it, every
+// channel whose ID fits the current EXE's u8 town-owner field takes the
+// notice-first bootstrap path, never sends the class1/op1 success, and leaves
+// the client on "connecting" until its 600-second Error2 watchdog fires.
+// Channel IDs above 255 were unaffected only because their proactive success
+// had already been sent before the client asked.
+func (s *Service) handleCurrentLegacyGameEndpointRequest(session *gameSession, wireBodyLen int) error {
+	if session == nil {
+		return errResidentChannelUnavailable
+	}
+	session.endpointHandshakeMu.Lock()
+	defer session.endpointHandshakeMu.Unlock()
+
+	if !isCurrentLegacyEndpointRequestBodyLen(wireBodyLen) {
+		s.logGameEvent(session, "game-legacy-endpoint-op1-ignored",
+			"body_len", wireBodyLen,
+			"target_channel", session.channel.ID,
+			"reason", "legacy_endpoint_request_shape_not_proved")
+		return nil
+	}
+	if !session.currentChannelResidentNoticeSent {
+		s.logGameEvent(session, "game-legacy-endpoint-op1-ignored",
+			"body_len", wireBodyLen,
+			"target_channel", session.channel.ID,
+			"reason", "channelinfo_notice_not_committed")
+		return nil
+	}
+	if session.gameEndpointSuccessSent {
+		s.logGameEvent(session, "game-channel-stale-endpoint-probe-ignored",
+			"body_len", wireBodyLen,
+			"target_channel", session.channel.ID,
+			"reason", "single_class1_op1_already_sent_after_client_request")
+		return nil
+	}
+
+	mode, bodyLen, sent, err := s.sendGameInitial(session)
+	if err != nil {
+		return err
+	}
+	if !sent {
+		return nil
+	}
+	session.gameEndpointSuccessSent = true
+	s.logGameEvent(session, "game-endpoint-success-sent",
+		"mode", mode,
+		"body_len", bodyLen,
+		"request_body_len", wireBodyLen,
+		"target_channel", session.channel.ID,
+		"reason", "current_exe_legacy_channelinfo_triggered_login_request")
+	return nil
+}
+
 func encNoticeBody(body []byte) []byte {
 	encoded := make([]byte, len(body))
 	for i, b := range body {

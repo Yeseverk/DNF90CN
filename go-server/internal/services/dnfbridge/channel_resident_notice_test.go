@@ -687,3 +687,129 @@ func TestGameEndpointHandshakeAcceptsCurrentRequestSizes(t *testing.T) {
 		})
 	}
 }
+
+// TestLegacyGameEndpointRequestCompletesChannelInfoHandshake pins live capture
+// game-000121: on channel 253 the current EXE answered class0/op1 CHANNELINFO
+// with a legacy cmd=1/type=1 594-byte login request, not with the upper
+// envelope. Swallowing it left every channel whose ID fits the u8 town-owner
+// field stuck on "connecting" until the client's Error2 watchdog.
+func TestLegacyGameEndpointRequestCompletesChannelInfoHandshake(t *testing.T) {
+	service := residentNoticeTestService(t)
+	crack, _ := service.currentCatalog().Channel(19)
+	crack.ID = 253
+	crack.Name = "ch.253"
+	crack.NoticeName = "ch.253"
+	crack.Port = 10253
+	conn := &bufferConn{}
+	session := &gameSession{
+		conn:            conn,
+		accountID:       "dnf:1",
+		channel:         crack,
+		residentChannel: crack,
+	}
+	now := time.Unix(1_721_020_000, 0)
+
+	if err := service.sendGameConnectionBootstrap(session, now); err != nil {
+		t.Fatalf("send account-bound game bootstrap: %v", err)
+	}
+	if !session.currentChannelResidentNoticeSent || session.gameEndpointSuccessSent {
+		t.Fatalf(
+			"state after CHANNELINFO = notice:%t success:%t",
+			session.currentChannelResidentNoticeSent,
+			session.gameEndpointSuccessSent,
+		)
+	}
+	noticeWireLen := conn.write.Len()
+
+	if err := service.handleGameCommand(
+		session,
+		byte(dnfenum.GameCmdCommand),
+		uint16(dnfenum.GameTypeLogin),
+		make([]byte, currentLegacyEndpointRequestBodySize),
+	); err != nil {
+		t.Fatalf("handle legacy endpoint request: %v", err)
+	}
+	success, trailing := splitGameServerUpperPacketWithHeader(
+		t,
+		conn.write.Bytes()[noticeWireLen:],
+		service.gameUpperHeaderSize(),
+	)
+	if success.Header.Classification != dnfproto.DefaultChannelClassification ||
+		success.Header.MsgID != uint16(dnfenum.UpperMsgGameEndpoint) {
+		t.Fatalf("endpoint success header = %+v, want class1/op1", success.Header)
+	}
+	if want := upperSuccessBody(service.buildLoginSuccess(crack)); !bytes.Equal(success.Body, want) {
+		t.Fatalf("endpoint success body = %x, want %x", success.Body, want)
+	}
+	if len(trailing) != 0 {
+		t.Fatalf("legacy endpoint request emitted trailing bytes: %x", trailing)
+	}
+	if !session.gameEndpointSuccessSent {
+		t.Fatal("endpoint success state was not committed")
+	}
+
+	handshakeWireLen := conn.write.Len()
+	if err := service.handleGameCommand(
+		session,
+		byte(dnfenum.GameCmdCommand),
+		uint16(dnfenum.GameTypeLogin),
+		make([]byte, currentLegacyEndpointRequestBodySize),
+	); err != nil {
+		t.Fatalf("handle repeated legacy endpoint request: %v", err)
+	}
+	if conn.write.Len() != handshakeWireLen {
+		t.Fatalf("repeated legacy endpoint request added %d bytes", conn.write.Len()-handshakeWireLen)
+	}
+	if session.channel.ID != 253 || session.residentChannel.ID != 253 {
+		t.Fatalf("connected channel changed: channel=%+v resident=%+v", session.channel, session.residentChannel)
+	}
+}
+
+// TestLegacyGameEndpointRequestIgnoresUnprovedShape keeps the historical
+// write-silent behaviour for every legacy op1 body the current EXE has not
+// been observed to send, and before CHANNELINFO is committed.
+func TestLegacyGameEndpointRequestIgnoresUnprovedShape(t *testing.T) {
+	service := residentNoticeTestService(t)
+	crack, _ := service.currentCatalog().Channel(19)
+	crack.ID = 253
+	crack.Port = 10253
+
+	t.Run("unproved body length", func(t *testing.T) {
+		conn := &bufferConn{}
+		session := &gameSession{conn: conn, accountID: "dnf:1", channel: crack, residentChannel: crack}
+		if err := service.sendGameConnectionBootstrap(session, time.Unix(1_721_020_000, 0)); err != nil {
+			t.Fatalf("send account-bound game bootstrap: %v", err)
+		}
+		wireLen := conn.write.Len()
+		if err := service.handleGameCommand(
+			session,
+			byte(dnfenum.GameCmdCommand),
+			uint16(dnfenum.GameTypeLogin),
+			make([]byte, currentLegacyEndpointRequestBodySize+1),
+		); err != nil {
+			t.Fatalf("handle legacy endpoint request: %v", err)
+		}
+		if conn.write.Len() != wireLen {
+			t.Fatalf("unproved legacy op1 added %d bytes", conn.write.Len()-wireLen)
+		}
+		if session.gameEndpointSuccessSent {
+			t.Fatal("unproved legacy op1 committed the endpoint success state")
+		}
+	})
+
+	t.Run("before channelinfo", func(t *testing.T) {
+		conn := &bufferConn{}
+		session := &gameSession{conn: conn, accountID: "dnf:1", channel: crack, residentChannel: crack}
+		if err := service.handleGameCommand(
+			session,
+			byte(dnfenum.GameCmdCommand),
+			uint16(dnfenum.GameTypeLogin),
+			make([]byte, currentLegacyEndpointRequestBodySize),
+		); err != nil {
+			t.Fatalf("handle legacy endpoint request: %v", err)
+		}
+		if conn.write.Len() != 0 {
+			t.Fatalf("legacy op1 before CHANNELINFO wrote %d bytes", conn.write.Len())
+		}
+	})
+}

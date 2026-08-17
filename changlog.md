@@ -1,5 +1,13 @@
 # DNF90 Operation Log
 
+## 2026-08-17 - answer the legacy-framed class1/op1 endpoint request
+
+- Every channel whose ID fits the current EXE's `u8` town-owner field left the client on `连接中` until its 600-second Error2 watchdog. Channel IDs above `255` were unaffected, because their bootstrap already sends the proactive class1/op1 endpoint success before the client asks. Nine live sessions confirmed the split exactly: ports `10121`, `10251`, and `10253` always hung, while `10508` always reached character selection.
+- Live capture `game-000121` on channel `253` proved the cause. After the class0/op1 CHANNELINFO notice the current EXE answers on the legacy frame, `cmd=1 type=1 ENUM_CMDPACKET_LOGIN` with a 594-byte body carrying the outer login token, not on the upper envelope. `handleGameCommand` discarded that request unconditionally, so `handleCurrentGameEndpointRequest` was never reached and the one-shot endpoint success was never sent.
+- The legacy `op1` route now completes the same handshake behind the same three gates as the upper route: the proved 594-byte body plus the existing 590/598-byte shapes, CHANNELINFO already committed, and one success per TCP session. Unproved body lengths and requests arriving before CHANNELINFO stay write-silent. CHANNELINFO itself, the committed town-owner byte, and the upper-frame handler are unchanged.
+- Added regressions for the 594-byte legacy request completing the handshake exactly once, and for the write-silent unproved-length and pre-CHANNELINFO cases. `gofmt`, `go vet ./internal/services/dnfbridge`, the complete `dnfbridge` suite, every `internal/modules/dnf/...` test, and the control suite pass.
+- Verified on a live client: channel `251` now reports `game-endpoint-success-sent request_body_len=594 reason=current_exe_legacy_channelinfo_triggered_login_request` and reaches character selection and the first scene. No PVF, database, client asset, or generated runtime configuration was changed.
+
 ## 2026-08-17 - one-click launcher and first-created-character lifecycle
 
 - `LOGIN.bat` is now the only normal entry point. A tracked runtime version updates the ignored local EXEs once when source changes, then daily launches remain immediate. The launcher selects and validates `DNF.exe`, persists only `client.directory` atomically, starts the service, registers or verifies the selected credential slot, and launches the client without manual `START.bat`, `STATUS.bat`, or JSON editing.
