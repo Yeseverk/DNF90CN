@@ -1,5 +1,7 @@
 # Go server source
 
+权威开发交接文档：[docs/PROJECT_HANDOFF.md](docs/PROJECT_HANDOFF.md)。
+
 This module is the minimal source closure needed to build and test the current DNF90 service.
 
 Key locations:
