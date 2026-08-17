@@ -21,25 +21,27 @@ import (
 
 const (
 	windowClassName = "DNF90LocalLoginWindow"
-	windowTitle     = "DNF90 本地登录器"
+	windowTitle     = "DNF90CN 登录器"
 
-	wmCreate       = 0x0001
-	wmDestroy      = 0x0002
-	wmClose        = 0x0010
-	wmCommand      = 0x0111
-	wmSetFont      = 0x0030
-	wmGetTextLen   = 0x000E
-	wmAppResult    = 0x8001
-	bmGetCheck     = 0x00F0
-	bmSetCheck     = 0x00F1
-	bstChecked     = 1
-	bnClicked      = 0
-	swShow         = 5
-	swMinimize     = 6
-	swRestore      = 9
-	colorWindow    = 5
-	defaultGUIFont = 17
-	idcArrow       = 32512
+	wmCreate          = 0x0001
+	wmDestroy         = 0x0002
+	wmClose           = 0x0010
+	wmCommand         = 0x0111
+	wmKeyDown         = 0x0100
+	wmSetFont         = 0x0030
+	wmGetTextLen      = 0x000E
+	wmAppResult       = 0x8001
+	wmAppStage        = 0x8002
+	wmAppChooseClient = 0x8003
+	bmGetCheck        = 0x00F0
+	bmSetCheck        = 0x00F1
+	bstChecked        = 1
+	bnClicked         = 0
+	swShow            = 5
+	swMinimize        = 6
+	swRestore         = 9
+	idcArrow          = 32512
+	vkReturn          = 0x0D
 
 	wsOverlapped  = 0x00000000
 	wsCaption     = 0x00C00000
@@ -50,23 +52,19 @@ const (
 	wsTabStop     = 0x00010000
 	wsClipChild   = 0x02000000
 
-	wsExClientEdge = 0x00000200
-
 	esAutoHScroll = 0x0080
 	esPassword    = 0x0020
 	bsAutoCheck   = 0x0003
-	bsDefPush     = 0x0001
 	ssCenter      = 0x0001
 
-	controlUsername  = 1001
-	controlPassword  = 1002
-	controlRemember  = 1003
-	controlRegister  = 1004
-	controlLogin     = 1005
-	controlUsername2 = 1006
-	controlPassword2 = 1007
-	controlRegister2 = 1008
-	controlLogin2    = 1009
+	controlChooseClient = 1001
+	controlSlot1        = 1002
+	controlSlot2        = 1003
+	controlUsername     = 1004
+	controlPassword     = 1005
+	controlRemember     = 1006
+	controlPrimary      = 1007
+	controlRegister     = 1008
 )
 
 var (
@@ -91,10 +89,13 @@ var (
 	procMessageBoxW         = user32.NewProc("MessageBoxW")
 	procLoadCursorW         = user32.NewProc("LoadCursorW")
 	procSetProcessDPIAware  = user32.NewProc("SetProcessDPIAware")
-	procGetStockObject      = gdi32.NewProc("GetStockObject")
+	procGetDpiForSystem     = user32.NewProc("GetDpiForSystem")
+	procGetFocus            = user32.NewProc("GetFocus")
+	procSetFocus            = user32.NewProc("SetFocus")
 	procGetModuleHandleW    = kernel32.NewProc("GetModuleHandleW")
 	globalLauncher          launcherState
-	windowProcedureCallback = windows.NewCallback(windowProcedure)
+	launcherDPI             int32 = 96
+	windowProcedureCallback       = windows.NewCallback(windowProcedure)
 )
 
 type point struct {
@@ -127,29 +128,56 @@ type windowClassEx struct {
 	SmallIcon   uintptr
 }
 
+type accountFields struct {
+	username string
+	password string
+}
+
 type taskResult struct {
-	message        string
-	success        bool
-	minimize       bool
-	clearPassword  bool
-	credentialSlot int
+	message          string
+	success          bool
+	minimize         bool
+	clearPassword    bool
+	credentialSlot   int
+	configuredClient bool
+	clientDirectory  string
 }
 
 type launcherState struct {
-	mu          sync.Mutex
-	projectRoot string
-	controlExe  string
-	credential  [2]string
-	window      uintptr
-	username    [2]uintptr
-	password    [2]uintptr
-	remember    uintptr
-	register    [2]uintptr
-	login       [2]uintptr
-	status      uintptr
-	busy        bool
-	result      taskResult
-	hidden      []hiddenClientWindow
+	mu              sync.Mutex
+	projectRoot     string
+	controlExe      string
+	credential      [2]string
+	account         [2]accountFields
+	activeSlot      int
+	clientDirectory string
+
+	window        uintptr
+	accentBar     uintptr
+	title         uintptr
+	subtitle      uintptr
+	clientLabel   uintptr
+	clientPath    uintptr
+	chooseClient  uintptr
+	divider       uintptr
+	accountLabel  uintptr
+	slot          [2]uintptr
+	usernameLabel uintptr
+	username      uintptr
+	passwordLabel uintptr
+	password      uintptr
+	remember      uintptr
+	primary       uintptr
+	register      uintptr
+	stageLabels   [4]uintptr
+	status        uintptr
+
+	busy          bool
+	result        taskResult
+	progressStage launcherStage
+	stageFailed   bool
+	stageMessage  string
+	hidden        []hiddenClientWindow
 }
 
 func main() {
@@ -170,6 +198,16 @@ func main() {
 
 func runWindow() error {
 	_, _, _ = procSetProcessDPIAware.Call()
+	if err := procGetDpiForSystem.Find(); err == nil {
+		if dpi, _, _ := procGetDpiForSystem.Call(); dpi >= 96 && dpi <= 480 {
+			launcherDPI = int32(dpi)
+		}
+	}
+	if err := initLauncherTheme(); err != nil {
+		return fmt.Errorf("初始化登录器界面失败: %w", err)
+	}
+	defer releaseLauncherTheme()
+
 	instance, _, callErr := procGetModuleHandleW.Call(0)
 	if instance == 0 {
 		return fmt.Errorf("获取程序模块失败: %v", callErr)
@@ -181,7 +219,7 @@ func runWindow() error {
 		WndProc:    windowProcedureCallback,
 		Instance:   instance,
 		Cursor:     cursor,
-		Background: colorWindow + 1,
+		Background: globalTheme.backgroundBrush,
 		ClassName:  className,
 	}
 	atom, _, callErr := procRegisterClassExW.Call(
@@ -197,8 +235,8 @@ func runWindow() error {
 		wsOverlapped|wsCaption|wsSysMenu|wsMinimizeBox|wsClipChild,
 		uintptr(uint32(0x80000000)),
 		uintptr(uint32(0x80000000)),
-		520,
-		560,
+		uintptr(scalePixel(560)),
+		uintptr(scalePixel(670)),
 		0,
 		0,
 		instance,
@@ -225,6 +263,13 @@ func runWindow() error {
 		if result == 0 {
 			return nil
 		}
+		if message.Message == wmKeyDown && message.WParam == vkReturn {
+			focus, _, _ := procGetFocus.Call()
+			if focus == globalLauncher.username || focus == globalLauncher.password {
+				beginLauncherTask(launcherActionLogin)
+				continue
+			}
+		}
 		if handled, _, _ := procIsDialogMessageW.Call(
 			window,
 			uintptr(unsafe.Pointer(&message)),
@@ -240,7 +285,7 @@ func windowProcedure(
 	window uintptr,
 	message uint32,
 	wParam uintptr,
-	lParam uintptr,
+	lParam *drawItemStruct,
 ) uintptr {
 	switch message {
 	case wmCreate:
@@ -251,16 +296,33 @@ func windowProcedure(
 		notification := uint16((wParam >> 16) & 0xFFFF)
 		if notification == bnClicked {
 			switch controlID {
+			case controlChooseClient:
+				beginClientSelection(false)
+			case controlSlot1:
+				selectAccountSlot(0)
+			case controlSlot2:
+				selectAccountSlot(1)
+			case controlPrimary:
+				beginLauncherTask(launcherActionLogin)
 			case controlRegister:
-				beginLauncherTask(0, false)
-			case controlLogin:
-				beginLauncherTask(0, true)
-			case controlRegister2:
-				beginLauncherTask(1, false)
-			case controlLogin2:
-				beginLauncherTask(1, true)
+				beginLauncherTask(launcherActionRegister)
 			}
 		}
+		return 0
+	case wmDrawItem:
+		drawLauncherButton(lParam)
+		return 1
+	case wmCtlColor, wmCtlColorEdit, wmCtlColorBtn:
+		return themeControlColor(
+			message,
+			wParam,
+			uintptr(unsafe.Pointer(lParam)),
+		)
+	case wmAppStage:
+		refreshLauncherProgress()
+		return 0
+	case wmAppChooseClient:
+		beginClientSelection(wParam != 0)
 		return 0
 	case wmAppResult:
 		finishLauncherTask()
@@ -270,10 +332,7 @@ func windowProcedure(
 		busy := globalLauncher.busy
 		globalLauncher.mu.Unlock()
 		if busy {
-			setWindowText(
-				globalLauncher.status,
-				"当前操作尚未完成，请完成后再关闭登录器。",
-			)
+			setWindowText(globalLauncher.status, "当前操作正在进行，请稍候。")
 			return 0
 		}
 		restoreAllHiddenClientWindows()
@@ -283,225 +342,142 @@ func windowProcedure(
 		procPostQuitMessage.Call(0)
 		return 0
 	default:
-		result, _, _ := procDefWindowProcW.Call(window, uintptr(message), wParam, lParam)
+		result, _, _ := procDefWindowProcW.Call(
+			window,
+			uintptr(message),
+			wParam,
+			uintptr(unsafe.Pointer(lParam)),
+		)
 		return result
 	}
 }
 
 func createLauncherControls(window uintptr) {
-	title := createControl(
-		0,
-		"STATIC",
-		"DNF90 本地账号登录",
-		wsChild|wsVisible|ssCenter,
-		40,
-		20,
-		430,
-		34,
-		window,
-		0,
+	globalLauncher.accentBar = createControl(
+		0, "STATIC", "", wsChild|wsVisible, 0, 0, 560, 4, window, 0,
 	)
-	subtitle := createControl(
-		0,
-		"STATIC",
-		"两组账号可分别注册和登录；登录不会重启已在线服务",
-		wsChild|wsVisible|ssCenter,
-		40,
-		55,
-		430,
-		22,
-		window,
-		0,
+	globalLauncher.title = createControl(
+		0, "STATIC", "DNF90CN", wsChild|wsVisible,
+		32, 22, 480, 32, window, 0,
 	)
-	usernameLabel1 := createControl(
-		0,
-		"STATIC",
-		"账号 1",
-		wsChild|wsVisible,
-		70,
-		95,
-		75,
-		24,
-		window,
-		0,
+	globalLauncher.subtitle = createControl(
+		0, "STATIC", "本地开发登录器", wsChild|wsVisible,
+		32, 57, 480, 23, window, 0,
 	)
-	globalLauncher.username[0] = createControl(
-		wsExClientEdge,
-		"EDIT",
-		"",
-		wsChild|wsVisible|wsTabStop|esAutoHScroll,
-		145,
-		89,
-		285,
-		30,
-		window,
-		controlUsername,
+	globalLauncher.clientLabel = createControl(
+		0, "STATIC", "游戏客户端", wsChild|wsVisible,
+		32, 91, 360, 20, window, 0,
 	)
-	passwordLabel1 := createControl(
-		0,
-		"STATIC",
-		"密码 1",
-		wsChild|wsVisible,
-		70,
-		136,
-		75,
-		24,
-		window,
-		0,
+	globalLauncher.clientPath = createControl(
+		0, "EDIT", "尚未选择客户端",
+		wsChild|wsVisible|wsTabStop|wsBorder|esAutoHScroll|esReadOnly,
+		32, 113, 356, 34, window, 0,
 	)
-	globalLauncher.password[0] = createControl(
-		wsExClientEdge,
-		"EDIT",
-		"",
-		wsChild|wsVisible|wsTabStop|esAutoHScroll|esPassword,
-		145,
-		130,
-		285,
-		30,
-		window,
-		controlPassword,
+	globalLauncher.chooseClient = createControl(
+		0, "BUTTON", "选择客户端",
+		wsChild|wsVisible|wsTabStop|bsOwnerDraw,
+		402, 113, 110, 34, window, controlChooseClient,
 	)
-	usernameLabel2 := createControl(
-		0,
-		"STATIC",
-		"账号 2",
-		wsChild|wsVisible,
-		70,
-		236,
-		75,
-		24,
-		window,
-		0,
+	globalLauncher.divider = createControl(
+		0, "STATIC", "", wsChild|wsVisible,
+		32, 163, 480, 1, window, 0,
 	)
-	globalLauncher.username[1] = createControl(
-		wsExClientEdge,
-		"EDIT",
-		"",
-		wsChild|wsVisible|wsTabStop|esAutoHScroll,
-		145,
-		230,
-		285,
-		30,
-		window,
-		controlUsername2,
+	globalLauncher.accountLabel = createControl(
+		0, "STATIC", "登录账号", wsChild|wsVisible,
+		32, 181, 240, 20, window, 0,
 	)
-	passwordLabel2 := createControl(
-		0,
-		"STATIC",
-		"密码 2",
-		wsChild|wsVisible,
-		70,
-		277,
-		75,
-		24,
-		window,
-		0,
+	globalLauncher.slot[0] = createControl(
+		0, "BUTTON", "账号 1",
+		wsChild|wsVisible|wsTabStop|bsOwnerDraw,
+		32, 204, 116, 34, window, controlSlot1,
 	)
-	globalLauncher.password[1] = createControl(
-		wsExClientEdge,
-		"EDIT",
-		"",
-		wsChild|wsVisible|wsTabStop|esAutoHScroll|esPassword,
-		145,
-		271,
-		285,
-		30,
-		window,
-		controlPassword2,
+	globalLauncher.slot[1] = createControl(
+		0, "BUTTON", "账号 2",
+		wsChild|wsVisible|wsTabStop|bsOwnerDraw,
+		154, 204, 116, 34, window, controlSlot2,
+	)
+	globalLauncher.usernameLabel = createControl(
+		0, "STATIC", "账号", wsChild|wsVisible,
+		32, 253, 480, 20, window, 0,
+	)
+	globalLauncher.username = createControl(
+		0, "EDIT", "",
+		wsChild|wsVisible|wsTabStop|wsBorder|esAutoHScroll,
+		32, 275, 480, 36, window, controlUsername,
+	)
+	globalLauncher.passwordLabel = createControl(
+		0, "STATIC", "密码", wsChild|wsVisible,
+		32, 324, 480, 20, window, 0,
+	)
+	globalLauncher.password = createControl(
+		0, "EDIT", "",
+		wsChild|wsVisible|wsTabStop|wsBorder|esAutoHScroll|esPassword,
+		32, 346, 480, 36, window, controlPassword,
 	)
 	globalLauncher.remember = createControl(
-		0,
-		"BUTTON",
-		"记住两组账号密码（Windows 凭据管理器）",
+		0, "BUTTON", "记住登录信息",
 		wsChild|wsVisible|wsTabStop|bsAutoCheck,
-		145,
-		365,
-		285,
-		26,
-		window,
-		controlRemember,
+		32, 393, 200, 26, window, controlRemember,
 	)
-	globalLauncher.register[0] = createControl(
-		0,
-		"BUTTON",
-		"注册账号 1",
-		wsChild|wsVisible|wsTabStop,
-		95,
-		170,
-		140,
-		38,
-		window,
-		controlRegister,
+	for index, label := range []string{
+		"1  环境检查",
+		"2  服务启动",
+		"3  账号验证",
+		"4  客户端启动",
+	} {
+		globalLauncher.stageLabels[index] = createControl(
+			0, "STATIC", label, wsChild|wsVisible|ssCenter,
+			32+int32(index)*120, 430, 112, 24, window, 0,
+		)
+	}
+	globalLauncher.primary = createControl(
+		0, "BUTTON", "进入游戏",
+		wsChild|wsVisible|wsTabStop|bsOwnerDraw,
+		32, 466, 480, 44, window, controlPrimary,
 	)
-	globalLauncher.login[0] = createControl(
-		0,
-		"BUTTON",
-		"登录账号 1",
-		wsChild|wsVisible|wsTabStop,
-		270,
-		170,
-		165,
-		38,
-		window,
-		controlLogin,
-	)
-	globalLauncher.register[1] = createControl(
-		0,
-		"BUTTON",
-		"注册账号 2",
-		wsChild|wsVisible|wsTabStop,
-		95,
-		311,
-		140,
-		38,
-		window,
-		controlRegister2,
-	)
-	globalLauncher.login[1] = createControl(
-		0,
-		"BUTTON",
-		"登录账号 2",
-		wsChild|wsVisible|wsTabStop|bsDefPush,
-		270,
-		311,
-		165,
-		38,
-		window,
-		controlLogin2,
+	globalLauncher.register = createControl(
+		0, "BUTTON", "注册并进入",
+		wsChild|wsVisible|wsTabStop|bsOwnerDraw,
+		32, 521, 160, 36, window, controlRegister,
 	)
 	globalLauncher.status = createControl(
-		0,
-		"STATIC",
-		"请输入账号和密码；首次使用请先注册对应账号。",
-		wsChild|wsVisible|ssCenter,
-		45,
-		410,
-		420,
-		65,
-		window,
-		0,
+		0, "STATIC", "准备就绪。", wsChild|wsVisible,
+		32, 571, 480, 48, window, 0,
 	)
-	font, _, _ := procGetStockObject.Call(defaultGUIFont)
+
+	setControlFont(globalLauncher.title, globalTheme.titleFont)
+	setControlFont(globalLauncher.subtitle, globalTheme.bodyFont)
 	for _, control := range []uintptr{
-		title,
-		subtitle,
-		usernameLabel1,
-		globalLauncher.username[0],
-		passwordLabel1,
-		globalLauncher.password[0],
-		usernameLabel2,
-		globalLauncher.username[1],
-		passwordLabel2,
-		globalLauncher.password[1],
+		globalLauncher.clientLabel,
+		globalLauncher.accountLabel,
+		globalLauncher.usernameLabel,
+		globalLauncher.passwordLabel,
+	} {
+		setControlFont(control, globalTheme.labelFont)
+	}
+	for _, control := range []uintptr{
+		globalLauncher.clientPath,
+		globalLauncher.username,
+		globalLauncher.password,
 		globalLauncher.remember,
-		globalLauncher.register[0],
-		globalLauncher.login[0],
-		globalLauncher.register[1],
-		globalLauncher.login[1],
 		globalLauncher.status,
 	} {
-		procSendMessageW.Call(control, wmSetFont, font, 1)
+		setControlFont(control, globalTheme.bodyFont)
 	}
+	for _, control := range []uintptr{
+		globalLauncher.chooseClient,
+		globalLauncher.slot[0],
+		globalLauncher.slot[1],
+		globalLauncher.primary,
+		globalLauncher.register,
+	} {
+		setControlFont(control, globalTheme.buttonFont)
+	}
+	for _, control := range globalLauncher.stageLabels {
+		setControlFont(control, globalTheme.smallFont)
+	}
+
+	selectedSlot := 0
 	remembered := false
 	for slot := range globalLauncher.credential {
 		username, password, found, err := readCredential(
@@ -510,48 +486,196 @@ func createLauncherControls(window uintptr) {
 		if err != nil || !found {
 			continue
 		}
-		setWindowText(globalLauncher.username[slot], username)
-		setWindowText(globalLauncher.password[slot], password)
+		globalLauncher.account[slot] = accountFields{
+			username: username,
+			password: password,
+		}
+		if !remembered {
+			selectedSlot = slot
+		}
 		remembered = true
 	}
 	if remembered {
-		procSendMessageW.Call(globalLauncher.remember, bmSetCheck, bstChecked, 0)
+		procSendMessageW.Call(
+			globalLauncher.remember,
+			bmSetCheck,
+			bstChecked,
+			0,
+		)
+	}
+	globalLauncher.activeSlot = selectedSlot
+	loadActiveAccountFields()
+
+	directory, found, err := configuredClientDirectory(
+		globalLauncher.projectRoot,
+	)
+	switch {
+	case err != nil:
+		setWindowText(globalLauncher.clientPath, "客户端配置不可用")
+		setLauncherProgress(
+			launcherStageEnvironment,
+			"客户端配置不可用，请重新选择 DNF.exe。",
+			true,
+		)
+		procPostMessageW.Call(window, wmAppChooseClient, 1, 0)
+	case found:
+		globalLauncher.clientDirectory = directory
+		setWindowText(globalLauncher.clientPath, directory)
+		setLauncherProgress(
+			launcherStageIdle,
+			"准备就绪。",
+			false,
+		)
+	default:
+		setWindowText(globalLauncher.clientPath, "尚未选择客户端")
+		setLauncherProgress(
+			launcherStageEnvironment,
+			"首次使用，请选择 DNF.exe 或 NoPack.exe。",
+			false,
+		)
+		procPostMessageW.Call(window, wmAppChooseClient, 1, 0)
 	}
 }
 
-func beginLauncherTask(slot int, login bool) {
-	if slot < 0 || slot >= len(globalLauncher.username) {
+func beginClientSelection(automatic bool) {
+	globalLauncher.mu.Lock()
+	busy := globalLauncher.busy
+	initialDirectory := globalLauncher.clientDirectory
+	globalLauncher.mu.Unlock()
+	if busy {
 		return
 	}
-	username := getWindowText(globalLauncher.username[slot])
-	password := getWindowText(globalLauncher.password[slot])
-	if strings.TrimSpace(username) == "" || password == "" {
-		setWindowText(
-			globalLauncher.status,
-			fmt.Sprintf("账号 %d 和密码 %d 不能为空。", slot+1, slot+1),
+	selected, chosen, err := chooseClientExecutable(
+		globalLauncher.window,
+		initialDirectory,
+	)
+	if err != nil {
+		setLauncherProgress(
+			launcherStageEnvironment,
+			err.Error(),
+			true,
 		)
 		return
 	}
-	status := fmt.Sprintf("正在注册账号 %d，请稍候……", slot+1)
-	if login {
-		status = fmt.Sprintf("正在验证账号 %d 并启动游戏，请稍候……", slot+1)
+	if !chosen {
+		if automatic && initialDirectory == "" {
+			setLauncherProgress(
+				launcherStageEnvironment,
+				"尚未选择客户端。",
+				false,
+			)
+		}
+		return
+	}
+	directory := filepath.Dir(selected)
+	beginBackgroundTask(
+		launcherStageEnvironment,
+		"正在验证客户端文件…",
+		func() taskResult {
+			return runConfigureClientTask(directory)
+		},
+	)
+}
+
+func runConfigureClientTask(directory string) taskResult {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Minute)
+	defer cancel()
+	output, err := launcherRunControl(
+		ctx,
+		[]string{"configure-client", "--directory", directory},
+		"",
+	)
+	if err != nil {
+		return taskResult{message: summarizeControlError(output, err)}
+	}
+	return taskResult{
+		success:          true,
+		configuredClient: true,
+		clientDirectory:  filepath.Clean(directory),
+		message:          "客户端验证通过，路径已保存。",
+	}
+}
+
+func selectAccountSlot(slot int) {
+	if slot < 0 || slot >= len(globalLauncher.account) ||
+		slot == globalLauncher.activeSlot {
+		return
+	}
+	saveActiveAccountFields()
+	globalLauncher.activeSlot = slot
+	loadActiveAccountFields()
+	for _, control := range globalLauncher.slot {
+		procInvalidateRect.Call(control, 0, 1)
+	}
+	procSetFocus.Call(globalLauncher.username)
+}
+
+func saveActiveAccountFields() {
+	slot := globalLauncher.activeSlot
+	if slot < 0 || slot >= len(globalLauncher.account) {
+		return
+	}
+	globalLauncher.account[slot] = accountFields{
+		username: getWindowText(globalLauncher.username),
+		password: getWindowText(globalLauncher.password),
+	}
+}
+
+func loadActiveAccountFields() {
+	slot := globalLauncher.activeSlot
+	if slot < 0 || slot >= len(globalLauncher.account) {
+		return
+	}
+	setWindowText(globalLauncher.username, globalLauncher.account[slot].username)
+	setWindowText(globalLauncher.password, globalLauncher.account[slot].password)
+	for _, control := range globalLauncher.slot {
+		procInvalidateRect.Call(control, 0, 1)
+	}
+}
+
+func beginLauncherTask(action launcherAction) {
+	saveActiveAccountFields()
+	slot := globalLauncher.activeSlot
+	if slot < 0 || slot >= len(globalLauncher.account) {
+		return
+	}
+	username := strings.TrimSpace(globalLauncher.account[slot].username)
+	password := globalLauncher.account[slot].password
+	if username == "" || password == "" {
+		setLauncherProgress(
+			launcherStageAccount,
+			"账号和密码不能为空。",
+			true,
+		)
+		return
+	}
+	globalLauncher.account[slot].username = username
+	setWindowText(globalLauncher.username, username)
+	if strings.TrimSpace(globalLauncher.clientDirectory) == "" {
+		beginClientSelection(false)
+		return
 	}
 	remember := isButtonChecked(globalLauncher.remember)
-	beginBackgroundTask(status, func() taskResult {
-		result := runLauncherTask(
-			login,
-			username,
-			password,
-			remember,
-			globalLauncher.credential[slot],
-		)
-		result.clearPassword = result.success
-		result.credentialSlot = slot
-		return result
-	})
+	beginBackgroundTask(
+		launcherStageEnvironment,
+		"正在检查客户端配置…",
+		func() taskResult {
+			result := runLauncherTask(
+				action,
+				username,
+				password,
+				remember,
+				globalLauncher.credential[slot],
+			)
+			result.clearPassword = result.success
+			result.credentialSlot = slot
+			return result
+		},
+	)
 }
 
 func beginBackgroundTask(
+	stage launcherStage,
 	status string,
 	run func() taskResult,
 ) {
@@ -562,8 +686,8 @@ func beginBackgroundTask(
 	}
 	globalLauncher.busy = true
 	globalLauncher.mu.Unlock()
-	enableLauncherButtons(false)
-	setWindowText(globalLauncher.status, status)
+	enableLauncherControls(false)
+	setLauncherProgress(stage, status, false)
 	go func() {
 		result := run()
 		globalLauncher.mu.Lock()
@@ -574,7 +698,7 @@ func beginBackgroundTask(
 }
 
 func runLauncherTask(
-	login bool,
+	action launcherAction,
 	username string,
 	password string,
 	remember bool,
@@ -582,66 +706,44 @@ func runLauncherTask(
 ) taskResult {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Minute)
 	defer cancel()
-	if !login {
-		output, err := runControl(
-			ctx,
-			[]string{
-				"account",
-				"register",
-				"--username",
-				username,
-				"--password-stdin",
-			},
-			password,
-		)
-		if err != nil {
-			return taskResult{message: summarizeControlError(output, err)}
-		}
-		if remember {
-			if err := writeCredential(
-				credentialTarget,
-				username,
-				password,
-			); err != nil {
-				return taskResult{
-					success: true,
-					message: "账号注册成功，但保存登录信息失败：" + err.Error(),
-				}
-			}
-		}
-		return taskResult{
-			success: true,
-			message: "账号注册成功。现在可以点击“登录并启动游戏”。",
-		}
-	}
-
-	output, err := runAuthenticatedClientLaunch(ctx, username, password)
+	output, err := runLauncherWorkflow(
+		ctx,
+		action,
+		username,
+		password,
+		func() error {
+			_, err := configuredClientExecutables(
+				globalLauncher.projectRoot,
+			)
+			return err
+		},
+		launcherRunControl,
+		queueLauncherStage,
+	)
 	if err != nil {
 		return taskResult{message: summarizeControlError(output, err)}
 	}
+
+	warning := ""
 	if remember {
 		if err := writeCredential(
 			credentialTarget,
 			username,
 			password,
 		); err != nil {
-			return taskResult{
-				success:  true,
-				minimize: true,
-				message:  "游戏已启动，但保存登录信息失败：" + err.Error(),
-			}
+			warning = " 但保存登录信息失败：" + err.Error()
 		}
 	} else if err := deleteCredential(credentialTarget); err != nil {
-		return taskResult{
-			success:  true,
-			minimize: true,
-			message:  "游戏已启动，但清除旧登录信息失败：" + err.Error(),
-		}
+		warning = " 但清除旧登录信息失败：" + err.Error()
+	}
+	message := "登录成功，游戏已启动。"
+	if action == launcherActionRegister {
+		message = "注册成功，游戏已启动。"
 	}
 	return taskResult{
 		success:  true,
 		minimize: true,
-		message:  "登录成功，游戏已启动。",
+		message:  message + warning,
 	}
 }
 
@@ -651,40 +753,107 @@ func finishLauncherTask() {
 	globalLauncher.result = taskResult{}
 	globalLauncher.busy = false
 	globalLauncher.mu.Unlock()
-	enableLauncherButtons(true)
-	setWindowText(globalLauncher.status, result.message)
+	enableLauncherControls(true)
+	if result.configuredClient && result.success {
+		globalLauncher.mu.Lock()
+		globalLauncher.clientDirectory = result.clientDirectory
+		globalLauncher.mu.Unlock()
+		setWindowText(globalLauncher.clientPath, result.clientDirectory)
+		setLauncherProgress(
+			launcherStageIdle,
+			result.message,
+			false,
+		)
+	} else {
+		globalLauncher.mu.Lock()
+		stage := globalLauncher.progressStage
+		globalLauncher.mu.Unlock()
+		if result.success {
+			stage = launcherStageComplete
+		}
+		setLauncherProgress(stage, result.message, !result.success)
+	}
 	if result.clearPassword &&
 		result.credentialSlot >= 0 &&
-		result.credentialSlot < len(globalLauncher.password) &&
+		result.credentialSlot < len(globalLauncher.account) &&
 		!isButtonChecked(globalLauncher.remember) {
-		setWindowText(globalLauncher.password[result.credentialSlot], "")
+		globalLauncher.account[result.credentialSlot].password = ""
+		if result.credentialSlot == globalLauncher.activeSlot {
+			setWindowText(globalLauncher.password, "")
+		}
 	}
 	if result.minimize {
 		procShowWindow.Call(globalLauncher.window, swMinimize)
 	}
 }
 
-var launcherRunControl = runControl
+func queueLauncherStage(stage launcherStage, message string) {
+	globalLauncher.mu.Lock()
+	globalLauncher.progressStage = stage
+	globalLauncher.stageFailed = false
+	globalLauncher.stageMessage = message
+	window := globalLauncher.window
+	globalLauncher.mu.Unlock()
+	if window != 0 {
+		procPostMessageW.Call(window, wmAppStage, 0, 0)
+	}
+}
+
+func setLauncherProgress(
+	stage launcherStage,
+	message string,
+	failed bool,
+) {
+	globalLauncher.mu.Lock()
+	globalLauncher.progressStage = stage
+	globalLauncher.stageFailed = failed
+	globalLauncher.stageMessage = message
+	globalLauncher.mu.Unlock()
+	refreshLauncherProgress()
+}
+
+func refreshLauncherProgress() {
+	globalLauncher.mu.Lock()
+	stage := globalLauncher.progressStage
+	failed := globalLauncher.stageFailed
+	message := globalLauncher.stageMessage
+	globalLauncher.mu.Unlock()
+	if globalLauncher.status != 0 {
+		setWindowText(globalLauncher.status, message)
+		procInvalidateRect.Call(globalLauncher.status, 0, 1)
+	}
+	labels := []string{"环境检查", "服务启动", "账号验证", "客户端启动"}
+	for index, control := range globalLauncher.stageLabels {
+		step := launcherStage(index + 1)
+		prefix := fmt.Sprintf("%d", index+1)
+		switch {
+		case failed && step == stage:
+			prefix = "×"
+		case stage == launcherStageComplete || step < stage:
+			prefix = "✓"
+		case step == stage:
+			prefix = "•"
+		}
+		setWindowText(control, prefix+"  "+labels[index])
+		procInvalidateRect.Call(control, 0, 1)
+	}
+}
+
+var launcherRunControl launcherCommandRunner = runControl
 
 func runAuthenticatedClientLaunch(
 	ctx context.Context,
 	username string,
 	password string,
 ) (string, error) {
-	output, err := launcherRunControl(ctx, []string{"start"}, "")
-	if err != nil {
-		return output, err
-	}
-	return launcherRunControl(
+	return runLauncherWorkflow(
 		ctx,
-		[]string{
-			"launch-client",
-			"--multi-instance",
-			"--username",
-			username,
-			"--password-stdin",
-		},
+		launcherActionLogin,
+		username,
 		password,
+		nil,
+		launcherRunControl,
+		nil,
 	)
 }
 
@@ -772,16 +941,20 @@ func createControl(
 		uintptr(unsafe.Pointer(utf16Ptr(className))),
 		uintptr(unsafe.Pointer(utf16Ptr(text))),
 		style,
-		uintptr(uint32(x)),
-		uintptr(uint32(y)),
-		uintptr(uint32(width)),
-		uintptr(uint32(height)),
+		uintptr(uint32(scalePixel(x))),
+		uintptr(uint32(scalePixel(y))),
+		uintptr(uint32(scalePixel(width))),
+		uintptr(uint32(scalePixel(height))),
 		parent,
 		uintptr(id),
 		0,
 		0,
 	)
 	return control
+}
+
+func setControlFont(control, font uintptr) {
+	procSendMessageW.Call(control, wmSetFont, font, 1)
 }
 
 func setWindowText(window uintptr, value string) {
@@ -802,14 +975,23 @@ func getWindowText(window uintptr) string {
 	return windows.UTF16ToString(buffer)
 }
 
-func enableLauncherButtons(enabled bool) {
+func enableLauncherControls(enabled bool) {
 	value := uintptr(0)
 	if enabled {
 		value = 1
 	}
-	for slot := range globalLauncher.register {
-		procEnableWindow.Call(globalLauncher.register[slot], value)
-		procEnableWindow.Call(globalLauncher.login[slot], value)
+	for _, control := range []uintptr{
+		globalLauncher.chooseClient,
+		globalLauncher.slot[0],
+		globalLauncher.slot[1],
+		globalLauncher.username,
+		globalLauncher.password,
+		globalLauncher.remember,
+		globalLauncher.primary,
+		globalLauncher.register,
+	} {
+		procEnableWindow.Call(control, value)
+		procInvalidateRect.Call(control, 0, 1)
 	}
 }
 
@@ -825,6 +1007,10 @@ func messageBox(window uintptr, text string, title string) {
 		uintptr(unsafe.Pointer(utf16Ptr(title))),
 		0x10,
 	)
+}
+
+func scalePixel(value int32) int32 {
+	return value * launcherDPI / 96
 }
 
 func utf16Ptr(value string) *uint16 {

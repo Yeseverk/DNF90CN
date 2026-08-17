@@ -30,6 +30,8 @@ type projectPaths struct {
 	doctorExe            string
 	launcherExe          string
 	controlExe           string
+	runtimeVersionSource string
+	runtimeVersion       string
 	processState         string
 	binaryInstallState   string
 	mysqlRoot            string
@@ -117,6 +119,8 @@ func newProjectPaths(root string) projectPaths {
 		doctorExe:            filepath.Join(runtimeRoot, "bin", "DNF90Doctor.exe"),
 		launcherExe:          filepath.Join(runtimeRoot, "bin", "DNF90Launcher.exe"),
 		controlExe:           filepath.Join(runtimeRoot, "bin", "DNF90Control.exe"),
+		runtimeVersionSource: filepath.Join(root, "deploy", "windows", "runtime.version"),
+		runtimeVersion:       filepath.Join(runtimeRoot, "bin", "DNF90Build.version"),
 		processState:         filepath.Join(runtimeRoot, "state", "server-process.json"),
 		binaryInstallState:   filepath.Join(runtimeRoot, "state", "binary-install.json"),
 		mysqlRoot:            filepath.Join(runtimeRoot, "mysql"),

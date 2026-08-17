@@ -327,6 +327,7 @@ func copyReleaseFiles(root, payload string) error {
 		"deploy/vendor/vcruntime/x64/VCRUNTIME140.dll",
 		"deploy/vendor/vcruntime/x64/VCRUNTIME140_1.dll",
 		"deploy/windows/control.bat",
+		"deploy/windows/runtime.version",
 		"runtime/data/dnf/Script.pvf",
 		"runtime/data/dnf/channel_info.etc",
 	}
@@ -419,7 +420,10 @@ func buildRuntimeBinaries(root, payload string) error {
 			return fmt.Errorf("build %s: %w", target.name, err)
 		}
 	}
-	return nil
+	return copyFile(
+		filepath.Join(root, "deploy", "windows", "runtime.version"),
+		filepath.Join(binDir, "DNF90Build.version"),
+	)
 }
 
 func copyRuntimeBinaries(root, payload string) error {
@@ -428,6 +432,7 @@ func copyRuntimeBinaries(root, payload string) error {
 		"DNF90Doctor.exe",
 		"DNF90Launcher.exe",
 		"DNF90Server.exe",
+		"DNF90Build.version",
 	} {
 		if err := copyFile(
 			filepath.Join(root, "runtime", "bin", name),
@@ -455,6 +460,7 @@ func validatePayload(payload string) error {
 		"runtime/bin/DNF90Doctor.exe",
 		"runtime/bin/DNF90Launcher.exe",
 		"runtime/bin/DNF90Server.exe",
+		"runtime/bin/DNF90Build.version",
 		"runtime/data/dnf/Script.pvf",
 		"deploy/vendor/mysql/mysql-8.4.10-winx64.zip",
 		"client-patch/90CN.cpp",

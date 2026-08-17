@@ -107,28 +107,12 @@ func restoreAllHiddenClientWindows() {
 }
 
 func configuredClientExecutables(projectRoot string) ([]string, error) {
-	configPath := filepath.Join(
-		projectRoot,
-		"runtime",
-		"config",
-		"instance.json",
-	)
-	data, err := os.ReadFile(configPath)
+	clientRoot, found, err := configuredClientDirectory(projectRoot)
 	if err != nil {
-		return nil, fmt.Errorf("读取客户端配置失败: %w", err)
+		return nil, err
 	}
-	var cfg launcherInstance
-	if err := json.Unmarshal(data, &cfg); err != nil {
-		return nil, fmt.Errorf("解析客户端配置失败: %w", err)
-	}
-	clientRoot := strings.TrimSpace(cfg.Client.Directory)
-	if clientRoot == "" {
-		return nil, errors.New(
-			"请先在 instance.json 中配置 client.directory",
-		)
-	}
-	if !filepath.IsAbs(clientRoot) {
-		return nil, errors.New("client.directory 必须是绝对路径")
+	if !found {
+		return nil, errors.New("尚未选择游戏客户端")
 	}
 	var executables []string
 	for _, name := range []string{"DNF.exe", "NoPack.exe"} {
@@ -143,6 +127,39 @@ func configuredClientExecutables(projectRoot string) ([]string, error) {
 		)
 	}
 	return executables, nil
+}
+
+func configuredClientDirectory(projectRoot string) (string, bool, error) {
+	configPath := filepath.Join(
+		projectRoot,
+		"runtime",
+		"config",
+		"instance.json",
+	)
+	data, err := os.ReadFile(configPath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return "", false, nil
+		}
+		return "", false, fmt.Errorf("读取客户端配置失败: %w", err)
+	}
+	var cfg launcherInstance
+	if err := json.Unmarshal(data, &cfg); err != nil {
+		return "", false, fmt.Errorf("解析客户端配置失败: %w", err)
+	}
+	clientRoot := strings.TrimSpace(cfg.Client.Directory)
+	if clientRoot == "" {
+		return "", false, nil
+	}
+	if !filepath.IsAbs(clientRoot) {
+		return "", false, errors.New("客户端目录必须是绝对路径")
+	}
+	clientRoot = filepath.Clean(clientRoot)
+	info, err := os.Stat(clientRoot)
+	if err != nil || !info.IsDir() {
+		return "", false, fmt.Errorf("客户端目录不存在: %s", clientRoot)
+	}
+	return clientRoot, true, nil
 }
 
 func hideVisibleWindowsForExecutables(

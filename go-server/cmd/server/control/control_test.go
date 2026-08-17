@@ -1,10 +1,12 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"net"
 	"os"
 	"path/filepath"
+	"reflect"
 	"strings"
 	"testing"
 )
@@ -275,6 +277,136 @@ func TestValidateAssetsAndClient(t *testing.T) {
 	}
 	if filepath.Base(executable) != "DNF.exe" {
 		t.Fatalf("client executable = %q", executable)
+	}
+}
+
+func TestConfigureClientPersistsOnlyValidatedDirectory(t *testing.T) {
+	root := t.TempDir()
+	paths := newProjectPaths(root)
+	cfg := validTestInstance()
+	cfg.Server.PartyUDPRelayPortStart = defaultPartyUDPRelayPortStart
+	cfg.Server.PartyUDPRelayPortCount = defaultPartyUDPRelayPortCount
+	data, err := marshalInstance(cfg)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := writeFile(paths.instance, data, 0o600); err != nil {
+		t.Fatal(err)
+	}
+
+	clientRoot := filepath.Join(root, "client")
+	if err := os.MkdirAll(clientRoot, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	manifest := clientManifest{
+		SchemaVersion: 1,
+		Profile:       cfg.Protocol.Profile,
+	}
+	for index, name := range []string{
+		"DNF.exe",
+		"90CN.dll",
+		"90CNLua.dll",
+		"ijl15.dll",
+		"ijl15_real.dll",
+	} {
+		path := filepath.Join(clientRoot, name)
+		if err := os.WriteFile(path, []byte{byte(index + 1)}, 0o644); err != nil {
+			t.Fatal(err)
+		}
+		digest, err := fileSHA256(path)
+		if err != nil {
+			t.Fatal(err)
+		}
+		manifest.Files = append(manifest.Files, clientManifestEntry{
+			Names:    []string{name},
+			Required: true,
+			SHA256:   digest,
+		})
+	}
+	manifestData, err := json.Marshal(manifest)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := writeFile(paths.clientManifest, manifestData, 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	var output bytes.Buffer
+	controller := newController(paths, &output, &output)
+	if err := controller.configureClient(clientRoot); err != nil {
+		t.Fatalf("configureClient() error = %v", err)
+	}
+	configured, err := decodeInstance(paths.instance)
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := cfg
+	want.Client.Directory = clientRoot
+	if !reflect.DeepEqual(configured, want) {
+		t.Fatalf("configured instance = %#v, want only client.directory changed to %q", configured, clientRoot)
+	}
+	if !strings.Contains(output.String(), "Client directory configured:") {
+		t.Fatalf("configure output = %q", output.String())
+	}
+	if matches, err := filepath.Glob(filepath.Join(paths.runtimeConfig, ".instance.json.tmp-*")); err != nil {
+		t.Fatal(err)
+	} else if len(matches) != 0 {
+		t.Fatalf("temporary config files remain: %v", matches)
+	}
+}
+
+func TestConfigureClientRejectsUnvalidatedDirectory(t *testing.T) {
+	root := t.TempDir()
+	paths := newProjectPaths(root)
+	cfg := validTestInstance()
+	cfg.Server.PartyUDPRelayPortStart = defaultPartyUDPRelayPortStart
+	cfg.Server.PartyUDPRelayPortCount = defaultPartyUDPRelayPortCount
+	data, err := marshalInstance(cfg)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := writeFile(paths.instance, data, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	manifestData, err := json.Marshal(clientManifest{
+		SchemaVersion: 1,
+		Profile:       cfg.Protocol.Profile,
+		Files: []clientManifestEntry{{
+			Names:    []string{"DNF.exe"},
+			Required: true,
+			SHA256:   strings.Repeat("0", 64),
+		}},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := writeFile(paths.clientManifest, manifestData, 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	clientRoot := filepath.Join(root, "client")
+	if err := os.MkdirAll(clientRoot, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(clientRoot, "DNF.exe"), []byte("wrong"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	var output bytes.Buffer
+	controller := newController(paths, &output, &output)
+	if err := controller.configureClient("relative-client"); err == nil ||
+		!strings.Contains(err.Error(), "absolute") {
+		t.Fatalf("configureClient(relative) error = %v", err)
+	}
+	if err := controller.configureClient(clientRoot); err == nil ||
+		!strings.Contains(err.Error(), "incompatible") {
+		t.Fatalf("configureClient(incompatible) error = %v", err)
+	}
+	configured, err := decodeInstance(paths.instance)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if configured.Client.Directory != "" {
+		t.Fatalf("rejected directory was persisted: %q", configured.Client.Directory)
 	}
 }
 

@@ -3612,6 +3612,78 @@ func TestHandleUpperCreateCharacterWritesRepositoryAndRefreshesList(t *testing.T
 	if !reflect.DeepEqual(record.Roster, dnfrepo.CharacterRoster{}) {
 		t.Fatalf("created character should not write roster_json: %+v", record.Roster)
 	}
+	if !session.rosterRequested || session.emptyRosterSlotProbePending ||
+		session.pendingCharacterRosterBootstrap {
+		t.Fatalf(
+			"created roster lifecycle roster=%t empty_probe=%t pending=%t",
+			session.rosterRequested,
+			session.emptyRosterSlotProbePending,
+			session.pendingCharacterRosterBootstrap,
+		)
+	}
+}
+
+func TestFirstCreatedCharacterClearsSpeculativeReconnectBeforeSelection(t *testing.T) {
+	repos := testRepositoryGroup()
+	service := &Service{
+		options:        options{accountPrefix: "dnf:"},
+		characterStats: testCharacterStatTable(t),
+		repositoryProvider: func() (dnfrepo.Group, bool) {
+			return repos, true
+		},
+	}
+	prepareTestCharacterInitialization(service, 15)
+	conn := &bufferConn{}
+	channel := channelcatalog.Channel{ID: 6, Type: 3, Name: "ch.6", Port: 10006}
+	session := &gameSession{
+		conn:                            conn,
+		channel:                         channel,
+		residentChannel:                 channel,
+		pendingCharacterRosterBootstrap: true,
+		emptyRosterSlotProbePending:     true,
+	}
+	armCurrentChannelReconnect(session)
+
+	if err := service.handleUpperCreateCharacter(
+		session,
+		buildCreateRequest(15, "first-hero"),
+	); err != nil {
+		t.Fatalf("create first character: %v", err)
+	}
+	if session.channelReconnect || !session.rosterRequested ||
+		session.pendingCharacterRosterBootstrap ||
+		session.emptyRosterSlotProbePending {
+		t.Fatalf(
+			"post-create lifecycle reconnect=%t roster=%t pending=%t empty_probe=%t",
+			session.channelReconnect,
+			session.rosterRequested,
+			session.pendingCharacterRosterBootstrap,
+			session.emptyRosterSlotProbePending,
+		)
+	}
+
+	conn.write.Reset()
+	request := make([]byte, 2)
+	binary.LittleEndian.PutUint16(request, 1)
+	frame, err := dnfproto.BuildChannelPacket(
+		uint16(dnfenum.UpperMsgSelectCharacter),
+		request,
+		0,
+		dnfproto.DefaultChannelClassification,
+	)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := service.handleGameUpper(session, frame); err != nil {
+		t.Fatalf("select first created character: %v", err)
+	}
+	if session.channelReconnect || session.selectedCharacterID != 1 {
+		t.Fatalf(
+			"first selection lifecycle reconnect=%t selected=%d",
+			session.channelReconnect,
+			session.selectedCharacterID,
+		)
+	}
 }
 
 func TestHandleUpperCreateCharacterAllowsSeventeenthCharacterWithThirtyTwoSlots(t *testing.T) {

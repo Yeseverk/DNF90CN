@@ -88,12 +88,30 @@ func (s *Service) sendCreateSuccess(session *gameSession, upper bool, created dn
 		if err := s.sendUpperCreateSuccess(session, created); err != nil {
 			return err
 		}
-		return s.sendUpperRoster(session, characters)
+		if err := s.sendUpperRoster(session, characters); err != nil {
+			return err
+		}
+	} else {
+		if err := s.sendGame(session, byte(dnfenum.GameCmdCommand), uint16(dnfenum.GameTypeCreateCharacter), []byte{0x01}); err != nil {
+			return err
+		}
+		if err := s.sendCharacterList(session, characters); err != nil {
+			return err
+		}
 	}
-	if err := s.sendGame(session, byte(dnfenum.GameCmdCommand), uint16(dnfenum.GameTypeCreateCharacter), []byte{0x01}); err != nil {
-		return err
-	}
-	return s.sendCharacterList(session, characters)
+
+	pendingRoster := session.pendingCharacterRosterBootstrap
+	clearedReconnect := clearUnboundChannelReconnectForRoster(session)
+	session.rosterRequested = true
+	session.pendingCharacterRosterBootstrap = false
+	session.emptyRosterSlotProbePending = false
+	s.logGameEvent(session, "game-create-roster-established-ordinary-selection",
+		"upper", upper,
+		"character_id", numericCharacterID(created),
+		"roster_count", len(characters),
+		"cleared_unbound_channel_reconnect", clearedReconnect,
+		"cleared_pending_roster_bootstrap", pendingRoster)
+	return nil
 }
 
 func (s *Service) sendCreateFailure(session *gameSession, upper bool, code byte) error {

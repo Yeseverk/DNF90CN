@@ -88,6 +88,12 @@ func runCLI(args []string, stdout, stderr io.Writer) int {
 				checkClient:  *checkClient,
 			})
 		}
+	case "configure-client":
+		fs := newFlagSet("configure-client", stderr)
+		directory := fs.String("directory", "", "absolute directory containing DNF.exe or NoPack.exe")
+		if runErr = parseFlags(fs, args[1:]); runErr == nil {
+			runErr = controller.configureClient(*directory)
+		}
 	case "launch-client":
 		fs := newFlagSet("launch-client", stderr)
 		clientDirectory := fs.String("client-directory", "", "override client.directory from instance.json")
@@ -158,6 +164,7 @@ Usage:
   DNF90Control.exe status
   DNF90Control.exe build [--force=true]
   DNF90Control.exe check [--skip-database] [--skip-ports] [--client]
+  DNF90Control.exe configure-client --directory PATH
   DNF90Control.exe launch-client [--client-directory PATH] [--multi-instance] [--username NAME --password-stdin]
   DNF90Control.exe account register --username NAME --password-stdin
   DNF90Control.exe account login --username NAME --password-stdin

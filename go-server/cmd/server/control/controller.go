@@ -117,6 +117,15 @@ func (c *controller) start(ctx context.Context, rebuild bool) error {
 	if state, found, err := c.loadManagedProcess(cfg.InstallationID, true); err != nil {
 		return err
 	} else if found {
+		versionCurrent, err := runtimeBuildVersionCurrent(c.paths)
+		if err != nil {
+			return err
+		}
+		if !versionCurrent {
+			return errors.New(
+				"DNF90 runtime update is pending; close game clients and run LOGIN.bat",
+			)
+		}
 		state, err = c.validateRunningServerConfig(cfg, state)
 		if err != nil {
 			return err
@@ -451,6 +460,47 @@ func (c *controller) launchClient(
 	return nil
 }
 
+func (c *controller) configureClient(directory string) error {
+	directory = strings.TrimSpace(directory)
+	if directory == "" {
+		return errors.New("client directory is required")
+	}
+	if !filepath.IsAbs(directory) {
+		return errors.New("client directory must be an absolute path")
+	}
+
+	resolved, err := loadInstance(c.paths)
+	if err != nil {
+		return err
+	}
+	clientRoot, _, err := validateClient(
+		c.paths,
+		resolved,
+		directory,
+		c.stdout,
+	)
+	if err != nil {
+		return err
+	}
+
+	// loadInstance resolves AUTO_DETECT values for this process. Re-read the
+	// persisted form so changing the client path does not freeze those values.
+	persisted, err := decodeInstance(c.paths.instance)
+	if err != nil {
+		return err
+	}
+	persisted.Client.Directory = clientRoot
+	data, err := marshalInstance(persisted)
+	if err != nil {
+		return err
+	}
+	if err := writeFile(c.paths.instance, data, 0o600); err != nil {
+		return err
+	}
+	fmt.Fprintln(c.stdout, "Client directory configured:", clientRoot)
+	return nil
+}
+
 func clientAccountURL(cfg instanceConfig) (string, error) {
 	port, err := listenPort(cfg.Server.AdminListen)
 	if err != nil {
@@ -572,10 +622,15 @@ func (c *controller) runDoctor(ctx context.Context, cfg instanceConfig, opts doc
 }
 
 func (c *controller) buildBinaries(ctx context.Context, cfg instanceConfig, force bool) error {
+	versionCurrent, err := runtimeBuildVersionCurrent(c.paths)
+	if err != nil {
+		return err
+	}
 	if !force &&
 		isRegularFile(c.paths.serverExe) &&
 		isRegularFile(c.paths.doctorExe) &&
-		isRegularFile(c.paths.launcherExe) {
+		isRegularFile(c.paths.launcherExe) &&
+		versionCurrent {
 		fmt.Fprintln(c.stdout, "Binaries are present.")
 		return nil
 	}
@@ -650,7 +705,10 @@ func (c *controller) buildBinaries(ctx context.Context, cfg instanceConfig, forc
 			return fmt.Errorf("DNF90 %s build failed: %w", target.label, err)
 		}
 	}
-	return installBuiltBinarySet(c.paths, targets)
+	if err := installBuiltBinarySet(c.paths, targets); err != nil {
+		return err
+	}
+	return installRuntimeBuildVersion(c.paths)
 }
 
 type builtBinary struct {

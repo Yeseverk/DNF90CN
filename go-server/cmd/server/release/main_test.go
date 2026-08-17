@@ -26,6 +26,7 @@ func TestValidatePayloadRejectsGeneratedRuntimeState(t *testing.T) {
 		"runtime/bin/DNF90Doctor.exe",
 		"runtime/bin/DNF90Launcher.exe",
 		"runtime/bin/DNF90Server.exe",
+		"runtime/bin/DNF90Build.version",
 		"runtime/data/dnf/Script.pvf",
 		"deploy/vendor/mysql/mysql-8.4.10-winx64.zip",
 		"client-patch/90CN.cpp",
