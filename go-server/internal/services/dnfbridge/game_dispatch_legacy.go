@@ -145,12 +145,10 @@ func (s *Service) handleGameCommand(session *gameSession, cmd byte, typ uint16, 
 	}
 	switch dnfenum.GameType(typ) {
 	case dnfenum.GameTypeLogin:
-		// Current EXE evidence proves only the upper class1/op1 590/598-byte
-		// request emitted after CHANNELINFO. Keep legacy-shaped op1 silent.
-		s.logGameEvent(session, "game-legacy-endpoint-op1-ignored",
-			"body_len", len(body),
-			"reason", "legacy_endpoint_request_shape_not_proved")
-		return nil
+		// The current EXE answers CHANNELINFO with this legacy-framed class1/op1
+		// endpoint request, not with the upper envelope. Completing it here is
+		// what clears the client's Error2 watchdog; other shapes stay silent.
+		return s.handleCurrentLegacyGameEndpointRequest(session, len(body))
 	case dnfenum.GameType(dnfenum.CmdPacketExit):
 		// Current op3/one-byte channel-exit is structurally ambiguous with the
 		// legacy frame and reaches this decoder in live traffic. It still owns
