@@ -249,6 +249,10 @@ Windows 本地验收顺序：
 - 发布器会拒绝 `deploy/windows/runtime.version` 与包内 `runtime/bin/DNF90Build.version` 不一致的产物；不要绕过该检查手工拼接测试包。
 - 分发给玩家/测试的唯一有效形态是 `PACKAGE_RELEASE.bat` 产出的发布包。`runtime/bin` 被 Git 忽略，直接复制源码目录得到的安装永远缺少四个 EXE。
 - 客户端兼容 profile、五个文件、PVF 和频道清单是一个版本单元；任何一项改变都要同步清单、测试和 changlog。
+- `client-patch/90CN.cpp` 里 `InstallWorkerInner`（约 8550 行起）**没有任何调用点**。`Start90CNPatch` 只创建一个线程 `InstallWorker`，而它只调 `InstallTransportWorkerInner`。该函数内 26 个 hook 因此全是死代码。传输/编解码/路由那几个在活着的 worker 里有等价实现（标签不同），`creature rename`、`dungeon manual pickup container repair`、`op24 loading gate` 由独立的 `Install*Compatibility()` 装载，其余 14 个（含 4 个空指针保护）从未安装。判断依据是运行日志：这些 hook 的安装与触发日志在 54 个 session 中均为 0，且没有任何 `prologue mismatch` / `already hooked` / 等待超时记录——是没执行到，不是执行失败。
+- 排查客户端崩溃时，先用 `90CN_trace.log`（与 DNF.exe 同目录，`LogLine` 无条件写）确认相关 hook 的 `installed` / `result=` 行是否存在，再谈这个 hook 有没有效。`selected page null guard` 就是因为缺这一步，被误判为"保护已存在但没拦住"。
+- 客户端崩溃取证的最小集合：`90CN_trace.log` 中的 `exception code=/address=/access_address=` 行、同一 session 的 hook 安装记录，以及崩溃地址减去 `module_base`（`0x00400000`）得到的 RVA。有了 RVA 才能在 DNF.exe 上反汇编定位。
+- 客户端五文件的 SHA256 pin 是承重结构，不是形式检查：`90CN.dll` 的所有 hook 都是针对某一个 DNF.exe 构建写死的绝对 RVA。自行编译 DLL 会改变哈希并导致 `configure-client` 拒绝；重编后必须用 `REBUILD_CLIENT_PATCH.bat` 打印的哈希更新 `deploy/assets/client-compatibility.json`，否则发布器也会拒绝。
 
 ## 12. 变更规则
 

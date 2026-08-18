@@ -9182,6 +9182,48 @@ bool LoadOptionalLuaPlugin()
     return true;
 }
 
+// InstallSelectedPageNullGuard restores the missing null check in front of
+// sub_17D6BE0. All five of its callers share the same three instructions:
+//
+//   call sub_1892A50      ; may return null
+//   mov  ecx, eax         ; this <- result, unchecked
+//   call sub_17D6BE0
+//
+// and the callee dereferences it immediately at +0x2E with
+// `mov ebx, [ecx+0x1840]`, so a null result faults at 0x0000_1840.
+//
+// ProxySelectedPageApply already implements the guard, but its only
+// installation site sits in InstallWorkerInner, which has no callers: the sole
+// worker thread runs InstallTransportWorkerInner. Live traces confirm the
+// consequence -- across 54 client sessions the guard logged zero skips and zero
+// installation failures, while the crash reproduced with ecx=0 and an identical
+// stack tail on every occurrence. Installing it here, in the worker that
+// actually runs, is the smallest change that closes that gap.
+//
+// Only this guard is moved. The remaining dormant hooks in InstallWorkerInner
+// stay dormant: several change behaviour rather than merely rejecting a null
+// pointer, and none of them has live evidence behind it yet.
+bool InstallSelectedPageNullGuard()
+{
+    // Same five prologue bytes the dormant site verifies:
+    //   55        push ebp
+    //   8B EC     mov  ebp, esp
+    //   6A FF     push -1
+    static const unsigned char kPrologue[] = { 0x55, 0x8B, 0xEC, 0x6A, 0xFF };
+    uintptr_t target = g_dnfBase + kSelectedPageApplyRva;
+    void* original = nullptr;
+    if (!InstallKnownInlineHook(target,
+            kPrologue, sizeof(kPrologue),
+            reinterpret_cast<void*>(&ProxySelectedPageApply), &original,
+            "selected page null guard")) {
+        return false;
+    }
+    g_originalSelectedPageApply = original;
+    LogLine("selected page null guard installed target=0x%08X trampoline=%p",
+        target, original);
+    return true;
+}
+
 // Production boundary: connection bootstrap, packet codec, packet transport,
 // bounded protocol routing, one validated native party-directory UI/refresh
 // patch,
@@ -9234,6 +9276,12 @@ DWORD WINAPI InstallTransportWorkerInner(void*)
     bool userStateUiGuardInstalled = InstallUserStateNullUiGuard();
     LogLine("user-state null UI guard result=%d",
         userStateUiGuardInstalled ? 1 : 0);
+
+    // Non-fatal like every other guard in this worker: a verification failure
+    // must not cost the client its transport hooks.
+    bool selectedPageGuardInstalled = InstallSelectedPageNullGuard();
+    LogLine("selected page null guard result=%d",
+        selectedPageGuardInstalled ? 1 : 0);
 
     bool partyDirectoryUiInstalled =
         InstallPartyDirectoryFullPageCompatibility();
