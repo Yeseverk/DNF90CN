@@ -47,3 +47,7 @@ __pycache__/
 *~
 /_codex_tmp/
 /_deployment_staging/
+
+# macOS Finder metadata
+.DS_Store
+**/.DS_Store

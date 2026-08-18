@@ -1,5 +1,8 @@
 @echo off
 setlocal EnableExtensions DisableDelayedExpansion
+rem 65001 = UTF-8。本文件以 UTF-8 保存，不切码页中文会显示成乱码。
+chcp 65001 >nul 2>nul
+title DNF90CN 启动器
 
 set "DNF90_ROOT=%~dp0"
 set "DNF90_LAUNCHER=%DNF90_ROOT%runtime\bin\DNF90Launcher.exe"
@@ -36,7 +39,7 @@ if exist "%DNF90_VERSION_INSTALLED%" call :compare_installed_version
 if not defined DNF90_REFRESH goto launch
 
 :bootstrap
-echo Updating DNF90 local runtime...
+echo 正在更新本机运行时，请稍候...
 call :find_go
 if errorlevel 1 goto go_required
 
@@ -101,56 +104,53 @@ exit /b 0
 :go_required
 echo.
 if defined DNF90_RUNTIME_INCOMPLETE goto runtime_incomplete
-echo [ERROR] The installed DNF90 runtime does not match this source tree, and
-echo         Go was not found, so it cannot be rebuilt here.
-echo         runtime\bin still holds executables older than the current server
-echo         fixes. Starting them would reproduce the bugs this build repairs,
-echo         so LOGIN stops instead of running them.
+echo   [无法启动] 这个目录里的服务端是旧版本，不能用来测试。
 echo.
-echo         Choose one:
-echo           - run a release package produced by PACKAGE_RELEASE.bat, or
-echo           - install the Go version from go-server\go.mod on this machine
-echo             and run REBUILD.bat.
-echo         If Go is installed outside PATH, set DNF90_GO_EXECUTABLE to the
-echo         full path of go.exe and start LOGIN.bat again.
+echo   原因：runtime\bin 里的程序比当前版本旧，本机又没有装 Go，无法重新编译。
+echo         强行启动会重现已经修好的 BUG，所以这里直接停下。
+echo.
+echo   怎么办：请找发包的人要一份新的完整发布包（一个几百 MB 的 ZIP），
+echo           解压到一个全新的文件夹，再双击里面的 LOGIN.bat。
+echo.
+echo   注意：从 GitHub 下载的源码 ZIP（文件夹名带 -main）不能直接玩，
+echo         里面不含数据库和游戏资源，必须用完整发布包。
 pause
 exit /b 10
 
 :runtime_incomplete
 echo.
-echo [ERROR] runtime\bin does not contain the four DNF90 executables
-echo         (DNF90Control.exe, DNF90Doctor.exe, DNF90Launcher.exe,
-echo         DNF90Server.exe), and Go was not found to build them.
-echo         A plain source checkout can never contain them, because runtime\bin
-echo         is ignored by Git.
+echo   [无法启动] 这个文件夹不是完整的游戏包。
 echo.
-echo         Choose one:
-echo           - run a release package produced by PACKAGE_RELEASE.bat, or
-echo           - install the Go version from go-server\go.mod on this machine
-echo             and run REBUILD.bat.
-echo         If Go is installed outside PATH, set DNF90_GO_EXECUTABLE to the
-echo         full path of go.exe and start LOGIN.bat again.
+echo   缺少 runtime\bin 里的四个程序：
+echo     DNF90Control.exe  DNF90Doctor.exe  DNF90Launcher.exe  DNF90Server.exe
+echo.
+echo   最常见的原因：你是从 GitHub 点 "Download ZIP" 下载的源码
+echo   （解压出来的文件夹名字带 -main）。那个包里没有游戏程序、
+echo   没有数据库、也没有游戏资源，**不管怎么操作都跑不起来**。
+echo.
+echo   怎么办：请找发包的人要一份完整发布包（一个几百 MB 的 ZIP），
+echo           解压到一个全新的文件夹，再双击里面的 LOGIN.bat。
 pause
 exit /b 12
 
 :version_source_failed
 echo.
-echo [ERROR] Missing deploy\windows\runtime.version.
-echo         This directory is not a complete DNF90 release or source tree.
+echo   [无法启动] 缺少 deploy\windows\runtime.version 文件。
+echo   这个文件夹不是完整的游戏包，请重新解压一份完整发布包。
 pause
 exit /b 11
 
 :stop_failed
 echo.
-echo [ERROR] Cannot stop the previous DNF90 runtime safely, so its executables
-echo         must not be replaced while they are still in use.
-echo         Run STATUS.bat and check runtime\logs before retrying.
+echo   [无法启动] 上一次的服务端还没有停干净，不能覆盖正在使用的程序。
+echo   请先重启电脑，或者双击 STOP.bat 之后再试一次。
 pause
 exit /b %DNF90_STOP_EXIT%
 
 :build_failed
 echo.
-echo [ERROR] Cannot prepare the DNF90 login tools.
+echo   [无法启动] 编译登录程序失败。
+echo   请把上面的报错内容截图发给开发者。
 pause
 exit /b %DNF90_BUILD_EXIT%
 

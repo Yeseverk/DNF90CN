@@ -55,19 +55,34 @@ func TestLoginNeverStampsRuntimeBuildVersion(t *testing.T) {
 
 // Without Go, an unmatched runtime cannot be rebuilt. LOGIN.bat has to refuse
 // with a recovery path instead of starting executables that predate the
-// current server fixes.
+// current server fixes. The message is written for the tester who sees it, not
+// for a developer: a tester cannot compile anything, so it must name the
+// release package and the GitHub-source-download trap rather than build tools.
 func TestLoginRefusesUnbuildableRuntimeWithRecoveryPath(t *testing.T) {
 	login := readProjectFile(t, "LOGIN.bat")
 	for _, required := range []string{
 		":go_required",
 		":runtime_incomplete",
-		"PACKAGE_RELEASE.bat",
-		"REBUILD.bat",
-		"DNF90_GO_EXECUTABLE",
+		"无法启动",
+		"完整发布包",
+		"-main",
 	} {
 		if !strings.Contains(login, required) {
 			t.Fatalf("LOGIN.bat is missing the recovery path %q", required)
 		}
+	}
+}
+
+// The Chinese messages above are mojibake on a GBK console unless the script
+// switches the code page first.
+func TestLoginSwitchesConsoleToUTF8BeforePrintingChinese(t *testing.T) {
+	login := readProjectFile(t, "LOGIN.bat")
+	chcp := strings.Index(login, "chcp 65001")
+	if chcp < 0 {
+		t.Fatal("LOGIN.bat prints Chinese without switching the console to UTF-8")
+	}
+	if first := strings.Index(login, "无法启动"); first >= 0 && first < chcp {
+		t.Fatal("LOGIN.bat prints Chinese before the chcp 65001 switch")
 	}
 }
 
