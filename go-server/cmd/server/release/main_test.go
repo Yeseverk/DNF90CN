@@ -21,6 +21,7 @@ func TestValidatePayloadRejectsGeneratedRuntimeState(t *testing.T) {
 	payload := t.TempDir()
 	required := []string{
 		"LOGIN.bat",
+		"README_FIRST.txt",
 		"START.bat",
 		"runtime/bin/DNF90Control.exe",
 		"runtime/bin/DNF90Doctor.exe",
