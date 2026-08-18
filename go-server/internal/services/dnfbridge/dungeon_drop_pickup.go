@@ -212,13 +212,16 @@ func (s *Service) handleCurrentDungeonPickup(session *gameSession, body []byte) 
 			return nil
 		}
 		characterID := strconv.Itoa(int(session.selectedCharacterID))
+		pickupCtx, cancelPickup := context.WithTimeout(
+			context.Background(), currentDungeonPickupWriteTimeout)
 		goldAfter, err := grantCurrentDungeonPickupGold(
-			context.Background(),
+			pickupCtx,
 			repositories.CharacterAssets,
 			characterID,
 			drop.Amount,
 			time.Now().UTC(),
 		)
+		cancelPickup()
 		if err != nil {
 			s.logGameEvent(session, "game-dungeon-pickup-blocked",
 				"dungeon_id", runtime.Dungeon.ID,
@@ -289,8 +292,10 @@ func (s *Service) handleCurrentDungeonPickup(session *gameSession, body []byte) 
 			return nil
 		}
 		characterID := strconv.Itoa(int(session.selectedCharacterID))
+		pickupCtx, cancelPickup := context.WithTimeout(
+			context.Background(), currentDungeonPickupWriteTimeout)
 		destinationSlot, itemUpdate, err := restoreCurrentDungeonDiscardedItem(
-			context.Background(),
+			pickupCtx,
 			repositories.AccountAssets,
 			strings.TrimSpace(s.accountIDForSession(session)),
 			characterID,
@@ -298,6 +303,7 @@ func (s *Service) handleCurrentDungeonPickup(session *gameSession, body []byte) 
 			drop.Item,
 			time.Now().UTC(),
 		)
+		cancelPickup()
 		if err != nil {
 			s.logGameEvent(session, "game-dungeon-pickup-blocked",
 				"dungeon_id", runtime.Dungeon.ID,
@@ -375,8 +381,10 @@ func (s *Service) handleCurrentDungeonPickup(session *gameSession, body []byte) 
 		return nil
 	}
 	characterID := strconv.Itoa(int(session.selectedCharacterID))
+	pickupCtx, cancelPickup := context.WithTimeout(
+		context.Background(), currentDungeonPickupWriteTimeout)
 	destinationSlot, itemUpdate, err := grantCurrentDungeonPickupItem(
-		context.Background(),
+		pickupCtx,
 		repositories.CharacterItems,
 		characterID,
 		drop.Item,
@@ -384,6 +392,7 @@ func (s *Service) handleCurrentDungeonPickup(session *gameSession, body []byte) 
 		time.Now().UTC(),
 		drop.QualitySeed,
 	)
+	cancelPickup()
 	if err != nil {
 		s.logGameEvent(session, "game-dungeon-pickup-blocked",
 			"dungeon_id", runtime.Dungeon.ID,

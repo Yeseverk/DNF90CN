@@ -567,3 +567,59 @@ func (unit pickupTestItemUnitOfWork) WithinCharacterItems(
 ) error {
 	return apply(unit.inventory, unit.equipment)
 }
+
+// A pickup holds session.dungeon.mu for the whole handler. An unbounded
+// repository call therefore freezes the entire dungeon session, not just the
+// pickup: the client can no longer settle the run or return to town, which is
+// the "must kill the process" symptom. Every pickup write must carry a
+// deadline so a stalled MySQL turns into a rejected pickup that leaves the
+// drop available for retry.
+type pickupDeadlineProbeInventoryRepository struct {
+	dnfrepo.InventoryRepository
+	deadlineSeen *bool
+	err          error
+}
+
+func (repository pickupDeadlineProbeInventoryRepository) Save(ctx context.Context, _ dnfrepo.InventoryRecord) error {
+	_, hasDeadline := ctx.Deadline()
+	*repository.deadlineSeen = hasDeadline
+	return repository.err
+}
+
+func TestCurrentDungeonPickupWriteCarriesDeadline(t *testing.T) {
+	service, runtime, repositories := prepareCurrentDungeonDropTest(t, 1, 3227)
+	connection := &bufferConn{}
+	session := &gameSession{
+		conn:                connection,
+		connID:              "dungeon-pickup-deadline-test",
+		selectedCharacterID: 99,
+		dungeon:             dungeonSessionState{runtime: runtime},
+	}
+	dropObjectKey := seedCurrentDungeonPickupDrop(
+		t,
+		service,
+		runtime,
+		3227,
+		currentSceneActorObjectKey(99),
+	)
+
+	deadlineSeen := false
+	probe := pickupDeadlineProbeInventoryRepository{
+		InventoryRepository: repositories.Inventory,
+		deadlineSeen:        &deadlineSeen,
+		err:                 errors.New("probe rejects the write so the drop stays available"),
+	}
+	probeGroup := repositories
+	probeGroup.CharacterItems = pickupTestItemUnitOfWork{inventory: probe, equipment: repositories.Equipment}
+	service.repositoryProvider = func() (dnfrepo.Group, bool) { return probeGroup, true }
+
+	if err := service.handleCurrentDungeonPickup(session, currentDungeonPickupTestBody(dropObjectKey)); err != nil {
+		t.Fatal(err)
+	}
+	if !deadlineSeen {
+		t.Fatal("pickup repository write ran without a deadline; a stalled MySQL would hold session.dungeon.mu forever")
+	}
+	if drop := runtime.DropOwner.byObjectKey[dropObjectKey]; drop.Status != runtimeDungeonDropAvailable {
+		t.Fatalf("rejected pickup consumed the drop=%+v", drop)
+	}
+}

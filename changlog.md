@@ -1,5 +1,15 @@
 # DNF90 Operation Log
 
+## 2026-08-18 - bound the dungeon pickup writes that could freeze a run
+
+- Live play reported three symptoms: picking an item up lagged, sometimes needed several attempts, and after a boss died the run occasionally never settled -- the end-run button and the return-to-town button both did nothing and the client had to be killed. The reporter also noted it worsened the longer a session ran.
+- `handleCurrentDungeonPickup` takes `session.dungeon.mu` on entry and holds it through all 366 lines via `defer`. Inside that lock it commits through the repositories at three points: `CharacterAssets` for gold, `AccountAssets` for a discarded-item restore, and `CharacterItems` for an ordinary item. All three passed `context.Background()`, so none of them had a deadline.
+- An unbounded commit under that lock does not merely delay one pickup. It freezes the whole dungeon session, because every other dungeon packet for that session needs the same mutex — which matches the reported settle/return-to-town hang exactly, and matches "worse the longer you play" as the character's item and asset rows grow.
+- The three writes now run under `currentDungeonPickupWriteTimeout` (5s) and cancel as soon as they return. A stalled database becomes a rejected pickup that leaves the drop `available`, which the existing `game-dungeon-pickup-blocked` path already handles and the client already retries. `TestCurrentDungeonPickupWriteCarriesDeadline` asserts the write carries a deadline and that a rejected write does not consume the drop.
+- This bounds the failure; it does not remove the database from the lock. An ordinary pickup still serializes its commits inside `session.dungeon.mu`, so the steady-state latency of a healthy database is unchanged. Moving the commit out of the lock is a larger change with real duplicate-grant risk and is not attempted here.
+- `deploy/windows/runtime.version` incremented to `2026.08.18.1` because `dnfbridge` behaviour changed.
+- Verification on macOS with go1.26.5: `gofmt`, `go vet ./internal/services/dnfbridge`, the three pickup regressions, and the full `dnfbridge` suite excluding the macOS-unavailable `127.0.0.2` bind test. Source passes; **no Windows client acceptance was performed for this change.**
+
 ## 2026-08-17 - install the selected-page null guard from the worker that actually runs
 
 - Entering the first scene still crashed after the op3 guard shipped, but at a different site: `0xC0000005` at `0x017D6C0E` reading `0x00001840`, with `ecx=0`. Client traces separate the two cleanly. `0x00E44ED6` stops at 20:02 and never recurs once the op3 guard reports `result=1`; `0x017D6C0E` appears at 14:57, 18:56, 18:59, 20:37 and again at 21:55:11, eleven seconds after that guard installed. The two crashes share a symptom and nothing else.
